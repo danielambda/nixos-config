@@ -1,1 +1,1 @@
-require'otter'.activate({ "javascript", "python", "rust" }, true, true, nil)
+vim.keymap.set('n', '<leader>oa', require'otter'.activate)
