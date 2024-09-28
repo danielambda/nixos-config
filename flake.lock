@@ -704,6 +704,22 @@
         "type": "github"
       }
     },
+    "langmapper-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726756686,
+        "narHash": "sha256-av491XfK7JeQhc0qEsUeTzHBxSJUx9n7DfXkgKKWWqw=",
+        "owner": "Wansmer",
+        "repo": "langmapper.nvim",
+        "rev": "ac74a80cb86e8b51e4a13ccb2ee540d544fe1c62",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Wansmer",
+        "repo": "langmapper.nvim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1727122398,
@@ -849,6 +865,7 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
+        "langmapper-nvim": "langmapper-nvim",
         "nixpkgs": "nixpkgs_2",
         "stylix": "stylix",
         "xremap": "xremap"

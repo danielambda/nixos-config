@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 let 
   configure = plugin: config: {
 	inherit plugin;
@@ -12,6 +12,17 @@ let
   }; 
 in {
   imports = [./base16-nvim.nix];
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      vimPlugins = prev.vimPlugins // {
+        langmapper-nvim = prev.vimUtils.buildVimPlugin {
+          name = "langmapper-nvim";
+          src = inputs.langmapper-nvim;
+        };
+      };
+    })
+  ];
 
   programs.neovim.plugins = with pkgs.vimPlugins; [
     (configure telescope-nvim "telescope.lua")
@@ -28,6 +39,7 @@ in {
     ccc-nvim #TODO configure
     (configureInline transparent-nvim /*lua*/''
       require'transparent'.setup({ auto = true })'')
+    (configure langmapper-nvim "langmapper.lua")
   ];
 }
 

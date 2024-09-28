@@ -8,9 +8,9 @@
     vimAlias = true;
     vimdiffAlias = true;
 
-    extraLuaConfig = ''
-      ${builtins.readFile ./lua/remap.lua}
+    extraLuaConfig = /*lua*/''
       ${builtins.readFile ./lua/set.lua}
+      ${builtins.readFile ./lua/remap.lua}
     '';
 
     defaultEditor = true;

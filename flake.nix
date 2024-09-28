@@ -15,6 +15,10 @@
       inputs.hyprland.follows = "hyprland";
     };
     xremap.url = "github:xremap/nix-flake";
+    langmapper-nvim = {
+      url = "github:Wansmer/langmapper.nvim";
+      flake = false;
+    };
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
