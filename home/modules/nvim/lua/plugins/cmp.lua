@@ -1,4 +1,4 @@
-local cmp = require('cmp')
+local cmp = require'cmp'
 cmp.setup({
   sources = {
     { name = 'nvim_lsp' }
@@ -16,7 +16,7 @@ cmp.setup({
   }),
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require'cmp_nvim_lsp'.default_capabilities()
 lspconfig.pyright.setup{
   capabilities = capabilities,
 }
