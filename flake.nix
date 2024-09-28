@@ -27,7 +27,7 @@
       specialArgs = {
         inherit inputs system shared;
       };
-      modules = [./nixos/configuration.nix];
+      modules = [./nixos];
     };
     # "daniel" is a username
     homeConfigurations.daniel = home-manager.lib.homeManagerConfiguration {
@@ -35,7 +35,7 @@
       extraSpecialArgs = {
         inherit inputs system shared;
       };
-      modules = [./home-manager/home.nix];
+      modules = [./home];
     };
   };
 }
