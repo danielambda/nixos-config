@@ -13,7 +13,7 @@ in pkgs.writers.writeHaskellBin "temp" {}
   setWp number =
       let n = show number;
       in callCommand $ "${setWpNumber}"<>n<>".${ext} ${transitionCfg}" 
->
+
   cycleWp :: Int -> IO ()
   cycleWp i = 
       if i < 1 || 5 < i then cycleWp 1

@@ -1,14 +1,13 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, config, ... }:
+let colors = config.stylix.base16Scheme;
+in {
   imports = [
     ./hyprlock.nix
     ./hypridle.nix
     ./binds.nix
   ];
 
-  home.packages = with pkgs; [
-    swww
-    rofi-wayland
-  ];
+  # home.packages = [];
   
   wayland.windowManager.hyprland = {
     enable = true;
@@ -20,7 +19,7 @@
       ];
 
       cursor = { 
-        inactive_timeout = 4; 
+        inactive_timeout = 3; 
         hide_on_key_press = true;
         hide_on_touch = true;
         
@@ -36,19 +35,18 @@
         gaps_out = 6;
         border_size = 3;
 
+        "col.active_border" = lib.mkForce "rgba(${colors.base0C}ff) rgba(${colors.base08}ff) 270deg";
+        "col.inactive_border" = lib.mkForce "rgba(${colors.base04}80)";
+
         layout = "dwindle";
       };
 
       decoration = {
         rounding = 6;
 
-        drop_shadow = false;
-
         blur = {
           enabled = true;
           xray = true;
-          vibrancy = 0.3;
-          vibrancy_darkness = 0.2;
         };
       };
 
