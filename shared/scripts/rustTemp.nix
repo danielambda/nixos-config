@@ -7,12 +7,14 @@ let
 in pkgs.writers.writeHaskellBin "temp" {}
 /*haskell*/ ''
   import System.Process (callCommand)
-  import Control.Concurrent (threadDelay)
+  import Control.Concurrent
 
+  setWp :: Int -> IO ()
   setWp number =
       let n = show number;
       in callCommand $ "${setWpNumber}"<>n<>".${ext} ${transitionCfg}" 
-
+>
+  cycleWp :: Int -> IO ()
   cycleWp i = 
       if i < 1 || 5 < i then cycleWp 1
       else do
@@ -20,7 +22,8 @@ in pkgs.writers.writeHaskellBin "temp" {}
           threadDelay 10_000_000
           cycleWp $ i + 1
 
+  main :: IO ()
   main = do
-      cycleWp 1
+     cycleWp 1
 ''
 
