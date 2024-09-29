@@ -44,6 +44,8 @@ in {
       decoration = {
         rounding = 6;
 
+        drop_shadow = false;
+
         blur = {
           enabled = true;
           xray = true;

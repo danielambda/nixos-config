@@ -19,6 +19,10 @@
       url = "github:Wansmer/langmapper.nvim";
       flake = false;
     };
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };  
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
