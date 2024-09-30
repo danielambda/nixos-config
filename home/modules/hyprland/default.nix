@@ -6,12 +6,7 @@ in {
   imports = [
     ./hyprlock.nix
     ./hypridle.nix
-    # ./hyprpaper
     ./binds.nix
-  ];
-
-  home.packages = [
-    (import /${shared}/scripts/wallpapersCycle { inherit pkgs; })
   ];
 
   wayland.windowManager.hyprland = {
@@ -20,8 +15,7 @@ in {
     settings = {
       exec = [
         (lib.getExe pkgs.waybar)
-        # "${pkgs.swww}/bin/swww-daemon" # && ${wallpapersCycle}"
-        (lib.getExe pkgs.hyprpaper)
+        "${pkgs.swww}/bin/swww-daemon & sleep 0.1 && ${wallpapersCycle}"
       ];
 
       cursor = { 
@@ -41,8 +35,8 @@ in {
         gaps_out = 6;
         border_size = 3;
 
-        "col.active_border" = lib.mkForce "rgba(${colors.base0C}ff) rgba(${colors.base08}ff) 270deg";
-        "col.inactive_border" = lib.mkForce "rgba(${colors.base04}80)";
+        "col.active_border" = "rgba(${colors.base0C}ff) rgba(${colors.base08}ff) 270deg";
+        "col.inactive_border" = "rgba(${colors.base04}80)";
 
         layout = "dwindle";
       };
@@ -50,7 +44,10 @@ in {
       decoration = {
         rounding = 12;
 
-        drop_shadow = false;
+        drop_shadow = true;
+        shadow_range = 12;
+        "col.shadow" = "rgba(${colors.base01}ff)";
+        "col.shadow_inactive" = "rgba(00000000)";
 
         blur = {
           enabled = true;

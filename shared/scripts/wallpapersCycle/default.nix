@@ -5,6 +5,7 @@ let
   wallpaper0913 = ./wallpapers/2.png;
   wallpaper1318 = ./wallpapers/3.png;
   wallpaper1821 = ./wallpapers/4.png;
+  swww = "${pkgs.swww}/bin/swww";
 
   transitionCfg = "--transition-type=fade --transition-duration=10 --transition-fps=60 --transition-step=1";
 in pkgs.writers.writeHaskellBin "wallpapersCycle" {
@@ -14,39 +15,72 @@ in pkgs.writers.writeHaskellBin "wallpapersCycle" {
 import System.Process (callCommand)
 import Control.Concurrent
 import Data.Time
+import Data.Fixed (Pico)
 
-data Wallpaper = Wallpaper Int Int String
+data HourMinute = HourMinute Int Int
+    deriving (Eq, Show)
 
-config :: [Wallpaper]
-config = 
-  [ Wallpaper 0  1  "${wallpaper2101}"
-  , Wallpaper 1  9  "${wallpaper0109}"
-  , Wallpaper 9  13 "${wallpaper0913}"
-  , Wallpaper 13 18 "${wallpaper1318}"
-  , Wallpaper 18 21 "${wallpaper1821}"
-  , Wallpaper 21 24 "${wallpaper2101}"
-  ]
+instance Ord HourMinute where
+    (HourMinute h1 m1) < (HourMinute h2 m2) = h1 < h2 || (h1 == h2 && m1 < m2)
 
-currentHour :: IO Int
-currentHour = do
-  currentTime <- getZonedTime
-  let hour = todHour . localTimeOfDay $ zonedTimeToLocalTime currentTime
-  return hour
+    t1 <= t2 = t1 < t2 || t1 == t2 
 
-matchingWallpaper :: [Wallpaper] -> Int -> String
-matchingWallpaper ((Wallpaper begin end path):wps) hour = 
-  if begin <= hour && hour < end then path
-  else matchingWallpaper wps hour
-matchingWallpaper [] _ = "Something's wrong with the provided config"
+totalMinutes :: HourMinute -> Int
+totalMinutes (HourMinute h m) = 60 * h + m
+
+instance Num HourMinute where
+    (HourMinute h1 m1) + (HourMinute h2 m2) =
+        let minutes = m1 + m2
+            m = minutes `mod` 60
+            h = h1 + h2 + if minutes >= 60 then 1 else 0
+        in HourMinute h m 
+
+    t1 - t2 =
+        let totalM1 = totalMinutes t1
+            totalM2 = totalMinutes t2
+            diffM = totalM1 - totalM2 + if totalM1 > totalM2 then 0 else 24 * 60
+            h = diffM `div` 60
+            m = diffM `mod` 60
+        in HourMinute h m
+
+totalMicroseconds :: HourMinute -> Int
+totalMicroseconds t = 3_600_000_000 * totalMinutes t 
+
+fromTimeOfDay :: TimeOfDay -> HourMinute
+fromTimeOfDay (TimeOfDay h m _) = HourMinute h m 
+
+data Wallpaper = Wallpaper HourMinute String
+
+localTime :: IO TimeOfDay
+localTime = localTimeOfDay . zonedTimeToLocalTime <$> getZonedTime
 
 setWallpaper :: String -> IO ()
-setWallpaper path = 
-  callCommand $ "${pkgs.swww}/bin/swww img "<>path<>" ${transitionCfg}"
+setWallpaper path =
+    callCommand $ "${swww} img "<>path<>" ${transitionCfg}" 
+
+cycleWallpapersFrom :: [Wallpaper] -> HourMinute -> [Wallpaper] 
+cycleWallpapersFrom config time = dropWhile (\(Wallpaper begin _) -> time < begin) config 
+                                  ++ cycle config
+
+sequentiallySetWallpapers :: [Wallpaper] -> HourMinute -> IO ()
+sequentiallySetWallpapers ((Wallpaper begin path):wps) time = do
+    threadDelay . totalMicroseconds $ begin - time
+    setWallpaper path
+    sequentiallySetWallpapers wps time
 
 main :: IO ()
 main = do
-  hour <- currentHour
-  let wp = matchingWallpaper config hour
-  setWallpaper wp 
+    let config :: [Wallpaper] = 
+            [ Wallpaper (HourMinute 0 0)  "${wallpaper2101}"
+            , Wallpaper (HourMinute 1 0)  "${wallpaper0109}"
+            , Wallpaper (HourMinute 9 0)  "${wallpaper0913}"
+            , Wallpaper (HourMinute 13 0) "${wallpaper1318}"
+            , Wallpaper (HourMinute 18 0) "${wallpaper1821}"
+            , Wallpaper (HourMinute 21 0) "${wallpaper2101}"
+            ]
+    
+    now :: HourMinute <- fromTimeOfDay <$> localTime
+
+    sequentiallySetWallpapers (cycleWallpapersFrom config now) now
 ''
 

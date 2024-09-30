@@ -13,7 +13,7 @@
 
       background = [
         {
-          path = "/home/daniel/Downloads/desert_sands_3.png";
+          path = "/home/daniel/Downloads/desert_sands_3.png"; #TODO
           blur_passes = 2;
           blur_size = 6;
         }

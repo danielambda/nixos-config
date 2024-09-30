@@ -4,5 +4,6 @@
     (import /${shared}/scripts/rustTemp.nix { inherit pkgs lib; })
     obsidian
     vial
+    discord
   ];
 }
