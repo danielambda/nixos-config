@@ -1,6 +1,6 @@
 { lib, pkgs, ... }: {
   wayland.windowManager.hyprland.settings.exec = [
-    "${lib.getExe pkgs.hypridle} &"
+    # "${lib.getExe pkgs.hypridle} &"
   ];
 
   services.hypridle = {

@@ -36,8 +36,8 @@ in with pkgs // lib;
     '', print, exec, ${getExe grim} -g "$(${getExe slurp} -w 0)" - | ${wl-clipboard}/bin/wl-copy''
     ''$mainMod, print, exec, ${getExe grim} -o "$(${hyprland}/bin/hyprctl activeworkspace -j | ${getExe jq} -r '.monitor')" - | ${wl-clipboard}/bin/wl-copy''
 
-    "$mainMod, TAB, workspace, r+1"
-    "$mainMod SHIFT, TAB, workspace, r-1"
+    "$mainMod, TAB, workspace, e+1"
+    "$mainMod SHIFT, TAB, workspace, e-1"
     
     "$mainMod, F, fullscreen, 0"
     "$mainMod SHIFT, F, togglefloating, active"

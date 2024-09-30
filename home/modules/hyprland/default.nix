@@ -1,21 +1,27 @@
-{ pkgs, lib, config, ... }:
-let colors = config.stylix.base16Scheme;
+{ pkgs, lib, config, shared, ... }:
+let 
+  colors = config.stylix.base16Scheme;
+  wallpapersCycle = lib.getExe (import /${shared}/scripts/wallpapersCycle { inherit pkgs; });
 in {
   imports = [
     ./hyprlock.nix
     ./hypridle.nix
+    # ./hyprpaper
     ./binds.nix
   ];
 
-  # home.packages = [];
-  
+  home.packages = [
+    (import /${shared}/scripts/wallpapersCycle { inherit pkgs; })
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
 
     settings = {
       exec = [
-        "${pkgs.swww}/bin/swww-daemon &"
-        "${lib.getExe pkgs.waybar} &"
+        (lib.getExe pkgs.waybar)
+        # "${pkgs.swww}/bin/swww-daemon" # && ${wallpapersCycle}"
+        (lib.getExe pkgs.hyprpaper)
       ];
 
       cursor = { 
@@ -42,7 +48,7 @@ in {
       };
 
       decoration = {
-        rounding = 6;
+        rounding = 12;
 
         drop_shadow = false;
 

@@ -1,6 +1,6 @@
 { lib, pkgs, ... }: {
   wayland.windowManager.hyprland.settings.exec = [
-    "${lib.getExe pkgs.hyprlock} --immediate"
+    # "${lib.getExe pkgs.hyprlock} --immediate"
   ];
 
   programs.hyprlock = {

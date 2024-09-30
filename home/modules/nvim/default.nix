@@ -17,6 +17,9 @@
 
     extraPackages = with pkgs; [
       wl-clipboard
+
+      cargo
+
       rust-analyzer
       haskell-language-server
       omnisharp-roslyn
