@@ -15,7 +15,6 @@ in pkgs.writers.writeHaskellBin "wallpapersCycle" {
 import System.Process (callCommand)
 import Control.Concurrent
 import Data.Time
-import Data.Fixed (Pico)
 
 data HourMinute = HourMinute Int Int
     deriving (Eq, Show)
@@ -44,12 +43,13 @@ instance Num HourMinute where
         in HourMinute h m
 
 totalMicroseconds :: HourMinute -> Int
-totalMicroseconds t = 3_600_000_000 * totalMinutes t 
+totalMicroseconds t = 60_000_000 * totalMinutes t 
 
 fromTimeOfDay :: TimeOfDay -> HourMinute
 fromTimeOfDay (TimeOfDay h m _) = HourMinute h m 
 
 data Wallpaper = Wallpaper HourMinute String
+    deriving (Show)
 
 localTime :: IO TimeOfDay
 localTime = localTimeOfDay . zonedTimeToLocalTime <$> getZonedTime
@@ -59,20 +59,26 @@ setWallpaper path =
     callCommand $ "${swww} img "<>path<>" ${transitionCfg}" 
 
 cycleWallpapersFrom :: [Wallpaper] -> HourMinute -> [Wallpaper] 
-cycleWallpapersFrom config time = dropWhile (\(Wallpaper begin _) -> time < begin) config 
-                                  ++ cycle config
+cycleWallpapersFrom wallpapers time = 
+    let (before, after) = span (\(Wallpaper begin _) -> begin < time) wallpapers 
+    in last before : after ++ cycle wallpapers
 
-sequentiallySetWallpapers :: [Wallpaper] -> HourMinute -> IO ()
-sequentiallySetWallpapers ((Wallpaper begin path):wps) time = do
-    threadDelay . totalMicroseconds $ begin - time
+sequentiallySetWallpapers :: [Wallpaper] -> IO ()
+sequentiallySetWallpapers ((Wallpaper _ path):(Wallpaper nextBegin nextPath):wps) = do
+    now :: HourMinute <- fromTimeOfDay <$> localTime
+
+    print $ "Sleaping for "<>show (nextBegin - now)
+    print $ "Begin is "<>show nextBegin
+    print $ "Time is "<>show now
     setWallpaper path
-    sequentiallySetWallpapers wps time
+    threadDelay . totalMicroseconds $ nextBegin - now
+    sequentiallySetWallpapers $ Wallpaper nextBegin nextPath : wps 
 
 main :: IO ()
 main = do
-    let config :: [Wallpaper] = 
-            [ Wallpaper (HourMinute 0 0)  "${wallpaper2101}"
-            , Wallpaper (HourMinute 1 0)  "${wallpaper0109}"
+    let wallpapers :: [Wallpaper] = 
+            [ Wallpaper (HourMinute 0 0) "${wallpaper2101}"
+            , Wallpaper (HourMinute 1 0) "${wallpaper0109}"
             , Wallpaper (HourMinute 9 0)  "${wallpaper0913}"
             , Wallpaper (HourMinute 13 0) "${wallpaper1318}"
             , Wallpaper (HourMinute 18 0) "${wallpaper1821}"
@@ -80,7 +86,6 @@ main = do
             ]
     
     now :: HourMinute <- fromTimeOfDay <$> localTime
-
-    sequentiallySetWallpapers (cycleWallpapersFrom config now) now
+    sequentiallySetWallpapers (cycleWallpapersFrom wallpapers now) 
 ''
 
