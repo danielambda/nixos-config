@@ -179,7 +179,7 @@ with lib;
       }
     ];
     style = concatStrings [
-      ''
+      /*css*/''
         * {
           font-family: JetBrainsMono Nerd Font Mono;
           font-size: 16px;

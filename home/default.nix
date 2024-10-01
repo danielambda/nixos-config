@@ -1,4 +1,18 @@
 {
+  home.file.".local/share/TelegramDesktop/tdata/shortcuts-custom.json".text = 
+  /*json*/ ''
+  [
+    {
+      command: quit_telegram,
+      keys: null
+    },
+    {
+      command: close_telegram,
+      keys: null
+    }
+  ]
+  '';
+
   imports = [
     ./modules
     ./packages.nix

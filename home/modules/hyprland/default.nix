@@ -1,21 +1,36 @@
 { pkgs, lib, config, shared, ... }:
 let 
   colors = config.stylix.base16Scheme;
+
   wallpapersCycle = lib.getExe (import /${shared}/scripts/wallpapersCycle { inherit pkgs; });
+  swwwRunnerScript = pkgs.writeShellApplication {
+    name = "swwwRunnerScript";
+  
+    runtimeInputs = [pkgs.swww];
+
+    text = ''
+      swww-daemon &
+      ${wallpapersCycle} &
+      swww kill
+      swww-daemon &
+      swww kill
+      swww-daemon
+    ''; #don't even ask me why, for some reason swww wants its daemon to be killed at least 2 times
+  };
 in {
-  imports = [
-    ./hyprlock.nix
-    ./hypridle.nix
-    ./binds.nix
+    imports = [
+      ./hyprlock.nix
+      ./hypridle.nix
+      ./binds.nix
   ];
 
   wayland.windowManager.hyprland = {
     enable = true;
 
     settings = {
-      exec = [
+      exec-once = [
         (lib.getExe pkgs.waybar)
-        "${pkgs.swww}/bin/swww-daemon & sleep 0.1 && ${wallpapersCycle}"
+        (lib.getExe swwwRunnerScript)
       ];
 
       cursor = { 
