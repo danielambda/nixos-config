@@ -38,7 +38,7 @@ in with pkgs // lib;
 
     "$mainMod, TAB, workspace, e+1"
     "$mainMod SHIFT, TAB, workspace, e-1"
-    
+
     "$mainMod, F, fullscreen, 0"
     "$mainMod SHIFT, F, togglefloating, active"
     "$mainMod, P, pin, active"
@@ -50,7 +50,7 @@ in with pkgs // lib;
   ++ utils.digitsBind "$mainMod SHIFT" "movetoworkspace"
   ++ utils.modifiedDirectionsBind "mon:" "$mainMod SHIFT" "movewindow" 
   ;
-  
+
   config.wayland.windowManager.hyprland.settings.bindm = [
     "$mainMod, mouse:272, movewindow"
     "$mainMod SHIFT, mouse:272, resizewindow"

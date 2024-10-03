@@ -8,7 +8,7 @@
     ./waybar.nix
     ./xremap.nix
     ./screencapturing.nix
-    ./stylix.nix
+    ./stylix
     ./firefox.nix
     ./kitty.nix
     ./waybar.nix
