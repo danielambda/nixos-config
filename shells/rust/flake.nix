@@ -15,9 +15,14 @@
       };
     in {
       devShells.${system}.default = pkgs.mkShell {
-        packages = [pkgs.rust-bin.stable.latest.minimal];
+        packages = [
+          pkgs.rust-analyzer
+          pkgs.rust-bin.stable.latest.default
+        ];
 
-        shellHook = "${pkgs.zsh}/bin/zsh";
+        shellHook = ''
+          NEOVIM_PROFILE="rust" ${pkgs.zsh}/bin/zsh
+        '';
       };
     };
 }

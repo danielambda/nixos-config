@@ -17,13 +17,7 @@
 
     extraPackages = with pkgs; [
       ripgrep
-
       lua-language-server
-
-      haskell-language-server
-      omnisharp-roslyn
-      nodePackages.typescript-language-server
-      pyright
       nixd
     ];	
   };

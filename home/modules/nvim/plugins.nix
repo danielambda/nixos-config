@@ -2,8 +2,8 @@
 let 
   configure = plugin: config: {
 	inherit plugin;
-	type = "lua";
 	config = builtins.readFile ./lua/plugins/${config};
+	type = "lua";
   }; 
 
   configureInline = plugin: config: {

@@ -1,17 +1,14 @@
 local lspconfig = require'lspconfig'
 
-lspconfig.pyright.setup{}
+lspconfig.lua_ls.setup{}
+lspconfig.nixd.setup{}
 
-lspconfig.ts_ls.setup{}
-
-lspconfig.rust_analyzer.setup{}
-
-lspconfig.omnisharp.setup{
-	cmd = { "omnisharp", "--languageserver" , "--hostPID", tostring(vim.fn.getpid()) };
+local configByProfile =
+{
+    ['default'] = function()end,
+    ['rust'] = function() print'aboba' lspconfig.rust_analyzer.setup{} end,
+    ['obsidian'] = function()end -- TODO
 }
 
-lspconfig.hls.setup{}
-
-lspconfig.lua_ls.setup{}
-
-lspconfig.nixd.setup{}
+local profile = os.getenv('NEOVIM_PROFILE') or 'default'
+configByProfile[profile]()
