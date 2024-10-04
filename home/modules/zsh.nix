@@ -12,8 +12,8 @@
       hmnews = "home-manager news --flake /home/daniel/nix";
       rb = "sudo nixos-rebuild switch --flake /home/daniel/nix";
 
-      ls = "${pkgs.eza}/bin/eza --icons --group-directories-first";
-      tree = "${pkgs.eza}/bin/eza --color=auto --icons --tree";
+      ls = "${lib.getExe pkgs.eza} --icons --group-directories-first";
+      tree = "${lib.getExe pkgs.eza} --color=auto --icons --tree";
       grep = "grep --color=auto";
       ":q" = "exit";
       v = "nvim";

@@ -8,13 +8,13 @@ let
   laptop-scale = laptop-h / laptop-virt-h;
   laptop-scale-str = toString laptop-scale;
 
-  monitor-offset-y-cm = 21.4;
+  monitor-offset-y-cm = 0; # 21.4;
   monitor-w = 1920;
   monitor-h = 1080;
   monitor-h-cm = 30;
   monitor-res = "${toString monitor-w}x${toString monitor-h}";
 
-  monitor-virt-h = 1440.0;
+  monitor-virt-h = 1800.0;
   monitor-scale = monitor-h / monitor-virt-h;
   monitor-scale-str = toString monitor-scale;
 
