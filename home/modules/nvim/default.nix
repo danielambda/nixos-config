@@ -16,18 +16,15 @@
     defaultEditor = true;
 
     extraPackages = with pkgs; [
-      wl-clipboard
+      ripgrep
 
-      cargo
+      lua-language-server
 
-      rust-analyzer
       haskell-language-server
       omnisharp-roslyn
       nodePackages.typescript-language-server
       pyright
-      lua-language-server
       nixd
-      ripgrep
     ];	
   };
 }

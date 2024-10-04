@@ -1,7 +1,6 @@
-{ pkgs, lib, shared, ... }: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     telegram-desktop
-    (import /${shared}/scripts/rustTemp.nix { inherit pkgs lib; })
     obsidian
     vial
     discord

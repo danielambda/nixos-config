@@ -1,22 +1,6 @@
-{ pkgs, lib, config, shared, ... }:
+{ pkgs, lib, config, ... }:
 let 
   colors = config.stylix.base16Scheme;
-
-  wallpapersCycle = lib.getExe (import /${shared}/scripts/wallpapersCycle { inherit pkgs; });
-  swwwRunnerScript = pkgs.writeShellApplication {
-    name = "swwwRunnerScript";
-  
-    runtimeInputs = [pkgs.swww];
-
-    text = ''
-      swww-daemon &
-      ${wallpapersCycle} &
-      swww kill
-      swww-daemon &
-      swww kill
-      swww-daemon
-    ''; #don't even ask me why, for some reason swww wants its daemon to be killed at least 2 times
-  };
 in {
     imports = [
       ./hyprlock.nix
@@ -30,7 +14,6 @@ in {
     settings = {
       exec-once = [
         (lib.getExe pkgs.waybar)
-        (lib.getExe swwwRunnerScript)
       ];
 
       cursor = { 

@@ -20,21 +20,15 @@
   outputs = { nixpkgs, home-manager, ... }@inputs:
   let 
     system = "x86_64-linux";
-    shared = ./shared;
   in {
-    # "nixos" is a sytem hostname
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem { 
-      specialArgs = {
-        inherit inputs system shared;
-      };
+      specialArgs = { inherit inputs system; };
       modules = [./nixos];
     };
-    # "daniel" is a username
+
     homeConfigurations.daniel = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-      extraSpecialArgs = {
-        inherit inputs system shared;
-      };
+      extraSpecialArgs = { inherit inputs system; };
       modules = [./home];
     };
   };

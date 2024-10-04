@@ -1,6 +1,5 @@
 {
   imports = [
-    ./stylix.nix
     ./hyprland.nix
     ./users.nix
     ./bootloader.nix
