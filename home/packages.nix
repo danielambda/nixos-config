@@ -4,5 +4,6 @@
     obsidian
     vial
     discord
+    # direnv
   ];
 }

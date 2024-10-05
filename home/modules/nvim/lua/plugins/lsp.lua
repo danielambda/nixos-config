@@ -1,12 +1,13 @@
 local lspconfig = require'lspconfig'
 
+require'neodev'.setup()
 lspconfig.lua_ls.setup{}
 lspconfig.nixd.setup{}
 
 local configByProfile =
 {
     ['default'] = function()end,
-    ['rust'] = function() print'aboba' lspconfig.rust_analyzer.setup{} end,
+    ['rust'] = function() lspconfig.rust_analyzer.setup{} end,
     ['obsidian'] = function()end -- TODO
 }
 

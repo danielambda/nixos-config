@@ -20,9 +20,8 @@
           pkgs.rust-bin.stable.latest.default
         ];
 
-        shellHook = ''
-          NEOVIM_PROFILE="rust" ${pkgs.zsh}/bin/zsh
-        '';
+        shellHook = "${pkgs.zsh}/bin/zsh";
+        NEOVIM_PROFILE="rust";
       };
     };
 }

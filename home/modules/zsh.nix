@@ -5,7 +5,10 @@
 
     syntaxHighlighting.enable = true;
 
-    initExtraFirst = "${lib.getExe pkgs.fastfetch} --config examples/13 --logo none";
+    initExtraFirst = ''
+      eval "$(${lib.getExe pkgs.direnv} hook zsh)"
+      ${lib.getExe pkgs.fastfetch} --config examples/13 --logo none
+    '';
 
     shellAliases = {
       hms = "home-manager switch --flake /home/daniel/nix";

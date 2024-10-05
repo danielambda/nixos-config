@@ -19,14 +19,21 @@ in {
     (configure undotree "undotree.lua")
     indentLine #TODO configure
     vim-nix
+    comment-nvim
     (configureInline lualine-nvim /*lua*/''
       require'lualine'.setup()'')
     (configure nvim-lspconfig "lsp.lua")
     (configure nvim-cmp "cmp.lua")
     cmp-nvim-lsp
+    cmp_luasnip
+    neodev-nvim
     ccc-nvim #TODO configure
     (configureInline transparent-nvim /*lua*/''
       require'transparent'.setup({ auto = true })'')
+    (configure luasnip "luasnip.lua")
+
+    (configure obsidian-nvim "obsidian.lua")
+
     (configure langmapper-nvim "langmapper.lua")
   ];
 
