@@ -11,6 +11,7 @@
     extraLuaConfig = /*lua*/''
       ${builtins.readFile ./lua/set.lua}
       ${builtins.readFile ./lua/remap.lua}
+      ${builtins.readFile ./lua/autocommands.lua}
     '';
 
     defaultEditor = true;

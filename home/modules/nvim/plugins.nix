@@ -19,18 +19,26 @@ in {
     (configure undotree "undotree.lua")
     indentLine #TODO configure
     vim-nix
-    comment-nvim
+    (configureInline comment-nvim /*lua*/''
+      require'Comment'.setup()'')
     (configureInline lualine-nvim /*lua*/''
       require'lualine'.setup()'')
     (configure nvim-lspconfig "lsp.lua")
     (configure nvim-cmp "cmp.lua")
     cmp-nvim-lsp
     cmp_luasnip
+    cmp-path
     neodev-nvim
     ccc-nvim #TODO configure
     (configureInline transparent-nvim /*lua*/''
-      require'transparent'.setup({ auto = true })'')
+      require'transparent'.setup { auto = true }'')
     (configure luasnip "luasnip.lua")
+    vim-sleuth
+    (configure gitsigns-nvim "gitsigns.lua")
+    (configureInline mini-nvim /*lua*/''
+      require'mini.ai'.setup { n_lines = 500 }
+      require'mini.surround'.setup()
+    '')
 
     (configure obsidian-nvim "obsidian.lua")
 
