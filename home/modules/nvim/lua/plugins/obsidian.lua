@@ -1,4 +1,4 @@
-local profile = os.getenv'NEOVIM_PROFILE' or 'default'
+local profile = os.getenv'NEOVIM_PROFILE'
 
 if profile == 'obsidian' then
     require'obsidian'.setup{
@@ -9,4 +9,6 @@ if profile == 'obsidian' then
             }
         }
     }
+
+    vim.keymap.set('n', '<leader>oo', function() vim.cmd([[ObsidianOpen]]) end)
 end
