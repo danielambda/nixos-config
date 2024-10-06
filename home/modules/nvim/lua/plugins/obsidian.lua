@@ -10,5 +10,5 @@ if profile == 'obsidian' then
         }
     }
 
-    vim.keymap.set('n', '<leader>oo', function() vim.cmd([[ObsidianOpen]]) end)
+    vim.keymap.set('n', '<leader>oo', function() vim.cmd('ObsidianOpen') end)
 end

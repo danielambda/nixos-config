@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }: 
 let
   resizeStep = "16";
+  
+  todoistId = "01J9H12Z45YVGP5QMYJ4G6EPFH";
 
   utils = import ./utils.nix; 
 
@@ -36,13 +38,16 @@ in with pkgs // lib;
     '', print, exec, ${getExe grim} -g "$(${getExe slurp} -w 0)" - | ${wl-clipboard}/bin/wl-copy''
     ''$mainMod, print, exec, ${getExe grim} -o "$(${hyprland}/bin/hyprctl activeworkspace -j | ${getExe jq} -r '.monitor')" - | ${wl-clipboard}/bin/wl-copy''
 
+    "$mainMod, T, exec, hyprctl dispatch togglespecialworkspace todoist && ${lib.getExe pkgs.firefoxpwa} site launch ${todoistId}"
+    "$mainMod, O, exec, hyprctl dispatch togglespecialworkspace obsidian && (pgrep -fi obsidian || ${lib.getExe pkgs.obsidian})" 
+
     "$mainMod, TAB, workspace, e+1"
     "$mainMod SHIFT, TAB, workspace, e-1"
 
     "$mainMod, F, fullscreen, 0"
     "$mainMod SHIFT, F, togglefloating, active"
     "$mainMod, P, pin, active"
-    "$mainMod, c, centerwindow,"
+    "$mainMod, C, centerwindow,"
   ] 
   ++ utils.directionsBind "$mainMod" "movefocus"
   ++ utils.directionsBind "$mainMod CTRL" "swapwindow" 

@@ -13,10 +13,11 @@ in {
 
     settings = {
       workspace = [
-        "11, rounding:false, bordersize:0, decorate:false, gapsin:0, gapsout:0" # obsidian
+        "name:obsidian, rounding:false, decorate:false, gapsin:0, gapsout:0, border:false"
       ];
       windowrulev2 = [
-        "workspace 11, class:(obsidian)"
+        "workspace special:obsidian, class:(obsidian)"
+        "workspace special:todoist, initialTitle:(Todoist)"
       ];  
 
       exec-once = [
