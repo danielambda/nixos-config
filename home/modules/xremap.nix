@@ -1,4 +1,6 @@
-{ inputs, pkgs, lib, ... }: {
+{ inputs, pkgs, lib, ... }:
+  let todoistId = "01J9H12Z45YVGP5QMYJ4G6EPFH";
+in {
   imports = [inputs.xremap.homeManagerModules.default];
 
   services.xremap = {
@@ -19,7 +21,7 @@
           f.launch = [(lib.getExe pkgs.firefox)];
           t.launch = [(lib.getExe pkgs.telegram-desktop)];
           o.launch = [(lib.getExe pkgs.obsidian)];
-          d.launch = [(lib.getExe pkgs.firefox) "-p" "todoist"];
+          d.launch = [(lib.getExe pkgs.firefoxpwa) "site" "launch" todoistId];
         };
       }
     ];

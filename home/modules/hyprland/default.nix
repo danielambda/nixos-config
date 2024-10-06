@@ -2,16 +2,23 @@
 let 
   colors = config.stylix.base16Scheme;
 in {
-    imports = [
-      ./hyprlock.nix
-      ./hypridle.nix
-      ./binds.nix
+  imports = [
+    ./hyprlock.nix
+    ./hypridle.nix
+    ./binds.nix
   ];
 
   wayland.windowManager.hyprland = {
     enable = true;
 
     settings = {
+      workspace = [
+        "11, rounding:false, bordersize:0, decorate:false, gapsin:0, gapsout:0" # obsidian
+      ];
+      windowrulev2 = [
+        "workspace 11, class:(obsidian)"
+      ];  
+
       exec-once = [
         (lib.getExe pkgs.waybar)
       ];
