@@ -41,6 +41,7 @@ in {
       "center, ${socialWindowSelector}"
       "size 38% 1224, ${socialWindowSelector}"
       "move 18 58, ${socialWindowSelector}" # TODO replace 6 with gapsout global const
+      "rounding 6, ${socialWindowSelector}"
       "bordercolor rgba(8f99f5c0), ${socialWindowSelector}"
     ];  
 
