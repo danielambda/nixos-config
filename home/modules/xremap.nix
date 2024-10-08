@@ -1,6 +1,4 @@
-{ inputs, pkgs, lib, ... }:
-  let todoistId = "01J9H12Z45YVGP5QMYJ4G6EPFH";
-in {
+{ inputs, pkgs, lib, ... }: {
   imports = [inputs.xremap.homeManagerModules.default];
 
   services.xremap = {
@@ -19,9 +17,6 @@ in {
         remap."super-r".remap = {
           r.launch = [(lib.getExe pkgs.rofi-wayland) "-show" "drun"];
           f.launch = [(lib.getExe pkgs.firefox)];
-          t.launch = [(lib.getExe pkgs.telegram-desktop)];
-          o.launch = [(lib.getExe pkgs.obsidian)];
-          d.launch = [(lib.getExe pkgs.firefoxpwa) "site" "launch" todoistId];
         };
       }
     ];
