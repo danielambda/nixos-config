@@ -1,11 +1,11 @@
-{ config, lib, pkgs, ... }: 
+{ config, lib, pkgs, ... }:
 let
   resizeStep = "16";
-  
+
   todoistId = "01J9H12Z45YVGP5QMYJ4G6EPFH";
   musicId =   "01J9MHDYPWYKKGS4QS9YDRYJ25";
 
-  utils = import ./utils.nix; 
+  utils = import ./utils.nix;
 
   cfg = config.my.hyprland;
   terminal = cfg.terminal;
@@ -25,7 +25,7 @@ in with pkgs // lib;
     binde = , j, resizeactive, 0 ${resizeStep}
     binde = , k, resizeactive, 0 -${resizeStep}
     binde = , l, resizeactive, ${resizeStep} 0
-    bind = , catchall, submap, reset 
+    bind = , catchall, submap, reset
     submap = reset
   '';
 
@@ -57,12 +57,12 @@ in with pkgs // lib;
     "$mainMod SHIFT, F, togglefloating, active"
     "$mainMod, P, pin, active"
     "$mainMod, C, centerwindow,"
-  ] 
+  ]
   ++ utils.directionsBind "$mainMod" "movefocus"
-  ++ utils.directionsBind "$mainMod CTRL" "swapwindow" 
+  ++ utils.directionsBind "$mainMod CTRL" "swapwindow"
   ++ utils.digitsBind "$mainMod" "workspace"
   ++ utils.digitsBind "$mainMod SHIFT" "movetoworkspace"
-  ++ utils.modifiedDirectionsBind "mon:" "$mainMod SHIFT" "movewindow" 
+  ++ utils.modifiedDirectionsBind "mon:" "$mainMod SHIFT" "movewindow"
   ;
 
   config.wayland.windowManager.hyprland.settings.bindm = [
