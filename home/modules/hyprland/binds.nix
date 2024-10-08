@@ -3,6 +3,7 @@ let
   resizeStep = "16";
   
   todoistId = "01J9H12Z45YVGP5QMYJ4G6EPFH";
+  musicId =   "01J9MHDYPWYKKGS4QS9YDRYJ25";
 
   utils = import ./utils.nix; 
 
@@ -33,13 +34,21 @@ in with pkgs // lib;
   config.wayland.windowManager.hyprland.settings.bind = [
     "$mainMod, RETURN, exec, ${terminal}"
     "$mainMod, Q, killactive"
-    "$mainMod, M, exit"
+    "$mainMod SHIFT, M, exit"
 
     '', print, exec, ${getExe grim} -g "$(${getExe slurp} -w 0)" - | ${wl-clipboard}/bin/wl-copy''
     ''$mainMod, print, exec, ${getExe grim} -o "$(${hyprland}/bin/hyprctl activeworkspace -j | ${getExe jq} -r '.monitor')" - | ${wl-clipboard}/bin/wl-copy''
 
     "$mainMod, T, exec, hyprctl dispatch togglespecialworkspace todoist && ${lib.getExe pkgs.firefoxpwa} site launch ${todoistId}"
-    "$mainMod, O, exec, hyprctl dispatch togglespecialworkspace obsidian && (pgrep -fi obsidian || ${lib.getExe pkgs.obsidian})" 
+    "$mainMod, M, exec, hyprctl dispatch togglespecialworkspace music && ${lib.getExe pkgs.firefoxpwa} site launch ${musicId}"
+    "$mainMod, S, exec, hyprctl dispatch togglespecialworkspace social && ${lib.getExe pkgs.telegram-desktop}"
+    "$mainMod, O, exec, ${lib.getExe (pkgs.writeShellApplication {
+      name = "special-workspace";
+      # text = "(pgrep -f obsidian && hyprctl dispatch togglespecialworkspace obsidian) || ${lib.getExe pkgs.obsidian}";
+      text = ''
+        (pgrep -f obsidian && hyprctl dispatch togglespecialworkspace obsidian) || ${lib.getExe pkgs.obsidian}'';
+        # pgrep -f obsidian && hyprctl dispatch togglespecialworkspace obsidian || ${lib.getExe pkgs.obsidian} && ${lib.getExe pkgs.kitty} -d /home/daniel/obsidian ${lib.getExe pkgs.neovim}'';
+    })}"
 
     "$mainMod, TAB, workspace, e+1"
     "$mainMod SHIFT, TAB, workspace, e-1"

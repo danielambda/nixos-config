@@ -6,7 +6,7 @@ local i = luasnip.insert_node
 local configByProfile = {
     ['obsidian'] = function ()
         luasnip.add_snippets('markdown', {
-            snippet('sum', {
+            snippet('\\sum', {
                 t'\\sum_{', i(1), t'}^{', i(2), t'}'
             })
         })
