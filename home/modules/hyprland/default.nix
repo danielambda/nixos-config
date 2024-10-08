@@ -10,6 +10,7 @@ in {
     ./hyprlock.nix
     ./hypridle.nix
     ./binds.nix
+    ./hyprpaper.nix
   ];
 
   wayland.windowManager.hyprland.enable = true;
@@ -47,6 +48,7 @@ in {
 
     exec-once = [
       (lib.getExe pkgs.waybar)
+      (lib.getExe pkgs.hyprpaper)
     ];
 
     cursor = { 
