@@ -1,5 +1,5 @@
 { pkgs, lib, config, ... }:
-let 
+let
   colors = config.stylix.base16Scheme;
 
   musicWindowSelector = "initialTitle:(Yandex Music)";
@@ -18,6 +18,10 @@ in {
     animation = "specialWorkspace, 1, 6, default, slidefadevert -50%";
     workspace = [
       "special:obsidian, rounding:false, decorate:false, gapsin:0, gapsout:0, border:false"
+
+      "special:tasks, monitor:0"
+      "special:music, monitor:0"
+      "special:social, monitor:0"
     ];
     windowrulev2 = [
       "workspace special:obsidian, class:(obsidian)"
@@ -29,7 +33,7 @@ in {
       "stayfocused, ${tasksWindowSelector}"
       "rounding 6, ${tasksWindowSelector}"
       "bordercolor rgba(e34331c0), ${tasksWindowSelector}"
-      
+
       "workspace special:music, ${musicWindowSelector}"
       "float, ${musicWindowSelector}"
       "center, ${musicWindowSelector}"
@@ -44,15 +48,15 @@ in {
       "move 18 58, ${socialWindowSelector}" # TODO replace 6 with gapsout global const
       "rounding 6, ${socialWindowSelector}"
       "bordercolor rgba(8f99f5c0), ${socialWindowSelector}"
-    ];  
+    ];
 
     exec-once = [
       (lib.getExe pkgs.waybar)
       (lib.getExe pkgs.hyprpaper)
     ];
 
-    cursor = { 
-      inactive_timeout = 3; 
+    cursor = {
+      inactive_timeout = 3;
       hide_on_key_press = true;
       hide_on_touch = true;
 
@@ -113,7 +117,7 @@ in {
 
       sensitivity = 0.5;
 
-      touchpad = { 
+      touchpad = {
         natural_scroll = true;
         scroll_factor = 0.5;
         clickfinger_behavior = true;
