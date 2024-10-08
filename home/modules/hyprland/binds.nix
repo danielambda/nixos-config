@@ -39,7 +39,7 @@ in with pkgs // lib;
     '', print, exec, ${getExe grim} -g "$(${getExe slurp} -w 0)" - | ${wl-clipboard}/bin/wl-copy''
     ''$mainMod, print, exec, ${getExe grim} -o "$(${hyprland}/bin/hyprctl activeworkspace -j | ${getExe jq} -r '.monitor')" - | ${wl-clipboard}/bin/wl-copy''
 
-    "$mainMod, T, exec, hyprctl dispatch togglespecialworkspace todoist && ${lib.getExe pkgs.firefoxpwa} site launch ${todoistId}"
+    "$mainMod, T, exec, hyprctl dispatch togglespecialworkspace tasks && ${lib.getExe pkgs.firefoxpwa} site launch ${todoistId}"
     "$mainMod, M, exec, hyprctl dispatch togglespecialworkspace music && ${lib.getExe pkgs.firefoxpwa} site launch ${musicId}"
     "$mainMod, S, exec, hyprctl dispatch togglespecialworkspace social && ${lib.getExe pkgs.telegram-desktop}"
     "$mainMod, O, exec, ${lib.getExe (pkgs.writeShellApplication {
