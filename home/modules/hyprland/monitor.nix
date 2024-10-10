@@ -1,4 +1,4 @@
-let 
+let
   laptop-w = 3120;
   laptop-h = 2080;
   # laptop-h-cm = 20;
@@ -18,10 +18,11 @@ let
   monitor-scale = monitor-h / monitor-virt-h;
   monitor-scale-str = toString monitor-scale;
 
-  monitor-virt-w = monitor-w / monitor-scale; 
+  monitor-virt-w = monitor-w / monitor-scale;
   monitor-virt-offset-y = monitor-virt-h * monitor-offset-y-cm / monitor-h-cm;
   monitor-pos = "-${toString monitor-virt-w}x-${toString monitor-virt-offset-y}";
 in [
   "eDP-1, ${laptop-res}, 0x0, ${laptop-scale-str}"
+  # "DP-3, auto, highres, 2"
   ", ${monitor-res}, ${monitor-pos}, ${monitor-scale-str}"
 ]

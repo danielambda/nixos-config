@@ -1,4 +1,6 @@
 {
+  description = "Rust devshell";
+
   inputs = {
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -9,19 +11,19 @@
   outputs = { nixpkgs, rust-overlay, ... }:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs { 
+      pkgs = import nixpkgs {
         inherit system;
         overlays = [(import rust-overlay)];
       };
     in {
       devShells.${system}.default = pkgs.mkShell {
-        packages = [
-          pkgs.rust-analyzer
-          pkgs.rust-bin.stable.latest.default
+        packages = with pkgs; [
+          rust-analyzer
+          rust-bin.stable.latest.default
         ];
 
         shellHook = "${pkgs.zsh}/bin/zsh";
-        NEOVIM_PROFILE="rust";
+        NEOVIM_PROFILE = "rust";
       };
     };
 }

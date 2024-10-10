@@ -7,6 +7,9 @@ lspconfig.nixd.setup{}
 local configByProfile =
 {
     ['rust'] = function() lspconfig.rust_analyzer.setup{} end,
+    -- ['haskell'] = function () lspconfig. end, TODO
+    ['python'] = function () lspconfig.pyright.setup{} end,
+    ['clang'] = function () lspconfig.clangd.setup{} end,
 }
 
 local profile = os.getenv('NEOVIM_PROFILE') or 'default'
