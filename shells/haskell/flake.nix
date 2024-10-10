@@ -15,6 +15,8 @@
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
           ghc
+          haskell-language-server
+          cabal-install
         ];
 
         shellHook = "${pkgs.zsh}/bin/zsh";

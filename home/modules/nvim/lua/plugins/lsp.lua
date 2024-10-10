@@ -7,7 +7,11 @@ lspconfig.nixd.setup{}
 local configByProfile =
 {
     ['rust'] = function() lspconfig.rust_analyzer.setup{} end,
-    -- ['haskell'] = function () lspconfig. end, TODO
+    ['haskell'] = function ()
+        lspconfig.hls.setup{
+            root_dir = lspconfig.util.root_pattern("*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml")
+        }
+    end,
     ['python'] = function () lspconfig.pyright.setup{} end,
     ['clang'] = function () lspconfig.clangd.setup{} end,
     ['dotnet'] = function ()
