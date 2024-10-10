@@ -10,6 +10,28 @@ local configByProfile =
     -- ['haskell'] = function () lspconfig. end, TODO
     ['python'] = function () lspconfig.pyright.setup{} end,
     ['clang'] = function () lspconfig.clangd.setup{} end,
+    ['dotnet'] = function ()
+        require'lspconfig'.omnisharp.setup {
+            cmd = { "OmniSharp", "--languageserver" , "--hostPID", tostring(vim.fn.getpid()) },
+            settings = {
+                FormattingOptions = {
+                    EnableEditorConfigSupport = true,
+                    OrganizeImports = nil,
+                },
+                MsBuild = {
+                    LoadProjectsOnDemand = nil,
+                },
+                RoslynExtensionsOptions = {
+                    EnableAnalyzersSupport = true,
+                    EnableImportCompletion = true,
+                    AnalyzeOpenDocumentsOnly = nil,
+                },
+                Sdk = {
+                    IncludePrereleases = true,
+                },
+            },
+        }
+    end
 }
 
 local profile = os.getenv('NEOVIM_PROFILE') or 'default'
