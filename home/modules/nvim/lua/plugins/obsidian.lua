@@ -26,6 +26,12 @@ if profile == 'obsidian' then
                     return require'obsidian'.util.smart_action()
                 end,
                 opts = { buffer = true, expr = true },
+            },
+            ['<leader>ch'] = {
+                action = function ()
+                    return require'obsidian'.util.toggle_checkbox()
+                end,
+                opts = { buffer = true },
             }
         },
 
