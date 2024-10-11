@@ -18,10 +18,10 @@
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
-  let
+  let 
     system = "x86_64-linux";
   in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem { 
       specialArgs = { inherit inputs system; };
       modules = [./nixos];
     };
