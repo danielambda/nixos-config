@@ -1,6 +1,6 @@
-local util = require'obsidian.util'
+local obsidian = require'obsidian'
 
-require'obsidian'.setup {
+obsidian.setup {
     workspaces = {
         {
             name = 'main',
@@ -13,17 +13,14 @@ require'obsidian'.setup {
         return  title .. ":" .. tostring(os.date('%Y-%m-%d-%H-%M-%S'))
     end,
 
-    ---@param spec { id: string, dir: obsidian.Path, title: string|? }
-    ---@return string|obsidian.Path
     note_path_func = function(spec)
         local path = spec.dir / tostring(spec.id)
         return path:with_suffix(".md")
     end,
 
-    wiki_link_func = util.wiki_link_id_prefix,
-    markdown_link_func = util.markdown_link,
+    wiki_link_func = obsidian.util.wiki_link_id_prefix,
+    markdown_link_func = obsidian.util.markdown_link,
 
-    -- Either 'wiki' or 'markdown'.
     preferred_link_style = "wiki",
 
     disable_frontmatter = false,
@@ -56,11 +53,11 @@ require'obsidian'.setup {
 
     mappings = {
         ['gf'] = {
-            action = require'obsidian'.util.gf_passthrough,
+            action = obsidian.util.gf_passthrough,
             opts = { noremap = false, expr = true, buffer = true },
         },
         ['<leader>ch'] = {
-            action = require'obsidian'.util.toggle_checkbox,
+            action = obsidian.util.toggle_checkbox,
             opts = { buffer = true },
         }
     },
@@ -82,7 +79,7 @@ require'obsidian'.setup {
     search_max_lines = 1000,
 
     callbacks = {
-        enter_note = function(_, _) vim.cmd('ObsidianOpen') end,
+        enter_note = function(_, _) vim.cmd'ObsidianOpen' end,
     },
 
     ui = { enable = false },

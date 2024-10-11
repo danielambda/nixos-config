@@ -1,14 +1,14 @@
 { pkgs, inputs, ... }:
 let
   configure = plugin: config: {
-	inherit plugin;
-	config = builtins.readFile ./lua/plugins/${config};
-	type = "lua";
+    inherit plugin;
+    config = builtins.readFile ./lua/plugins/${config};
+    type = "lua";
   };
 
   configureInline = plugin: config: {
-	inherit plugin config;
-	type = "lua";
+    inherit plugin config;
+    type = "lua";
   };
 in {
   imports = [./base16-nvim.nix];
@@ -19,19 +19,17 @@ in {
     (configure undotree "undotree.lua")
     indentLine #TODO configure
     vim-nix
-    (configureInline comment-nvim /*lua*/''
-      require'Comment'.setup()'')
-    (configureInline lualine-nvim /*lua*/''
-      require'lualine'.setup()'')
+    (configureInline comment-nvim /*lua*/''require'Comment'.setup()'')
+    (configureInline lualine-nvim /*lua*/''require'lualine'.setup()'')
     (configure nvim-lspconfig "lsp.lua")
     (configure nvim-cmp "cmp.lua")
     cmp-nvim-lsp
     cmp_luasnip
     cmp-path
     neodev-nvim
-    ccc-nvim #TODO configure
-    (configureInline transparent-nvim /*lua*/''
-      require'transparent'.setup { auto = true }'')
+    # (configure ccc-nvim "ccc.lua")
+    # (configureInline transparent-nvim /*lua*/''
+    #   require'transparent'.setup { auto = true }'')
     (configure luasnip "luasnip.lua")
     vim-sleuth
     (configure gitsigns-nvim "gitsigns.lua")
@@ -40,18 +38,9 @@ in {
       require'mini.surround'.setup()
     '')
     otter-nvim
-
     (configure obsidian-nvim "obsidian.lua")
 
     (configure langmapper-nvim "langmapper.lua")
-  ];
-
-  home.packages = with pkgs; [
-      #LSPs
-      rust-analyzer
-      pyright
-      omnisharp-roslyn
-      clang-tools
   ];
 
   nixpkgs.overlays = [

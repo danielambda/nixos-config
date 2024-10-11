@@ -1,12 +1,14 @@
 { pkgs, lib, ... }: {
+  imports = [./oh-my-posh.nix];
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
 
     syntaxHighlighting.enable = true;
 
-    initExtraFirst = ''
-      ${lib.getExe pkgs.fastfetch} --config examples/13 --logo none
+    initExtra = ''
+      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
     '';
 
     shellAliases = {
@@ -19,15 +21,6 @@
       grep = "grep --color=auto";
       ":q" = "exit";
       v = "nvim";
-    };
-
-    oh-my-zsh = {
-      enable = true;
-      plugins = [
-        "git"
-        "sudo"
-      ];
-      theme = "norm";
     };
   };
 }

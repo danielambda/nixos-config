@@ -18,8 +18,15 @@
 
     extraPackages = with pkgs; [
       ripgrep
+
       lua-language-server
       nixd
-    ];	
+      rust-analyzer
+      pyright
+      omnisharp-roslyn
+      clang-tools
+
+      obsidian
+    ];
   };
 }

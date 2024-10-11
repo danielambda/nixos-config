@@ -1,7 +1,7 @@
 {
   imports = [
     ./nvim
-    ./zsh.nix
+    ./zsh
     ./git.nix
     ./hyprland
     ./waybar.nix
