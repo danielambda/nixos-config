@@ -6,7 +6,6 @@
     syntaxHighlighting.enable = true;
 
     initExtraFirst = ''
-      eval "$(${lib.getExe pkgs.direnv} hook zsh)"
       ${lib.getExe pkgs.fastfetch} --config examples/13 --logo none
     '';
 

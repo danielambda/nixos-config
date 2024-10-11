@@ -18,7 +18,6 @@
         ];
 
         shellHook = "${pkgs.zsh}/bin/zsh";
-        NEOVIM_PROFILE = "haskell";
       };
     };
 }

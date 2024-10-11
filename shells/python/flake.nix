@@ -15,11 +15,9 @@
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
           python313
-          pyright
         ];
 
         shellHook = "${pkgs.zsh}/bin/zsh";
-        NEOVIM_PROFILE = "python";
       };
     };
 }

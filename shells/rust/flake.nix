@@ -18,12 +18,10 @@
     in {
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
-          rust-analyzer
           rust-bin.stable.latest.default
         ];
 
         shellHook = "${pkgs.zsh}/bin/zsh";
-        NEOVIM_PROFILE = "rust";
       };
     };
 }

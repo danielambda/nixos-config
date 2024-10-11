@@ -14,12 +14,10 @@
     in {
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
-          omnisharp-roslyn
           dotnetCorePackages.sdk_9_0
         ];
 
         shellHook = "${pkgs.zsh}/bin/zsh";
-        NEOVIM_PROFILE = "dotnet";
       };
     };
 }

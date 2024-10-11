@@ -3,41 +3,30 @@ local lspconfig = require'lspconfig'
 require'neodev'.setup()
 lspconfig.lua_ls.setup{}
 lspconfig.nixd.setup{}
-
-local configByProfile =
-{
-    ['rust'] = function() lspconfig.rust_analyzer.setup{} end,
-    -- ['haskell'] = function () lspconfig. end, TODO
-    ['python'] = function () lspconfig.pyright.setup{} end,
-    ['clang'] = function () lspconfig.clangd.setup{} end,
-    ['dotnet'] = function ()
-        require'lspconfig'.omnisharp.setup {
-            cmd = { "OmniSharp", "--languageserver" , "--hostPID", tostring(vim.fn.getpid()) },
-            settings = {
-                FormattingOptions = {
-                    EnableEditorConfigSupport = true,
-                    OrganizeImports = nil,
-                },
-                MsBuild = {
-                    LoadProjectsOnDemand = nil,
-                },
-                RoslynExtensionsOptions = {
-                    EnableAnalyzersSupport = true,
-                    EnableImportCompletion = true,
-                    AnalyzeOpenDocumentsOnly = nil,
-                },
-                Sdk = {
-                    IncludePrereleases = true,
-                },
-            },
-        }
-    end
+lspconfig.rust_analyzer.setup{}
+lspconfig.hls.setup{}
+lspconfig.pyright.setup{}
+lspconfig.clangd.setup{}
+lspconfig.omnisharp.setup {
+    cmd = { "OmniSharp", "--languageserver" , "--hostPID", tostring(vim.fn.getpid()) },
+    settings = {
+        FormattingOptions = {
+            EnableEditorConfigSupport = true,
+            OrganizeImports = nil,
+        },
+        MsBuild = {
+            LoadProjectsOnDemand = nil,
+        },
+        RoslynExtensionsOptions = {
+            EnableAnalyzersSupport = true,
+            EnableImportCompletion = true,
+            AnalyzeOpenDocumentsOnly = nil,
+        },
+        Sdk = {
+            IncludePrereleases = true,
+        },
+    },
 }
-
-local profile = os.getenv('NEOVIM_PROFILE') or 'default'
-if configByProfile[profile] then
-    configByProfile[profile]()
-end
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
@@ -55,7 +44,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
         map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
-        map('<leader>rr', vim.lsp.buf.rename, '[R]e[n]ame')
+        map('<leader>rr', vim.lsp.buf.rename, '[R]ename')
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 

@@ -15,17 +15,9 @@ vim.keymap.set({ 'i', 's' }, '<C-h>', function ()
     end
 end, { silent = true })
 
-local configByProfile = {
-    ['obsidian'] = function ()
-        luasnip.add_snippets('markdown', {
-            snippet('\\sum', {
-                t'\\sum_{', i(1, 'i = 0'), t'}^{', i(2, '\\infty'), t'}'
-            })
-        })
-    end,
-}
+luasnip.add_snippets('markdown', {
+    snippet('\\sum', {
+        t'\\sum_{', i(1, 'i = 0'), t'}^{', i(2, '\\infty'), t'}'
+    })
+})
 
-local profile = os.getenv'NEOVIM_PROFILE' or 'default'
-if configByProfile[profile] then
-    configByProfile[profile]()
-end

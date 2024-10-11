@@ -14,11 +14,9 @@
     in {
       devShells.${system}.default = pkgs.mkShell {
         packages = with pkgs; [
-          clang-tools
         ];
 
         shellHook = "${pkgs.zsh}/bin/zsh";
-        NEOVIM_PROFILE = "clang";
       };
     };
 }

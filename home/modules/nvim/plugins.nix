@@ -1,15 +1,15 @@
 { pkgs, inputs, ... }:
-let 
+let
   configure = plugin: config: {
 	inherit plugin;
 	config = builtins.readFile ./lua/plugins/${config};
 	type = "lua";
-  }; 
+  };
 
   configureInline = plugin: config: {
 	inherit plugin config;
 	type = "lua";
-  }; 
+  };
 in {
   imports = [./base16-nvim.nix];
 
@@ -39,10 +39,19 @@ in {
       require'mini.ai'.setup { n_lines = 500 }
       require'mini.surround'.setup()
     '')
+    otter-nvim
 
     (configure obsidian-nvim "obsidian.lua")
 
     (configure langmapper-nvim "langmapper.lua")
+  ];
+
+  home.packages = with pkgs; [
+      #LSPs
+      rust-analyzer
+      pyright
+      omnisharp-roslyn
+      clang-tools
   ];
 
   nixpkgs.overlays = [
@@ -55,6 +64,5 @@ in {
       };
     })
   ];
-
 }
 
