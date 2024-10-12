@@ -17,7 +17,6 @@ in {
     (configure telescope-nvim "telescope.lua")
     (configure nvim-treesitter.withAllGrammars "treesitter.lua")
     (configure undotree "undotree.lua")
-    indentLine #TODO configure
     vim-nix
     (configureInline comment-nvim /*lua*/''require'Comment'.setup()'')
     (configureInline lualine-nvim /*lua*/''require'lualine'.setup()'')
@@ -27,9 +26,7 @@ in {
     cmp_luasnip
     cmp-path
     neodev-nvim
-    # (configure ccc-nvim "ccc.lua")
-    # (configureInline transparent-nvim /*lua*/''
-    #   require'transparent'.setup { auto = true }'')
+    (configure ccc-nvim "ccc.lua")
     (configure luasnip "luasnip.lua")
     vim-sleuth
     (configure gitsigns-nvim "gitsigns.lua")

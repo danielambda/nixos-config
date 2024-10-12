@@ -3,5 +3,6 @@
     telegram-desktop
     vial
     discord
+    obsidian
   ];
 }

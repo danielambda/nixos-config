@@ -23,8 +23,6 @@ obsidian.setup {
 
     preferred_link_style = "wiki",
 
-    disable_frontmatter = false,
-
     note_frontmatter_func = function(note)
         if note.title then
             note:add_alias(note.title)
@@ -59,7 +57,25 @@ obsidian.setup {
         ['<leader>ch'] = {
             action = obsidian.util.toggle_checkbox,
             opts = { buffer = true },
-        }
+        },
+        ['<leader>oo'] = {
+            action = function() vim.cmd'ObsidianOpen' end
+        },
+        ['<leader>on'] = {
+            action = function() vim.cmd'ObsidianNew' end
+        },
+        ['<leader>of'] = {
+            action = function() vim.cmd'ObsidianQuickSwitch' end
+        },
+        ['<leader>or'] = {
+            action = function() vim.cmd'ObsidianRename' end
+        },
+        ['<leader>oi'] = {
+            action = function() vim.cmd'ObsidianPasteImage' end
+        },
+        ['<leader>og'] = {
+            action = function() vim.cmd'ObsidianSearch' end
+        },
     },
 
     picker = {
@@ -82,8 +98,32 @@ obsidian.setup {
         enter_note = function(_, _) vim.cmd'ObsidianOpen' end,
     },
 
-    ui = { enable = false },
-
+    -- ui = { enable = false },
+    ui = {
+        enable = true,
+        update_debounce = 200,
+        max_file_length = 5000,
+        checkboxes = {
+            [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+            ["x"] = { char = "", hl_group = "ObsidianDone" },
+        },
+        bullets = { char = "•", hl_group = "ObsidianBullet" },
+        external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
+        reference_text = { hl_group = "ObsidianRefText" },
+        highlight_text = { hl_group = "ObsidianHighlightText" },
+        tags = { hl_group = "ObsidianTag" },
+        block_ids = { hl_group = "ObsidianBlockID" },
+        hl_groups = {
+            ObsidianTodo = { bold = true, fg = "#f78c6c" },
+            ObsidianDone = { bold = true, fg = "#89ddff" },
+            ObsidianBullet = { bold = true, fg = "#89ddff" },
+            ObsidianRefText = { underline = true, fg = "#c792ea" },
+            ObsidianExtLinkIcon = { fg = "#c792ea" },
+            ObsidianTag = { italic = true, fg = "#89ddff" },
+            ObsidianBlockID = { italic = true, fg = "#89ddff" },
+            ObsidianHighlightText = { bg = "#75662e" },
+        },
+    },
     attachments = {
         img_folder = "assets/imgs",
 

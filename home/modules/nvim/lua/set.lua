@@ -2,12 +2,6 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.showmode = false
 
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.o.expandtab = true
-vim.o.smartindent = true
-
 vim.opt.wrap = false
 
 vim.opt.swapfile = false
@@ -22,7 +16,7 @@ vim.opt.scrolloff = 12
 
 vim.opt.updatetime = 250
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "100"
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -39,4 +33,6 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 vim.opt.inccommand = 'split'
+vim.o.conceallevel = 2
+vim.o.concealcursor = ''
 
