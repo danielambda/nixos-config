@@ -33,6 +33,7 @@
       pyright
       omnisharp-roslyn
       clang-tools
+      haskell-language-server
     ];
   };
 }

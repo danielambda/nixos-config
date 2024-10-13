@@ -4,5 +4,6 @@
     vial
     discord
     obsidian
+    gh
   ];
 }

@@ -8,7 +8,7 @@ lspconfig.hls.setup{}
 lspconfig.pyright.setup{}
 lspconfig.clangd.setup{}
 lspconfig.omnisharp.setup {
-    cmd = { "OmniSharp", "--languageserver" , "--hostPID", tostring(vim.fn.getpid()) },
+    cmd = { "OmniSharp", "--languageservei" , "--hostPID", tostring(vim.fn.getpid()) },
     settings = {
         FormattingOptions = {
             EnableEditorConfigSupport = true,
