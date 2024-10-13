@@ -98,7 +98,6 @@ obsidian.setup {
         enter_note = function(_, _) vim.cmd'ObsidianOpen' end,
     },
 
-    -- ui = { enable = false },
     ui = {
         enable = true,
         update_debounce = 200,
