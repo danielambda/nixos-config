@@ -2,7 +2,6 @@
 let
   colors = config.stylix.base16Scheme;
 
-  musicWindowSelector = "initialTitle:(Yandex Music)";
   tasksWindowSelector = "initialTitle:(Todoist)";
   socialWindowSelector = "initialTitle:(Telegram)";
 in {
@@ -11,6 +10,7 @@ in {
     ./hypridle.nix
     ./binds.nix
     ./hyprpaper.nix
+    ./workspaces
   ];
 
   wayland.windowManager.hyprland.enable = true;
@@ -20,7 +20,6 @@ in {
       "special:obsidian, rounding:false, decorate:false, gapsin:0, gapsout:0, border:false"
 
       "special:tasks, monitor:0"
-      "special:music, monitor:0"
       "special:social, monitor:0"
     ];
     windowrulev2 = [
@@ -33,13 +32,6 @@ in {
       "stayfocused, ${tasksWindowSelector}"
       "rounding 6, ${tasksWindowSelector}"
       "bordercolor rgba(e34331c0), ${tasksWindowSelector}"
-
-      "workspace special:music, ${musicWindowSelector}"
-      "float, ${musicWindowSelector}"
-      "center, ${musicWindowSelector}"
-      "size 720 1080, ${musicWindowSelector}"
-      "stayfocused, ${musicWindowSelector}"
-      "bordercolor rgba(fed42bc0), ${musicWindowSelector}"
 
       "workspace special:social, ${socialWindowSelector}"
       "float, ${socialWindowSelector}"

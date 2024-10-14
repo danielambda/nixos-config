@@ -23,17 +23,17 @@
     '';
 
     defaultEditor = true;
-
-    extraPackages = with pkgs; [
-      ripgrep
-
-      lua-language-server
-      nixd
-      rust-analyzer
-      pyright
-      omnisharp-roslyn
-      clang-tools
-      haskell-language-server
-    ];
   };
+
+  home.packages = with pkgs; [
+    ripgrep
+
+    lua-language-server
+    nixd
+    rust-analyzer
+    pyright
+    omnisharp-roslyn
+    clang-tools
+    haskell-language-server
+  ];
 }
