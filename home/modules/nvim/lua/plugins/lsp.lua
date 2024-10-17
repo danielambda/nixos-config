@@ -1,7 +1,7 @@
 local lspconfig = require'lspconfig'
 
 require'neodev'.setup()
-lspconfig.lua_ls.setup{ filetypes = { 'haskell', 'lhaskell', 'cabal' } }
+lspconfig.lua_ls.setup{}
 lspconfig.nixd.setup{}
 lspconfig.rust_analyzer.setup{}
 lspconfig.hls.setup{}
