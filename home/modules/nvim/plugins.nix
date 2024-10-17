@@ -26,7 +26,7 @@ in {
     cmp_luasnip
     cmp-path
     neodev-nvim
-    # (configure ccc-nvim "ccc.lua")
+    (configure ccc-nvim "ccc.lua")
     (configure luasnip "luasnip.lua")
     vim-sleuth
     (configure gitsigns-nvim "gitsigns.lua")
