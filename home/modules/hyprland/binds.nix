@@ -2,8 +2,6 @@
 let
   resizeStep = "16";
 
-  todoistId = "01J9H12Z45YVGP5QMYJ4G6EPFH";
-
   utils = import ./utils.nix;
 
   cfg = config.my.hyprland;
@@ -38,14 +36,10 @@ in with pkgs // lib;
     '', print, exec, ${getExe grim} -g "$(${getExe slurp} -w 0)" - | ${wl-clipboard}/bin/wl-copy''
     ''$mainMod, print, exec, ${getExe grim} -o "$(${hyprland}/bin/hyprctl activeworkspace -j | ${getExe jq} -r '.monitor')" - | ${wl-clipboard}/bin/wl-copy''
 
-    "$mainMod, T, exec, hyprctl dispatch togglespecialworkspace tasks && ${lib.getExe pkgs.firefoxpwa} site launch ${todoistId}"
-    "$mainMod, S, exec, hyprctl dispatch togglespecialworkspace social && ${lib.getExe pkgs.telegram-desktop}"
     "$mainMod, O, exec, ${lib.getExe (pkgs.writeShellApplication {
       name = "special-workspace";
-      # text = "(pgrep -f obsidian && hyprctl dispatch togglespecialworkspace obsidian) || ${lib.getExe pkgs.obsidian}";
       text = ''
         (pgrep -f obsidian && hyprctl dispatch togglespecialworkspace obsidian) || ${lib.getExe pkgs.obsidian}'';
-        # pgrep -f obsidian && hyprctl dispatch togglespecialworkspace obsidian || ${lib.getExe pkgs.obsidian} && ${lib.getExe pkgs.kitty} -d /home/daniel/obsidian ${lib.getExe pkgs.neovim}'';
     })}"
 
     "$mainMod, TAB, workspace, e+1"

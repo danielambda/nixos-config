@@ -1,16 +1,13 @@
 { pkgs, lib, config, ... }:
 let
   colors = config.stylix.base16Scheme;
-
-  tasksWindowSelector = "initialTitle:(Todoist)";
-  socialWindowSelector = "initialTitle:(Telegram)";
 in {
   imports = [
     ./hyprlock.nix
     ./hypridle.nix
     ./binds.nix
     ./hyprpaper.nix
-    ./workspaces
+    ./hiding-windows
   ];
 
   wayland.windowManager.hyprland.enable = true;
@@ -18,28 +15,10 @@ in {
     animation = "specialWorkspace, 1, 6, default, slidefadevert -50%";
     workspace = [
       "special:obsidian, rounding:false, decorate:false, gapsin:0, gapsout:0, border:false"
-
-      "special:tasks, monitor:0"
-      "special:social, monitor:0"
     ];
     windowrulev2 = [
       "workspace special:obsidian, class:(obsidian)"
-
-      "workspace special:tasks, ${tasksWindowSelector}"
-      "float, ${tasksWindowSelector}"
-      "size 38% 1224, ${tasksWindowSelector}" # 1224 = 1300 (screen h) - gaps and something more
-      "move 100%-w-18 58, ${tasksWindowSelector}" # TODO replace 6 with gapsout global const
-      "stayfocused, ${tasksWindowSelector}"
-      "rounding 6, ${tasksWindowSelector}"
-      "bordercolor rgba(e34331c0), ${tasksWindowSelector}"
-
-      "workspace special:social, ${socialWindowSelector}"
-      "float, ${socialWindowSelector}"
-      "center, ${socialWindowSelector}"
-      "size 38% 1224, ${socialWindowSelector}"
-      "move 18 58, ${socialWindowSelector}" # TODO replace 6 with gapsout global const
-      "rounding 6, ${socialWindowSelector}"
-      "bordercolor rgba(8f99f5c0), ${socialWindowSelector}"
+      "bordersize 5, pinned:1"
     ];
 
     exec-once = [
