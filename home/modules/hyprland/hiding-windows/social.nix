@@ -11,6 +11,7 @@ in {
     "size 38% 1224, ${window}"
     "move 18 58, ${window}" # TODO replace 6 with gapsout global const
     "rounding 6, ${window}"
+    "opacity 0.85, ${window}"
     "bordercolor rgba(8f99f5c0), ${window}" #8f99f5c0
   ];
   wayland.windowManager.hyprland.settings.bind = [

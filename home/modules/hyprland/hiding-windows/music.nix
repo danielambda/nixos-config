@@ -9,6 +9,7 @@ in {
     "float, ${window}"
     "center, ${window}"
     "monitor 0, ${window}"
+    "opacity 0.85, ${window}"
     "size 720 1080, ${window}"
     "bordercolor rgba(fed42bc0), ${window}" #fed42bc0
   ];
