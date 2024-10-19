@@ -11,6 +11,9 @@ in {
   ];
 
   wayland.windowManager.hyprland.enable = true;
+
+  my.hyprland.hidingWindows.enable = true;
+
   wayland.windowManager.hyprland.settings = {
     animation = "specialWorkspace, 1, 6, default, slidefadevert -50%";
     workspace = [

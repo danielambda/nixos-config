@@ -1,24 +1,17 @@
-{ pkgs, lib, ... }:
-let
-  class = "org.telegram.desktop";
-  window = "class:${class}";
-
-  utils = import ./utils.nix { inherit pkgs lib; };
-in {
-  wayland.windowManager.hyprland.settings.windowrulev2 = [
-    "float, ${window}"
-    "monitor 0, ${window}"
-    "size 38% 1224, ${window}"
-    "move 18 58, ${window}" # TODO replace 6 with gapsout global const
-    "rounding 6, ${window}"
-    "opacity 0.85, ${window}"
-    "bordercolor rgba(8f99f5c0), ${window}" #8f99f5c0
-  ];
-  wayland.windowManager.hyprland.settings.bind = [
-    (utils.mkHidingWindowBind {
+{ pkgs, lib, ... }: {
+  my.hyprland.hidingWindows.default = [
+    {
       bindKey = "S";
-      inherit class;
+      class = "org.telegram.desktop";
       launch = lib.getExe pkgs.telegram-desktop;
-    })
+      windowrules = {
+        monitor = 0;
+        size = "38% 1224";
+        move = "18 58";
+        rounding = 6;
+        opacity = 0.85;
+        bordercolor = "rgba(8f99f5c0)"; #8f99f5c0
+      };
+    }
   ];
 }

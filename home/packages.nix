@@ -5,5 +5,6 @@
     # discord
     obsidian
     gh
+    prismlauncher
   ];
 }
