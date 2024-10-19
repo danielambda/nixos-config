@@ -24,6 +24,16 @@ in with pkgs // lib;
     binde = , l, resizeactive, ${resizeStep} 0
     bind = , catchall, submap, reset
     submap = reset
+
+    bind = ALT, m, submap, move
+    submap = move
+    binde = , h, moveactive, -${resizeStep} 0
+    binde = , j, moveactive, 0 ${resizeStep}
+    binde = , k, moveactive, 0 -${resizeStep}
+    binde = , l, moveactive, ${resizeStep} 0
+    binde = , c, centerwindow
+    bind = , catchall, submap, reset
+    submap = reset
   '';
 
   config.wayland.windowManager.hyprland.settings."$mainMod" = "SUPER";
