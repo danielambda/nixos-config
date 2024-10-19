@@ -11,7 +11,7 @@ in with pkgs // lib;
   options.my.hyprland = {
     terminal = mkOption {
       type = types.str;
-      default = "kitty";
+      default = lib.getExe pkgs.kitty;
     };
   };
 
