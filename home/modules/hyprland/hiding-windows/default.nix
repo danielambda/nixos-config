@@ -66,6 +66,7 @@ in {
     ./music.nix
     ./social.nix
     ./task-manager.nix
+    ./music-alt.nix
   ];
 
   options.my.hyprland.hidingWindows = {
