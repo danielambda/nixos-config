@@ -38,10 +38,10 @@ let
          case $(hyprctl clients -j | ${jq} -r 'map(select(.initialClass=="${class}")).[].workspace.name') in
          "")
              ${launch}
-             hyprctl dispatch movefocus ${window}
          ;;
          "${hidingWorkspace}")
              hyprctl dispatch movetoworkspace ${mainMonWorkspace},${window}
+             hyprctl dispatch alterzorder top,${window}
          ;;
          *)
              hyprctl dispatch movetoworkspacesilent ${hidingWorkspace},${window}
