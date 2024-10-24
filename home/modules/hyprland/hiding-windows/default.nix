@@ -35,18 +35,19 @@ let
     "${bindMod}, ${bindKey}, exec, ${lib.getExe (pkgs.writeShellApplication {
       name = window;
       text = ''
-         case $(hyprctl clients -j | ${jq} -r 'map(select(.initialClass=="${class}")).[].workspace.name') in
-         "")
-             ${launch}
-         ;;
-         "${hidingWorkspace}")
-             hyprctl dispatch movetoworkspace ${mainMonWorkspace},${window}
-             hyprctl dispatch alterzorder top,${window}
-         ;;
-         *)
-             hyprctl dispatch movetoworkspacesilent ${hidingWorkspace},${window}
-         ;;
-         esac
+        # activeWindowClass=$(hyprctl activewindow | grep -oP "initialClass:\K.*" | tr -d " ")
+        case $(hyprctl clients -j | ${jq} -r 'map(select(.initialClass=="${class}")).[].workspace.name') in
+        "")
+            ${launch}
+        ;;
+        "${hidingWorkspace}")
+            hyprctl dispatch movetoworkspace ${mainMonWorkspace},${window}
+            hyprctl dispatch alterzorder top,${window}
+        ;;
+        *)
+            hyprctl dispatch movetoworkspacesilent ${hidingWorkspace},${window}
+        ;;
+        esac
       '';
     })}";
 

@@ -17,7 +17,10 @@
           haskell-language-server
         ];
 
-        shellHook = "${pkgs.zsh}/bin/zsh";
+        shellHook = ''
+          cd ~/projects/haskell
+          ${pkgs.zsh}/bin/zsh
+        '';
       };
     };
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -13,6 +13,8 @@
 
     home-manager
   ];
+
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
   fonts.packages = with pkgs; [
     jetbrains-mono

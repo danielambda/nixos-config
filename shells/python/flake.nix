@@ -17,7 +17,7 @@
           python313
         ];
 
-        shellHook = "${pkgs.zsh}/bin/zsh";
+        shellHook = "cd ~/projects/python/ && ${pkgs.zsh}/bin/zsh";
       };
     };
 }

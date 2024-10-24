@@ -1,5 +1,5 @@
 {
-  home.file.".local/share/TelegramDesktop/tdata/shortcuts-custom.json".text = 
+  home.file.".local/share/TelegramDesktop/tdata/shortcuts-custom.json".text =
   /*json*/ ''
   [
     {
@@ -25,5 +25,5 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  home.stateVersion = "23.11"; # Please read the comment 
+  home.stateVersion = "23.11"; # Please read the comment
 }
