@@ -18,8 +18,6 @@ let
   jq = lib.getExe pkgs.jq;
 
   hidingWorkspace = "special:hiding";
-  mainMonWorkspace = /*bash*/
-    ''"$(hyprctl monitors -j | ${jq} 'map(select(.id==0)).[].activeWorkspace.id')"'';
 
   classToWindowSelector = class: "class:(${class})";
 
@@ -31,21 +29,26 @@ let
     };
 
   mkBind = { bindMod ? "$mainMod", bindKey, launch, class, ... }:
-    let window = "class:${class}"; in
+    let window = classToWindowSelector class; in
     "${bindMod}, ${bindKey}, exec, ${lib.getExe (pkgs.writeShellApplication {
-      name = window;
+      name = class;
       text = ''
-        # activeWindowClass=$(hyprctl activewindow | grep -oP "initialClass:\K.*" | tr -d " ")
-        case $(hyprctl clients -j | ${jq} -r 'map(select(.initialClass=="${class}")).[].workspace.name') in
+        mainMonWorkspaceName=$(hyprctl monitors -j | ${jq} -r 'map(select(.id==0)).[].activeWorkspace.name')
+        case $(hyprctl clients -j | ${jq} -r 'map(select(.class=="${class}")).[].workspace.name') in
         "")
-            ${launch}
+          ${launch}
         ;;
-        "${hidingWorkspace}")
-            hyprctl dispatch movetoworkspace ${mainMonWorkspace},${window}
-            hyprctl dispatch alterzorder top,${window}
+        "$mainMonWorkspaceName")
+          if [ "$(hyprctl activewindow | grep -c 'class:.*${class}')" = "0" ]; then
+            hyprctl dispatch alterzorder "top,${window}"
+            hyprctl dispatch focuswindow "${window}"
+          else
+            hyprctl dispatch movetoworkspacesilent "${hidingWorkspace},${window}"
+          fi
         ;;
         *)
-            hyprctl dispatch movetoworkspacesilent ${hidingWorkspace},${window}
+          hyprctl dispatch movetoworkspace "name:$mainMonWorkspaceName,${window}"
+          hyprctl dispatch alterzorder "top,${window}"
         ;;
         esac
       '';

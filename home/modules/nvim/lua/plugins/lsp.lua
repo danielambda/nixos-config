@@ -2,14 +2,12 @@ local lspconfig = require'lspconfig'
 
 require'neodev'.setup()
 lspconfig.lua_ls.setup{}
+
 lspconfig.nixd.setup {
   cmd = { "nixd" };
   settings = {
     nixd = {
-      nixpkgs = {
-        expr = "import <nixpkgs> {}";
-      };
-      -- formatting
+      nixpkgs = { expr = "import <nixpkgs> {}"; };
       options = {
         nixos = {
           expr = '(builtins.getFlake "/home/daniel/nix").nixosConfigurations.nixos.options';
@@ -20,7 +18,7 @@ lspconfig.nixd.setup {
       };
     };
   };
-}
+};
 lspconfig.rust_analyzer.setup{}
 lspconfig.hls.setup{}
 lspconfig.pyright.setup{}
