@@ -6,7 +6,7 @@
       windowrules = {
         center = true;
         monitor = 0;
-        size = "720 1080";
+        size = "670 800";
         bordercolor = "rgba(fed42bc0)"; #fed42bc0
       };
     }

@@ -15,10 +15,10 @@ in {
       config = /*lua*/''
         local base16 = require'base16-colorscheme'
 
-        base16.with_config({
+        base16.with_config {
           telescope = false; --otherwise it bugs
-        })
-        base16.setup({${coloring}})
+        }
+        base16.setup {${coloring}}
       '';
     }
   ];
