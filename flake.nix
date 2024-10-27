@@ -10,7 +10,6 @@
 
     stylix.url = "github:danth/stylix";
     hyprland.url = "github:hyprwm/Hyprland";
-    xremap.url = "github:xremap/nix-flake";
     langmapper-nvim = {
       url = "github:Wansmer/langmapper.nvim";
       flake = false;

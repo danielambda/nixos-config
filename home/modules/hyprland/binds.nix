@@ -41,6 +41,8 @@ in with pkgs // lib;
     bind = , r, submap, reset
     bind = , f, execr, ${lib.getExe pkgs.firefox}
     bind = , f, submap, reset
+    bind = , v, execr, ${lib.getExe pkgs.vial}
+    bind = , v, submap, reset
     bind = , catchall, submap, reset
     submap = reset
   '';
