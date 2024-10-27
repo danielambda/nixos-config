@@ -38,7 +38,9 @@ in with pkgs // lib;
     bind = $mainMod, r, submap, run
     submap = run
     bind = , r, execr, ${lib.getExe pkgs.rofi-wayland} -show drun
+    bind = , r, submap, reset
     bind = , f, execr, ${lib.getExe pkgs.firefox}
+    bind = , f, submap, reset
     bind = , catchall, submap, reset
     submap = reset
   '';
