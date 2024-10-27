@@ -11,5 +11,6 @@
     ./firefox.nix
     ./kitty.nix
     ./waybar.nix
+    ./tmux.nix
   ];
 }

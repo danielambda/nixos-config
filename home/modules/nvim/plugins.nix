@@ -23,6 +23,7 @@ in {
     (configure nvim-lspconfig "lsp.lua")
     (configure nvim-cmp "cmp.lua")
     cmp-nvim-lsp
+    vim-tmux-navigator
     cmp_luasnip
     cmp-path
     neodev-nvim
