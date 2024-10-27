@@ -3,11 +3,13 @@
 
   users.defaultUserShell = pkgs.zsh;
   environment.variables.EDITOR = "nvim";
-  
+
   users.users.daniel = {
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel" "input"];
   };
+
+  security.sudo.wheelNeedsPassword = false;
 
   services.greetd = {
     enable = true;
@@ -18,6 +20,4 @@
       };
     };
   };
-  
-  security.sudo.wheelNeedsPassword = false;
 }

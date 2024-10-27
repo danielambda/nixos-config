@@ -11,8 +11,12 @@
     zip
     unzip
 
+    vial
+
     home-manager
   ];
+
+  services.udev.packages = [pkgs.vial];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 

@@ -6,6 +6,5 @@
     ./geolocation.nix
     ./sound.nix
     ./bluetooth.nix
-    ./xremap.nix
   ];
 }

@@ -34,6 +34,13 @@ in with pkgs // lib;
     binde = , c, centerwindow
     bind = , catchall, submap, reset
     submap = reset
+
+    bind = $mainMod, r, submap, run
+    submap = run
+    bind = , r, execr, ${lib.getExe pkgs.rofi-wayland} -show drun
+    bind = , f, execr, ${lib.getExe pkgs.firefox}
+    bind = , catchall, submap, reset
+    submap = reset
   '';
 
   config.wayland.windowManager.hyprland.settings."$mainMod" = "SUPER";
