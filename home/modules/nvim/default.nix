@@ -1,5 +1,8 @@
 { pkgs, ... }: {
-  imports = [./plugins.nix];
+  imports = [
+    ./plugins.nix
+    ./languages
+  ];
 
   programs.neovim = {
     enable = true;

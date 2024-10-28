@@ -7,10 +7,6 @@
 
     syntaxHighlighting.enable = true;
 
-    initExtra = ''
-      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-    '';
-
     shellAliases = {
       hms = "home-manager switch --flake /home/daniel/nix";
       hmnews = "home-manager news --flake /home/daniel/nix";

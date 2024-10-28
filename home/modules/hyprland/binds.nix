@@ -37,11 +37,11 @@ in with pkgs // lib;
 
     bind = $mainMod, r, submap, run
     submap = run
-    bind = , r, execr, ${lib.getExe pkgs.rofi-wayland} -show drun
+    bind = , r, execr, ${getExe rofi-wayland} -show drun
     bind = , r, submap, reset
-    bind = , f, execr, ${lib.getExe pkgs.firefox}
+    bind = , f, execr, ${getExe firefox}
     bind = , f, submap, reset
-    bind = , v, execr, ${lib.getExe pkgs.vial}
+    bind = , v, execr, ${getExe vial}
     bind = , v, submap, reset
     bind = , catchall, submap, reset
     submap = reset
@@ -57,10 +57,11 @@ in with pkgs // lib;
     '', print, exec, ${getExe grim} -g "$(${getExe slurp} -w 0)" - | ${wl-clipboard}/bin/wl-copy''
     ''$mainMod, print, exec, ${getExe grim} -o "$(${hyprland}/bin/hyprctl activeworkspace -j | ${getExe jq} -r '.monitor')" - | ${wl-clipboard}/bin/wl-copy''
 
-    "$mainMod, O, exec, ${lib.getExe (pkgs.writeShellApplication {
+    "$mainMod, O, exec, ${getExe (writeShellApplication {
       name = "special-workspace";
       text = ''
-        (pgrep -f obsidian && hyprctl dispatch togglespecialworkspace obsidian) || ${lib.getExe pkgs.obsidian}'';
+        (pgrep -f obsidian && hyprctl dispatch togglespecialworkspace obsidian) || ${getExe obsidian}
+      '';
     })}"
 
     "$mainMod, TAB, workspace, e+1"

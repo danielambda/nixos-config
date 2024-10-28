@@ -38,4 +38,26 @@
       set-option -g window-status-format '#[fg=${colors.base03}]#{window_index}#(echo :)#{window_name}'
     '';
   };
+
+  home.packages = [(pkgs.writeShellApplication {
+      name = "t";
+      text = ''
+        cd /home/daniel/projects/
+        project=$(find . -maxdepth 2 -mindepth 2 -type d | ${lib.getExe pkgs.fzf})
+        session_name=$(basename "$project")
+
+        if [[ -z "$project" ]]; then
+          echo "No project selected."
+          exit 1
+        fi
+
+        if ${lib.getExe pkgs.tmux} has-session -t "$session_name" 2>/dev/null; then
+          ${lib.getExe pkgs.tmux} attach -t "$session_name"
+        else
+          ${lib.getExe pkgs.tmux} new-session -d -s "$session_name" -c "$project"
+          ${lib.getExe pkgs.tmux} new-window -t "$session_name:2" -n 'nvim' -c "$project" 'nvim'
+          ${lib.getExe pkgs.tmux} attach -t "$session_name"
+        fi
+      '';
+    })];
 }
