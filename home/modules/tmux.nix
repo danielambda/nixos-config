@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
-  let colors = config.stylix.base16Scheme;
-  in {
+let colors = builtins.mapAttrs (name: value: "#${value}") config.stylix.base16Scheme;
+in {
   programs.tmux = {
     enable = true;
     shell = lib.getExe pkgs.zsh;
@@ -32,7 +32,8 @@
       set-option -g status-style bg=black
       set-option -g automatic-rename on
 
-      set-option -g status-left '#{session_name}#(echo "   ")'
+      set-option -g status-left '#{session_name}#(echo "  ")'
+      set-option -g status-left-length 50
       set-option -g status-right ' '
       set-option -g window-status-current-format '#[bold,fg=${colors.base08}]#{window_index}#(echo :)#{window_name}'
       set-option -g window-status-format '#[fg=${colors.base03}]#{window_index}#(echo :)#{window_name}'
