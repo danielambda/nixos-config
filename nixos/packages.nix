@@ -20,7 +20,7 @@
   fonts.packages = with pkgs; [
     jetbrains-mono
     noto-fonts
-    noto-fonts-cjk-sans
+    noto-fonts-cjk
     noto-fonts-emoji
     twemoji-color-font
     font-awesome
