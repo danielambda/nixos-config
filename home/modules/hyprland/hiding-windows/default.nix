@@ -21,24 +21,24 @@ let
 
   classToWindowSelector = class: "class:(${class})";
 
-  mkFfpwaBind = { bindMod ? "$mainMod", bindKey, id, ... }:
+  mkFfpwaBind = { bindMod ? "$mainMod", bindKey, id, centerOnShow ? true, ... }:
     mkBind {
-      inherit bindMod bindKey;
+      inherit bindMod bindKey centerOnShow;
       launch = "${lib.getExe pkgs.firefoxpwa} site launch ${id}";
       class = "FFPWA-${id}";
     };
 
-  mkBind = { bindMod ? "$mainMod", bindKey, launch, class, ... }:
+  mkBind = { bindMod ? "$mainMod", bindKey, launch, class, centerOnShow ? true, ... }:
     let window = classToWindowSelector class; in
     "${bindMod}, ${bindKey}, exec, ${lib.getExe (pkgs.writeShellApplication {
       name = class;
       text = ''
-        mainMonWorkspaceName=$(hyprctl monitors -j | ${jq} -r 'map(select(.id==0)).[].activeWorkspace.name')
+        activeWorkspace=$(hyprctl activeworkspace -j | ${jq} -r '.name')
         case $(hyprctl clients -j | ${jq} -r 'map(select(.class=="${class}")).[].workspace.name') in
         "")
           ${launch}
         ;;
-        "$mainMonWorkspaceName")
+        "$activeWorkspace")
           if [ "$(hyprctl activewindow | grep -c 'class:.*${class}')" = "0" ]; then
             hyprctl dispatch alterzorder "top,${window}"
             hyprctl dispatch focuswindow "${window}"
@@ -46,21 +46,28 @@ let
             hyprctl dispatch movetoworkspacesilent "${hidingWorkspace},${window}"
           fi
         ;;
-        *)
-          hyprctl dispatch movetoworkspace "name:$mainMonWorkspaceName,${window}"
+        *) # hiding or any other workspace
+          hyprctl dispatch movetoworkspace "+0,${window}"
           hyprctl dispatch alterzorder "top,${window}"
+          ${if centerOnShow then /*bash*/''
+            hyprctl dispatch focuswindow "${window}"
+            hyprctl dispatch centerwindow 1
+          '' else ""}
+          sleep 0.2
+          hyprctl dispatch focuswindow "${window}"
         ;;
         esac
       '';
     })}";
 
-  mkFfpwaWindowrules = { id, windowrules ? {}, ... }:
-    mkWindowrules { class = "FFPWA-${id}"; inherit windowrules; };
+  mkFfpwaWindowrules = { id, windowrules ? {}, centerOnShow ? true, ... }:
+    mkWindowrules { class = "FFPWA-${id}"; inherit windowrules centerOnShow; };
 
-  mkWindowrules = { class, windowrules ? {}, ... }:
+  mkWindowrules = { class, windowrules ? {}, centerOnShow ? true, ... }:
     let window = classToWindowSelector class;
-    in ["float, ${window}"] ++
-    builtins.attrValues (
+    in ["float, ${window}"]
+    ++ (if centerOnShow then ["center 1, ${window}"] else [])
+    ++ builtins.attrValues (
       builtins.mapAttrs
         (name: value: "${name} ${toString value}, ${window}")
         windowrules

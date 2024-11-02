@@ -6,8 +6,6 @@
       bindKey = "M";
       windowrules = {
         size = "750 1000";
-        center = true;
-        monitor = 0;
         bordercolor = "rgba(ed2025c0)"; #ed2025c0
       };
     }

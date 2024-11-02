@@ -4,10 +4,7 @@
       bindKey = "T";
       id = "01J9H12Z45YVGP5QMYJ4G6EPFH";
       windowrules = {
-        size = "38% 1224";
-        move = "100%-w-18 58";
-        monitor = "0";
-        rounding = "6";
+        size = "750 1220";
         bordercolor = "rgba(e34331c0)"; #e34331c0
       };
     }

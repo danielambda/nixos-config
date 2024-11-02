@@ -5,10 +5,7 @@
       class = "org.telegram.desktop";
       launch = lib.getExe pkgs.telegram-desktop;
       windowrules = {
-        monitor = 0;
-        size = "38% 1224";
-        move = "18 58";
-        rounding = 6;
+        size = "750 1220";
         bordercolor = "rgba(8f99f5c0)"; #8f99f5c0
       };
     }

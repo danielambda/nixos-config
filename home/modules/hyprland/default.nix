@@ -15,7 +15,9 @@ in {
   my.hyprland.hidingWindows.enable = true;
 
   wayland.windowManager.hyprland.settings = {
-    animation = "specialWorkspace, 1, 6, default, slidefadevert -50%";
+    animation = [
+      "specialWorkspace, 1, 6, default, slidefadevert -50%"
+    ];
     workspace = [
       "special:obsidian, rounding:false, decorate:false, gapsin:0, gapsout:0, border:false"
     ];
@@ -84,7 +86,7 @@ in {
 
     input = {
       kb_layout = "us, ru";
-      kb_options = "grp:alt_shift_toggle";
+      kb_options = "grp:alt_shift_toggle, caps:swapescape";
 
       follow_mouse = 1;
       mouse_refocus = true;
