@@ -41,6 +41,8 @@ in with pkgs // lib;
     bind = , r, submap, reset
     bind = , f, execr, ${getExe firefox}
     bind = , f, submap, reset
+    bind = , c, execr, ${getExe pkgs.chromium}
+    bind = , c, submap, reset
     bind = , v, execr, ${getExe vial}
     bind = , v, submap, reset
     bind = , catchall, submap, reset
@@ -70,7 +72,7 @@ in with pkgs // lib;
     "$mainMod, F, fullscreen, 0"
     "$mainMod SHIFT, F, togglefloating, active"
     "$mainMod, P, pin, active"
-    "$mainMod, C, centerwindow,"
+    "$mainMod, C, centerwindow, 1"
   ]
   ++ utils.directionsBind "$mainMod" "movefocus"
   ++ utils.directionsBind "$mainMod CTRL" "swapwindow"

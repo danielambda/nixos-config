@@ -73,6 +73,7 @@ in {
       disable_hyprland_logo = true;
       disable_autoreload = true;
       background_color = lib.mkForce "rgb(000000)";
+      focus_on_activate = true;
     };
 
     animations = {

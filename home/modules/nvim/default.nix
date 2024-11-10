@@ -25,6 +25,8 @@
       set smartindent
 
       set termguicolors
+
+      set colorcolumn=0
     '';
 
     defaultEditor = true;
@@ -36,9 +38,7 @@
     lua-language-server
     nixd
     rust-analyzer
-    pyright
     omnisharp-roslyn
     clang-tools
-    haskell-language-server
   ];
 }

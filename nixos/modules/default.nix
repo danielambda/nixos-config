@@ -6,5 +6,6 @@
     ./geolocation.nix
     ./sound.nix
     ./bluetooth.nix
+    ./docker.nix
   ];
 }

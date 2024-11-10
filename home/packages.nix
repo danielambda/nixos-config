@@ -1,9 +1,8 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
     telegram-desktop
-    # discord
     obsidian
     gh
-    prismlauncher
+    prismlauncher # minecraft
   ];
 }
