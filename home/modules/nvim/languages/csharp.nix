@@ -1,8 +1,7 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    ghc
-    cabal-install
-    haskell-language-server
+    omnisharp-roslyn
+    dotnet-sdk_8
   ];
 }
 

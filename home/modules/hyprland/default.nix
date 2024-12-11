@@ -107,9 +107,5 @@ in {
     };
 
     monitor = import ./monitor.nix;
-
-    windowrule = [
-      "opacity 0.7 override, title:^(Mozilla Firefox)$"
-    ];
   };
 }

@@ -27,6 +27,8 @@
       set termguicolors
 
       set colorcolumn=0
+
+      :autocmd InsertLeave * silent! update
     '';
 
     defaultEditor = true;

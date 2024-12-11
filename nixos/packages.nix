@@ -10,6 +10,8 @@
     wget
     zip
     unzip
+    libz
+    zlib
 
     home-manager
   ];

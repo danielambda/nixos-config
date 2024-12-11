@@ -36,6 +36,10 @@ in {
       require'mini.surround'.setup()
     '')
     otter-nvim
+    (configureInline vimtex /*lua*/''
+      vim.g.vimtex_view_method = "zathura"
+      vim.g.vimtex_compiler_method = "latexmk"
+    '')
     (configure obsidian-nvim "obsidian.lua")
 
     (configure langmapper-nvim "langmapper.lua")
