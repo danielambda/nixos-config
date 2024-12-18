@@ -5,5 +5,6 @@
     gh
     prismlauncher # minecraft
     vscode
+    zerotierone
   ];
 }

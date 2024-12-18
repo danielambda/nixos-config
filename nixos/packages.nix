@@ -1,5 +1,4 @@
 { pkgs, inputs, ... }: {
-  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
     mako
@@ -18,6 +17,13 @@
 
   services.udev.packages = [pkgs.vial];
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = [
+      "632ea29085f0ad42"
+    ];
+  };
 
   fonts.packages = with pkgs; [
     jetbrains-mono

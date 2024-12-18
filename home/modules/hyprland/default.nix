@@ -87,7 +87,7 @@ in {
 
     input = {
       kb_layout = "us, ru";
-      kb_options = "grp:alt_shift_toggle, caps:swapescape";
+      kb_options = "grp:alt_shift_toggle";#, caps:swapescape";
 
       follow_mouse = 1;
       mouse_refocus = true;
