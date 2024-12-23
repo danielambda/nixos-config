@@ -25,6 +25,7 @@
     font-awesome
     powerline-fonts
     powerline-symbols
-  ]
-  ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+    nerdfonts
+  ];
+  # ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 }
