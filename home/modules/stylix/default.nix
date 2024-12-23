@@ -5,6 +5,7 @@
     enable = true;
 
     targets.neovim.enable = false;
+    targets.waybar.enable = false;
     targets.hyprland.enable = false;
 
     polarity = "dark";
