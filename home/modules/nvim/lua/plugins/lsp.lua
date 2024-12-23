@@ -24,35 +24,6 @@ lspconfig.hls.setup{}
 lspconfig.pyright.setup{}
 lspconfig.clangd.setup{}
 lspconfig.ts_ls.setup {}
-require'lspconfig'.omnisharp.setup {
-  cmd = { "OmniSharp", "--languageserver" , "--hostPID", tostring(vim.fn.getpid()) },
-  settings = {
-    FormattingOptions = {
-      EnableEditorConfigSupport = true,
-      OrganizeImports = nil,
-      NewLinesForBracesInTypes = false,
-      NewLinesForBracesInMethods = false,
-      NewLinesForBracesInProperties = false,
-      NewLinesForBracesInAccessors = false,
-      NewLinesForBracesInAnonymousMethods = false,
-      NewLinesForBracesInControlBlocks = false,
-      NewLinesForBracesInAnonymousTypes = false,
-      NewLinesForBracesInObjectCollectionArrayInitializers = false,
-      NewLinesForBracesInLambdaExpressionBody = false,
-    },
-    MsBuild = {
-      LoadProjectsOnDemand = nil,
-    },
-    RoslynExtensionsOptions = {
-      EnableAnalyzersSupport = true,
-      EnableImportCompletion = true,
-      AnalyzeOpenDocumentsOnly = nil,
-    },
-    Sdk = {
-      IncludePrereleases = true,
-    },
-  },
-}
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
