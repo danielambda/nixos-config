@@ -1,8 +1,9 @@
 let
   laptop-w = 3120;
   laptop-h = 2080;
+  laptio-fps = 90;
   # laptop-h-cm = 20;
-  laptop-res = "${toString laptop-w}x${toString laptop-h}";
+  laptop-res = "${toString laptop-w}x${toString laptop-h}@${toString laptio-fps}";
 
   laptop-virt-h = 1300.0;
   laptop-scale = laptop-h / laptop-virt-h;

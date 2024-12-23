@@ -57,12 +57,6 @@ in {
     decoration = {
       rounding = 12;
 
-      drop_shadow = true;
-      shadow_range = 12;
-      shadow_render_power = 2;
-      "col.shadow" = "rgba(${colors.base01}ff)";
-      "col.shadow_inactive" = "rgba(00000000)";
-
       blur = {
         enabled = true;
         xray = true;
