@@ -30,7 +30,7 @@ in {
     (configure ccc-nvim "ccc.lua")
     (configure luasnip "luasnip.lua")
     vim-sleuth
-    (configure gitsigns-nvim "gitsigns.lua")
+    (configureInline gitsigns-nvim /*lua*/ ''require 'gitsigns'.setup {}'')
     (configureInline mini-nvim /*lua*/''
       require'mini.ai'.setup { n_lines = 500 }
       require'mini.surround'.setup()
@@ -41,6 +41,7 @@ in {
       vim.g.vimtex_compiler_method = "latexmk"
     '')
     (configure obsidian-nvim "obsidian.lua")
+    (configureInline nvim-ts-autotag /*lua*/''require'nvim-ts-autotag'.setup {}'')
 
     (configure langmapper-nvim "langmapper.lua")
   ];
