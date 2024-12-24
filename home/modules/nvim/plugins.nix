@@ -42,6 +42,7 @@ in {
     '')
     (configure obsidian-nvim "obsidian.lua")
     (configureInline nvim-ts-autotag /*lua*/''require'nvim-ts-autotag'.setup {}'')
+    (configure oil-nvim "oil.lua")
 
     (configure langmapper-nvim "langmapper.lua")
   ];
