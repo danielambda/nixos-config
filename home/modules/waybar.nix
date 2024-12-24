@@ -30,9 +30,9 @@
         };
 
         "pulseaudio" = {
-          format =                 "{icon}{volume}%  {format_source}";
-          format-bluetooth =       " {icon}{volume}%  {format_source}";
-          format-muted =           "{icon}  {format_source}";
+          format =                 "{icon} {volume}%  {format_source}";
+          format-bluetooth =       " {icon} {volume}%  {format_source}";
+          format-muted =           "  {format_source}";
           format-bluetooth-muted = " {icon}  {format_source}";
           format-source =          " {volume}%";
           format-source-muted =    " ";
@@ -42,8 +42,7 @@
             headset = " ";
             phone = " ";
             portable = " ";
-            car = " ";
-            default = [ "" " " " " ];
+            default = [ " " " " ];
           };
           on-click = "sleep 0.1 && ${lib.getExe pkgs.pavucontrol}";
         };
