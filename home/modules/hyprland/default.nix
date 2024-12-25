@@ -44,9 +44,9 @@ in {
     };
 
     general = {
-      gaps_in = 3;
-      gaps_out = 6;
-      border_size = 3;
+      gaps_in = 8;
+      gaps_out = 16;
+      border_size = 4;
 
       "col.active_border" = "rgba(${colors.base0C}ff) rgba(${colors.base08}ff) 270deg";
       "col.inactive_border" = "rgba(${colors.base04}80)";
@@ -55,7 +55,7 @@ in {
     };
 
     decoration = {
-      rounding = 12;
+      rounding = 16;
 
       blur = {
         enabled = true;
