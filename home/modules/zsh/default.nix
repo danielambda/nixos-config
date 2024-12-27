@@ -14,9 +14,11 @@ in {
       hmnews = "home-manager news --flake ${flakeDir}";
       rb = "sudo nixos-rebuild switch --flake ${flakeDir}";
 
-      ls = "${lib.getExe pkgs.eza} --icons --group-directories-first";
-      tree = "${lib.getExe pkgs.eza} --color=auto --icons --tree";
+      ls =   "${lib.getExe pkgs.eza} --icons --group-directories-first";
+      lsa =  "${lib.getExe pkgs.eza} --icons --group-directories-first -a";
+      tree = "${lib.getExe pkgs.eza} --icons --color=auto --tree";
       grep = "grep --color=auto";
+      cat = "${lib.getExe pkgs.bat}";
       ":q" = "exit";
       v = "nvim";
     };
