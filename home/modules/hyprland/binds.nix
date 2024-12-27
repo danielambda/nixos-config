@@ -69,6 +69,7 @@ in with pkgs // lib;
     "$mainMod, TAB, workspace, e+1"
     "$mainMod SHIFT, TAB, workspace, e-1"
 
+    "$mainMod, SEMICOLON, togglesplit"
     "$mainMod, F, fullscreen, 0"
     "$mainMod SHIFT, F, togglefloating, active"
     "$mainMod, P, pin, active"
