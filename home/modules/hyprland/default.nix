@@ -48,7 +48,7 @@ in {
       gaps_out = 16;
       border_size = 4;
 
-      "col.active_border" = "rgba(${colors.base0C}ff) rgba(${colors.base08}ff) 270deg";
+      "col.active_border" = "rgba(${colors.base08}ff)";
       "col.inactive_border" = "rgba(${colors.base04}80)";
 
       layout = "dwindle";
@@ -60,6 +60,12 @@ in {
       blur = {
         enabled = true;
         xray = true;
+      };
+
+      shadow = {
+        enabled = true;
+        range = 8;
+        color_inactive = "rgba(00000000)";
       };
     };
 
