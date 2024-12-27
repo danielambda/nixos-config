@@ -44,6 +44,7 @@ in {
     (configureInline nvim-ts-autotag /*lua*/''require'nvim-ts-autotag'.setup {}'')
     (configure oil-nvim "oil.lua")
     (configure lspsaga-nvim "lspsaga.lua")
+    (configureInline tailwind-tools-nvim /*lua*/''require'tailwind-tools'.setup {}'')
 
     (configure langmapper-nvim "langmapper.lua")
   ];
