@@ -10,6 +10,7 @@
 
     stylix.url = "github:danth/stylix";
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
     langmapper-nvim = {
       url = "github:Wansmer/langmapper.nvim";
       flake = false;

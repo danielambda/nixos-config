@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, inputs, system, ... }:
 let
   colors = config.stylix.base16Scheme;
 in {
@@ -13,6 +13,10 @@ in {
   wayland.windowManager.hyprland.enable = true;
 
   my.hyprland.hidingWindows.enable = true;
+
+  home.packages = [
+    inputs.hyprland-qtutils.packages."${system}".default
+  ];
 
   wayland.windowManager.hyprland.settings = {
     animation = [
