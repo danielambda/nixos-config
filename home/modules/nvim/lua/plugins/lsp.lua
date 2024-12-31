@@ -19,8 +19,8 @@ lspconfig.nixd.setup {
     };
   };
 };
+lspconfig.hls.setup{ filetypes = { 'haskell', 'lhaskell', 'cabal' } }
 lspconfig.rust_analyzer.setup{}
-lspconfig.hls.setup{}
 lspconfig.pyright.setup{}
 lspconfig.clangd.setup{}
 lspconfig.ts_ls.setup {}

@@ -11,6 +11,7 @@
     ./kitty.nix
     ./waybar.nix
     ./tmux.nix
+    ./direnv.nix
     # ./alacritty.nix
   ];
 }
