@@ -16,7 +16,7 @@
         echo "use flake" > .envrc
         ${lib.getExe pkgs.direnv} allow
       fi
-      ${lib.getExe pkgs.neovim} flake.nix
+      nvim flake.nix
     '';
   })];
 }
