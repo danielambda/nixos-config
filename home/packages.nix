@@ -5,6 +5,5 @@
     gh
     prismlauncher # minecraft
     vscode
-    torrential
   ];
 }

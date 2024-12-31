@@ -20,7 +20,7 @@ in {
       grep = "grep --color=auto";
       cat = "${lib.getExe pkgs.bat}";
       ":q" = "exit";
-      v = lib.getExe pkgs.neovim;
+      v = "nvim";
     };
   };
 }

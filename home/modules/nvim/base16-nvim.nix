@@ -8,18 +8,16 @@ let
     (builtins.head coloringLines) #seed
     (builtins.tail coloringLines);
 in {
-  programs.neovim.plugins = [
-    {
-      plugin = pkgs.vimPlugins.base16-nvim;
-      type = "lua"; #TODO manage stylix dependency properly
-      config = /*lua*/''
-        local base16 = require'base16-colorscheme'
+  programs.neovim.plugins = [{
+    plugin = pkgs.vimPlugins.base16-nvim;
+    type = "lua"; #TODO manage stylix dependency properly
+    config = /*lua*/''
+      local base16 = require'base16-colorscheme'
 
-        base16.with_config {
-          telescope = false; --otherwise it bugs
-        }
-        base16.setup {${coloring}}
-      '';
-    }
-  ];
+      base16.with_config {
+        telescope = false; --otherwise it bugs
+      }
+      base16.setup {${coloring}}
+    '';
+  }];
 }
