@@ -45,6 +45,8 @@ in {
     text = ''
       cd /home/daniel/projects/
       project=$(find . -maxdepth 2 -mindepth 2 -type d | ${lib.getExe pkgs.fzf})
+      cd "$project"
+
       session_name=$(basename "$project")
 
       if [[ -z "$project" ]]; then
@@ -55,8 +57,7 @@ in {
       if ${lib.getExe pkgs.tmux} has-session -t "$session_name" 2>/dev/null; then
         ${lib.getExe pkgs.tmux} attach -t "$session_name"
       else
-        ${lib.getExe pkgs.tmux} new-session -d -s "$session_name" -c "$project"
-        ${lib.getExe pkgs.tmux} new-window -t "$session_name:2" -n 'nvim' -c "$project" 'nvim'
+        ${lib.getExe pkgs.tmux} new-session -d -s "$session_name"
         ${lib.getExe pkgs.tmux} attach -t "$session_name"
       fi
     '';

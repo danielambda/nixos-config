@@ -7,18 +7,6 @@ in {
     enable = true;
     enableCompletion = true;
 
-    initExtra = /*sh*/ ''
-      flakify() {
-        if [ ! -e flake.nix ]; then
-          nix flake new -t github:nix-community/nix-direnv .
-        elif [ ! -e .envrc ]; then
-          echo "use flake" > .envrc
-          direnv allow
-        fi
-        nvim flake.nix
-      }
-    '';
-
     syntaxHighlighting.enable = true;
 
     shellAliases = {
@@ -32,7 +20,7 @@ in {
       grep = "grep --color=auto";
       cat = "${lib.getExe pkgs.bat}";
       ":q" = "exit";
-      v = "nvim";
+      v = lib.getExe pkgs.neovim;
     };
   };
 }
