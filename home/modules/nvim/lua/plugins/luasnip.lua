@@ -21,7 +21,3 @@ luasnip.add_snippets('markdown', {
   })
 })
 
-luasnip.add_snippets('haskell', {
-  snippet('lambda', t'λ')
-})
-
