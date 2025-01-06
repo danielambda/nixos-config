@@ -20,6 +20,5 @@ vim.treesitter.query.set("haskell", "injections", [[
     (quoter) @quoter
     (#eq? @quoter "sql")
     (quasiquote_body) @injection.content
-    (#set! injection.language "sql")
-    (#offset! @injection.content  0 1 0 -1)))
+    (#set! injection.language "sql")))
 ]])
