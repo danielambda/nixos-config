@@ -45,6 +45,7 @@ in {
     (configure oil-nvim "oil.lua")
     (configure lspsaga-nvim "lspsaga.lua")
     (configureInline tailwind-tools-nvim /*lua*/''require'tailwind-tools'.setup {}'')
+    (configure rest-nvim "rest-nvim.lua")
 
     (configure langmapper-nvim "langmapper.lua")
   ];
