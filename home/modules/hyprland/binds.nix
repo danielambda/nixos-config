@@ -54,7 +54,6 @@ in with pkgs // lib;
   config.wayland.windowManager.hyprland.settings.bind = [
     "$mainMod, RETURN, exec, ${terminal}"
     "$mainMod, Q, killactive"
-    "$mainMod SHIFT, M, exit"
 
     '', print, exec, ${getExe grim} -g "$(${getExe slurp} -w 0)" - | ${wl-clipboard}/bin/wl-copy''
     ''$mainMod, print, exec, ${getExe grim} -o "$(${hyprland}/bin/hyprctl activeworkspace -j | ${getExe jq} -r '.monitor')" - | ${wl-clipboard}/bin/wl-copy''
