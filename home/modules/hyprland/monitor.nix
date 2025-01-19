@@ -25,6 +25,6 @@ let
 in [
   "eDP-1, ${laptop-res}, 0x0, ${laptop-scale-str}"
   # "DP-3, auto, highres, 2"
-  # ", ${monitor-res}, ${monitor-pos}, ${monitor-scale-str}"
+  ", ${monitor-res}, ${monitor-pos}, ${monitor-scale-str}"
   # ", preferred, auto, 1, mirror, eDP-1"
 ]
