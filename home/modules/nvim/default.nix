@@ -32,15 +32,13 @@
     '';
 
     defaultEditor = true;
+
+    extraPackages = with pkgs; [
+      ripgrep
+
+      lua-language-server
+      nixd
+      clang-tools
+    ];
   };
-
-  home.packages = with pkgs; [
-    ripgrep
-
-    lua-language-server
-    nixd
-    rust-analyzer
-    omnisharp-roslyn
-    clang-tools
-  ];
 }
