@@ -4,6 +4,5 @@
     obsidian
     gh
     prismlauncher # minecraft
-    vscode
   ];
 }
