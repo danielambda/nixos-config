@@ -19,6 +19,34 @@ lspconfig.nixd.setup {
     };
   };
 };
+
+lspconfig.omnisharp.setup({
+  cmd = { "OmniSharp", "--languageserver" };
+  enable_roslyn_analyzers = true;
+  organize_imports_on_format = true;
+  enable_import_completion = true;
+  -- handlers = {
+  --   ["textDocument/definition"] = require'omnisharp_extended'.handler;
+  -- };
+  on_attach = function(_, buffer)
+    -- Keymaps specific to C#
+    local opts = { buffer = buffer }
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<leader>rr', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<leader>fm', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end
+})
+require'lspconfig.configs'.omnisharp = {
+  default_config = {
+    root_dir = lspconfig.util.root_pattern('*.sln', '*.csproj', '.git'),
+  }
+}
+
 lspconfig.hls.setup{}
 lspconfig.rust_analyzer.setup{}
 lspconfig.pyright.setup{}
