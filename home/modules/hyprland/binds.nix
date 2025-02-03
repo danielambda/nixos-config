@@ -89,6 +89,10 @@ in with pkgs // lib;
   config.wayland.windowManager.hyprland.settings.bindel = [
     ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+"
     ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
+
+    # ", XF86MonBrightnessUp,   exec, ${getExe brightnessctl} -q set +1%"
+    ", XF86MonBrightnessUp,   exec, ${getExe brightnessctl} -q set +1%"
+    ", XF86MonBrightnessDown, exec, ${getExe brightnessctl} -q set 1%-"
   ];
   config.wayland.windowManager.hyprland.settings.bindl = [
     ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
