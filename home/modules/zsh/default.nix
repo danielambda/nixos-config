@@ -21,6 +21,7 @@ in {
       cat = "${lib.getExe pkgs.bat}";
       ":q" = "exit";
       v = "nvim";
+      rf = "rm -rf";
     };
   };
 }
