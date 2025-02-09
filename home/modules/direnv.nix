@@ -1,4 +1,4 @@
-{ pkgs, lib, flakeDir, ... }: {
+{ pkgs, flakeDir, ... }: {
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
@@ -14,7 +14,7 @@
         nix flake new -t ${flakeDir}/devshell-flake-template .
       elif [ ! -e .envrc ]; then
         echo "use flake" > .envrc
-        ${lib.getExe pkgs.direnv} allow
+        direnv allow
       fi
     '';
   })];
