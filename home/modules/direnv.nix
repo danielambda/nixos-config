@@ -11,7 +11,7 @@
     name = "flakify";
     text = ''
       if [ ! -e flake.nix ]; then
-        nix flake new -t /home/daniel/projects/nix/devshell-flake-template .
+        nix flake new -t github:danielambda/devshell-flake-template .
       elif [ ! -e .envrc ]; then
         echo "use flake" > .envrc
         ${lib.getExe pkgs.direnv} allow
