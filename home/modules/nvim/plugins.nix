@@ -33,7 +33,7 @@ in {
     (configureInline gitsigns-nvim /*lua*/ ''require 'gitsigns'.setup {}'')
     (configureInline mini-nvim /*lua*/''
       require'mini.ai'.setup { n_lines = 500 }
-      require'mini.surround'.setup()
+      require'mini.surround'.setup {}
     '')
     otter-nvim
     (configureInline vimtex /*lua*/''
@@ -46,6 +46,10 @@ in {
     (configure lspsaga-nvim "lspsaga.lua")
     (configureInline tailwind-tools-nvim /*lua*/''require'tailwind-tools'.setup {}'')
     (configure rest-nvim "rest-nvim.lua")
+    (configureInline lsp_lines-nvim /*lua*/'' require'lsp_lines'.setup {}
+      vim.diagnostic.config({ virtual_text = true })
+      vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+    '')
     vim-visual-multi
 
     (configure langmapper-nvim "langmapper.lua")
