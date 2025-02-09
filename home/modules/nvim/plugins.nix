@@ -46,10 +46,7 @@ in {
     (configure lspsaga-nvim "lspsaga.lua")
     (configureInline tailwind-tools-nvim /*lua*/''require'tailwind-tools'.setup {}'')
     (configure rest-nvim "rest-nvim.lua")
-    (configureInline lsp_lines-nvim /*lua*/''
-      require'lsp_lines'.setup {}
-      vim.diagnostic.config({ virtual_text = false })
-    '')
+    vim-visual-multi
 
     (configure langmapper-nvim "langmapper.lua")
   ];
