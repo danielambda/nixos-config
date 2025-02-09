@@ -9,5 +9,6 @@
     ./docker.nix
     ./virtualbox.nix
     ./wireshark.nix
+    ./network.nix
   ];
 }
