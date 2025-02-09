@@ -21,6 +21,7 @@
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    flakeDir = "/home/daniel/projects/nix/nixos-config";
   in {
     devShell.${system} = pkgs.mkShell {
       packages = with pkgs; [
@@ -30,13 +31,13 @@
     };
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs system; };
+      specialArgs = { inherit inputs system flakeDir; };
       modules = [./nixos];
     };
 
     homeConfigurations.daniel = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-      extraSpecialArgs = { inherit inputs system; };
+      extraSpecialArgs = { inherit inputs system flakeDir; };
       modules = [./home];
     };
   };

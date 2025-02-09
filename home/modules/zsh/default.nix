@@ -1,6 +1,4 @@
-{ pkgs, lib, ... }:
-let flakeDir = "/home/daniel/projects/nix/nixos-config/";
-in {
+{ pkgs, lib, flakeDir, ... }: {
   imports = [./oh-my-posh.nix];
 
   programs.zsh = {

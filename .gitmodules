@@ -1,0 +1,3 @@
+[submodule "devshell-flake-template"]
+	path = devshell-flake-template
+	url = https://github.com/danielambda/devshell-flake-template
