@@ -11,8 +11,8 @@ in {
 
     extraConfig = /*tmux*/''
       unbind C-b
-      set -g prefix C-Space
-      bind C-Space send-prefix
+      set -g prefix C-l
+      bind C-l send-prefix
 
       set -g mouse on
       set -g status-position top
