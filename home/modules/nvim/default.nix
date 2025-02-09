@@ -36,8 +36,6 @@
     extraPackages = with pkgs; [
       ripgrep
 
-      lua-language-server
-      nixd
       clang-tools
     ];
   };

@@ -11,12 +11,11 @@
     name = "flakify";
     text = ''
       if [ ! -e flake.nix ]; then
-        nix flake new -t github:nix-community/nix-direnv .
+        nix flake new -t /home/daniel/projects/nix/devshell-flake-template .
       elif [ ! -e .envrc ]; then
         echo "use flake" > .envrc
         ${lib.getExe pkgs.direnv} allow
       fi
-      nvim flake.nix
     '';
   })];
 }
