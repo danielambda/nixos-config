@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, system, ... }:
 let
   resizeStep = "16";
 
@@ -6,6 +6,9 @@ let
 
   cfg = config.my.hyprland;
   terminal = cfg.terminal;
+
+  zen = inputs.zen-browser.packages."${system}".specific;
+
 in with pkgs // lib;
 {
   options.my.hyprland = {
@@ -41,6 +44,8 @@ in with pkgs // lib;
     bind = , r, submap, reset
     bind = , f, execr, ${getExe firefox}
     bind = , f, submap, reset
+    bind = , z, execr, ${getExe zen}
+    bind = , z, submap, reset
     bind = , c, execr, ${getExe pkgs.chromium}
     bind = , c, submap, reset
     bind = , v, execr, ${getExe vial}

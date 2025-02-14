@@ -15,6 +15,7 @@
       url = "github:Wansmer/langmapper.nvim";
       flake = false;
     };
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
