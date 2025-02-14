@@ -12,7 +12,6 @@
         position = "top";
 
         modules-left = [
-          "custom/startmenu"
           "pulseaudio"
         ];
         modules-center = [
@@ -77,24 +76,26 @@
     style =
       /*css*/''
         * {
-          font-size: 16px;
+          font-size: 12px;
+          padding: 0px;
+          margin: 0px;
         }
         window#waybar {
-          background: rgba(0,0,0,0);
+          background: rgba(0,0,0,0.2);
         }
 
         #workspaces {
-          margin: 4px;
-          padding: 2px;
+          margin: 0px 4px;
+          font-weight: bold;
           background: #${config.stylix.base16Scheme.base00};
-          border-radius: 16px;
+          border-radius: 0px 0px 16px 16px;
         }
 
         #workspaces button {
           font-weight: bold;
-          padding: 0px 6px;
-          margin: 2px;
-          border-radius: 16px;
+          padding: 0px 4px;
+          margin: 0px 2px 2px 2px;
+          border-radius: 0px 0px 12px 12px;
           color: #${config.stylix.base16Scheme.base00};
           background-color: #${config.stylix.base16Scheme.base04};
           opacity: 0.5;
@@ -114,30 +115,31 @@
           color: #${config.stylix.base16Scheme.base04};
         }
 
-        #pulseaudio, #battery {
+        #pulseaudio {
           font-weight: bold;
           background: #${config.stylix.base16Scheme.base04};
           color: #${config.stylix.base16Scheme.base00};
-          margin: 4px;
-          padding: 0px 16px;
-          border-radius: 16px;
+          margin: 0px 4px 0px 0px;
+          padding: 0px 12px;
+          border-radius: 0px 0px 12px 0px;
         }
-        #custom-startmenu {
-          color: #${config.stylix.base16Scheme.base04};
-          background: #${config.stylix.base16Scheme.base00};
-          font-size: 24px;
-          margin: 4px;
-          padding: 0px 15px 0px 4px;
-          border-radius: 16px;
+
+        #battery {
+          font-weight: bold;
+          background: #${config.stylix.base16Scheme.base04};
+          color: #${config.stylix.base16Scheme.base00};
+          margin: 0px 4px;
+          padding: 0px 12px;
+          border-radius: 0px 0px 12px 12px;
         }
+
         #clock {
           font-weight: bold;
           color: #${config.stylix.base16Scheme.base04};
           background: #${config.stylix.base16Scheme.base00};
-          font-size: 16px;
-          margin: 4px;
-          padding: 0px 16px;
-          border-radius: 16px;
+          margin: 0px 0px 0px 4px;
+          padding: 0px 12px;
+          border-radius: 0px 0px 0px 12px;
         }
       '';
   };

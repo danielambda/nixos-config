@@ -1,9 +1,7 @@
-{ pkgs, inputs, system, ... }: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
-    telegram-desktop
     obsidian
     gh
     prismlauncher # minecraft
-    inputs.zen-browser.packages."${system}".specific
   ];
 }

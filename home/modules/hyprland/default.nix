@@ -48,9 +48,9 @@ in {
     };
 
     general = {
-      gaps_in = 8;
-      gaps_out = 16;
-      border_size = 4;
+      gaps_in = 5;
+      gaps_out = 10;
+      border_size = 2;
 
       "col.active_border" = "rgba(${colors.base08}ff)";
       "col.inactive_border" = "rgba(${colors.base04}80)";
@@ -59,7 +59,7 @@ in {
     };
 
     decoration = {
-      rounding = 16;
+      rounding = 12;
 
       blur = {
         enabled = true;
@@ -68,7 +68,7 @@ in {
 
       shadow = {
         enabled = true;
-        range = 8;
+        range = 6;
         color_inactive = "rgba(00000000)";
       };
     };
@@ -96,7 +96,7 @@ in {
       follow_mouse = 1;
       mouse_refocus = true;
 
-      sensitivity = 0.5;
+      sensitivity = 0.3;
 
       touchpad = {
         natural_scroll = true;
