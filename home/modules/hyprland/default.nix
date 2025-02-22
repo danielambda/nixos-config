@@ -96,7 +96,7 @@ in {
       follow_mouse = 1;
       mouse_refocus = true;
 
-      sensitivity = 0.3;
+      sensitivity = 0.2;
 
       touchpad = {
         natural_scroll = true;
