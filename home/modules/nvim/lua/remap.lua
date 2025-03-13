@@ -21,3 +21,8 @@ vim.keymap.set('x', '<leader>c', '"_c')
 vim.keymap.set('n', '<leader>C', '"_cg_')
 vim.keymap.set('n', '<leader>c', '"_c')
 
+vim.keymap.set('n', '<leader>q', function()
+    local qf_winid = vim.fn.getqflist({ winid = 0 }).winid
+    local action = qf_winid > 0 and 'cclose' or 'copen'
+    vim.cmd('botright '..action)
+end, { noremap = true, silent = true })

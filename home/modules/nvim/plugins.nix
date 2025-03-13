@@ -51,6 +51,7 @@ in {
       vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
     '')
     vim-visual-multi
+    ghcid
 
     (configure langmapper-nvim "langmapper.lua")
   ];
