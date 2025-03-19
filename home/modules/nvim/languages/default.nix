@@ -1,6 +1,5 @@
 {
   imports = [
-    ./tailwind.nix
-    ./typescript.nix
+    ./haskell.nix
   ];
 }

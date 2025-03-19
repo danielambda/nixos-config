@@ -43,7 +43,7 @@ require'lspconfig.configs'.omnisharp = {
   }
 }
 
-lspconfig.hls.setup{}
+-- lspconfig.hls.setup{} -- Done by ./haskell-tools.lua
 lspconfig.rust_analyzer.setup{}
 lspconfig.pyright.setup{}
 lspconfig.clangd.setup{}
