@@ -44,7 +44,7 @@ in {
     name = "t";
     text = ''
       cd /home/daniel/projects/
-      project=$(find . -maxdepth 2 -mindepth 2 -type d | ${lib.getExe pkgs.fzf})
+      project=$(find . -maxdepth 2 -mindepth 2 \( -type d -o -type l \) | ${lib.getExe pkgs.fzf})
       cd "$project"
 
       session_name=$(basename "$project")
