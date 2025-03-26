@@ -54,9 +54,6 @@ in {
     ghcid
     (configure haskell-tools-nvim "haskell-tools.lua")
     (configureInline telescope_hoogle /*lua*/''require'telescope'.load_extension'hoogle' '')
-    (configureInline haskell-snippets-nvim /*lua*/''
-      require'luasnip'.add_snippets('haskell', require'haskell-snippets'.all, { key = 'haskell' })
-    '')
 
     (configure langmapper-nvim "langmapper.lua")
   ];
