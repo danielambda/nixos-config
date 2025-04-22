@@ -7,8 +7,8 @@
     ./sound.nix
     ./bluetooth.nix
     ./docker.nix
-    ./virtualbox.nix
-    ./wireshark.nix
     ./network.nix
+    # ./virtualbox.nix
+    # ./wireshark.nix
   ];
 }
