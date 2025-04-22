@@ -44,10 +44,11 @@ require'lspconfig.configs'.omnisharp = {
 }
 
 -- lspconfig.hls.setup{} -- Done by ./haskell-tools.lua
+-- lspconfig.metals.setup{} -- Done by ./metals.lua
 lspconfig.rust_analyzer.setup{}
 lspconfig.pyright.setup{}
 lspconfig.clangd.setup{}
-lspconfig.ts_ls.setup {}
+lspconfig.ts_ls.setup{}
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),

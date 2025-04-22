@@ -54,6 +54,7 @@ in {
     ghcid
     (configure haskell-tools-nvim "haskell-tools.lua")
     (configureInline telescope_hoogle /*lua*/''require'telescope'.load_extension'hoogle' '')
+    (configure nvim-metals "metals.lua")
 
     (configure langmapper-nvim "langmapper.lua")
   ];
