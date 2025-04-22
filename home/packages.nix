@@ -3,5 +3,6 @@
     obsidian
     gh
     prismlauncher # minecraft
+    nekoray
   ];
 }
