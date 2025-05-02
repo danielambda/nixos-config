@@ -54,6 +54,8 @@ in with pkgs // lib;
     bind = , m, submap, reset
     bind = , n, execr, ${getExe nekoray}
     bind = , n, submap, reset
+    bind = , p, execr, ${getExe wl-color-picker}
+    bind = , p, submap, reset
     bind = , catchall, submap, reset
     submap = reset
   '';
