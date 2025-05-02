@@ -23,10 +23,10 @@ in {
       "specialWorkspace, 1, 6, default, slidefadevert -50%"
     ];
     workspace = [
-      "special:obsidian, rounding:false, decorate:false, gapsin:0, gapsout:0, border:false"
+      # "special:obsidian, rounding:false, decorate:false, gapsin:0, gapsout:0, border:false"
     ];
     windowrulev2 = [
-      "workspace special:obsidian, class:(obsidian)"
+      # "workspace special:obsidian, class:(obsidian)"
       "bordersize 5, pinned:1"
     ];
 

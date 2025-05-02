@@ -5,7 +5,6 @@
 
     git
     gcc
-    wget
     zip
     unzip
 

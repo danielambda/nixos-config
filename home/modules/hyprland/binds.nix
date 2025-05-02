@@ -50,6 +50,10 @@ in with pkgs // lib;
     bind = , c, submap, reset
     bind = , v, execr, ${getExe vial}
     bind = , v, submap, reset
+    bind = , m, execr, ${getExe prismlauncher}
+    bind = , m, submap, reset
+    bind = , n, execr, ${getExe nekoray}
+    bind = , n, submap, reset
     bind = , catchall, submap, reset
     submap = reset
   '';
@@ -63,12 +67,12 @@ in with pkgs // lib;
     '', print, exec, ${getExe grim} -g "$(${getExe slurp} -w 0)" - | ${wl-clipboard}/bin/wl-copy''
     ''$mainMod, print, exec, ${getExe grim} -o "$(${hyprland}/bin/hyprctl activeworkspace -j | ${getExe jq} -r '.monitor')" - | ${wl-clipboard}/bin/wl-copy''
 
-    "$mainMod, O, exec, ${getExe (writeShellApplication {
-      name = "special-workspace";
-      text = ''
-        (pgrep -f obsidian && hyprctl dispatch togglespecialworkspace obsidian) || ${getExe obsidian}
-      '';
-    })}"
+    # "$mainMod, O, exec, ${getExe (writeShellApplication {
+    #   name = "special-workspace";
+    #   text = ''
+    #     (pgrep -f obsidian && hyprctl dispatch togglespecialworkspace obsidian) || ${getExe obsidian}
+    #   '';
+    # })}"
 
     "$mainMod, TAB, workspace, e+1"
     "$mainMod SHIFT, TAB, workspace, e-1"

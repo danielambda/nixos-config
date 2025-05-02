@@ -35,8 +35,7 @@
 
     extraPackages = with pkgs; [
       ripgrep
-
-      clang-tools
+      wl-clipboard
     ];
   };
 }

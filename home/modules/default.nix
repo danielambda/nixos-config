@@ -5,7 +5,6 @@
     ./git.nix
     ./hyprland
     ./waybar.nix
-    ./screencapturing.nix
     ./stylix
     ./firefox.nix
     ./kitty.nix

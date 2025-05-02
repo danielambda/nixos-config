@@ -40,7 +40,7 @@ in {
       vim.g.vimtex_view_method = "zathura"
       vim.g.vimtex_compiler_method = "latexmk"
     '')
-    (configure obsidian-nvim "obsidian.lua")
+    # (configure obsidian-nvim "obsidian.lua")
     (configureInline nvim-ts-autotag /*lua*/''require'nvim-ts-autotag'.setup {}'')
     (configure oil-nvim "oil.lua")
     (configure lspsaga-nvim "lspsaga.lua")
