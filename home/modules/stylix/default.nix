@@ -7,6 +7,7 @@
     targets.neovim.enable = false;
     targets.waybar.enable = false;
     targets.hyprland.enable = false;
+    targets.firefox.profileNames = ["daniel"];
 
     polarity = "dark";
     base16Scheme = { # onedark
