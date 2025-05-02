@@ -9,24 +9,23 @@
     targets.hyprland.enable = false;
 
     polarity = "dark";
-    # base16Scheme = scheme "twilight";
-    base16Scheme = {
-      base00 = "1e1e1e"; #1e1e1e
-      base01 = "323537"; #323537
-      base02 = "464b50"; #464b50
-      base03 = "5f5a60"; #5f5a60
-      base04 = "838184"; #838184
-      base05 = "a7a7a7"; #a7a7a7
-      base06 = "c3c3c3"; #c3c3c3
-      base07 = "ffffff"; #ffffff
-      base08 = "f79c9c"; #f79c9c changed from #cf6a4c
-      base09 = "cda869"; #cda869
-      base0A = "f9ee98"; #f9ee98
-      base0B = "8f9d6a"; #8f9d6a
-      base0C = "afc4db"; #afc4db
-      base0D = "7587a6"; #7587a6
-      base0E = "9b859d"; #9b859d
-      base0F = "9b703f"; #9b703f
+    base16Scheme = { # onedark
+      base00 = "282c34"; #282c34
+      base01 = "353b45"; #353b45
+      base02 = "3e4451"; #3e4451
+      base03 = "545862"; #545862
+      base04 = "565c64"; #666c74
+      base05 = "abb2bf"; #bbc2cf
+      base06 = "b6bdca"; #c6cdda
+      base07 = "c8ccd4"; #d8dce4
+      base08 = "fb8383"; #fb8383
+      base09 = "d19a66"; #d19a66
+      base0A = "e5c07b"; #e5c07b
+      base0B = "98c379"; #98c379
+      base0C = "56b6c2"; #56b6c2
+      base0D = "61afef"; #61afef
+      base0E = "c678dd"; #c678dd
+      base0F = "be5046"; #be5046
     };
     image = ./image.png;
 
