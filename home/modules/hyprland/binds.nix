@@ -40,11 +40,9 @@ in with pkgs // lib; {
     submap = run
     bind = , r, execr, ${getExe rofi-wayland} -show drun
     bind = , r, submap, reset
-    bind = , f, execr, ${getExe firefox}
-    bind = , f, submap, reset
     bind = , z, execr, ${getExe zen-browser}
     bind = , z, submap, reset
-    bind = , c, execr, ${getExe pkgs.chromium}
+    bind = , c, execr, ${getExe chromium}
     bind = , c, submap, reset
     bind = , v, execr, ${getExe vial}
     bind = , v, submap, reset
