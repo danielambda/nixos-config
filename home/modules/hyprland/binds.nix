@@ -7,10 +7,8 @@ let
   cfg = config.my.hyprland;
   terminal = cfg.terminal;
 
-  zen = inputs.zen-browser.packages."${system}".specific;
-
-in with pkgs // lib;
-{
+  zen-browser = inputs.zen-browser.packages."${system}".twilight;
+in with pkgs // lib; {
   options.my.hyprland = {
     terminal = mkOption {
       type = types.str;
@@ -44,7 +42,7 @@ in with pkgs // lib;
     bind = , r, submap, reset
     bind = , f, execr, ${getExe firefox}
     bind = , f, submap, reset
-    bind = , z, execr, ${getExe zen}
+    bind = , z, execr, ${getExe zen-browser}
     bind = , z, submap, reset
     bind = , c, execr, ${getExe pkgs.chromium}
     bind = , c, submap, reset

@@ -11,6 +11,7 @@
     ./waybar.nix
     ./tmux.nix
     ./direnv.nix
+    ./zen-browser.nix
     # ./alacritty.nix
   ];
 }
