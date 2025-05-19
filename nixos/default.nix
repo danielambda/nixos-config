@@ -8,6 +8,8 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
+  boot.loader.systemd-boot.configurationLimit = 5;
+
   nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
