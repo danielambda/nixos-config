@@ -74,7 +74,7 @@ let
     );
 in {
   imports = [
-    ./social.nix
+    # ./social.nix
   ];
 
   options.my.hyprland.hidingWindows = {
