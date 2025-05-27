@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+args@{ pkgs, inputs, ... }:
 let
   configure = plugin: config: {
     inherit plugin;
@@ -8,6 +8,12 @@ let
 
   configureInline = plugin: config: {
     inherit plugin config;
+    type = "lua";
+  };
+
+  configureNix = plugin: config: {
+    inherit plugin;
+    config = (import ./lua/plugins/${config}) args;
     type = "lua";
   };
 in {
@@ -20,7 +26,10 @@ in {
     vim-nix
     (configureInline comment-nvim /*lua*/''require'Comment'.setup()'')
     (configureInline lualine-nvim /*lua*/''require'lualine'.setup()'')
-    (configure nvim-lspconfig "lsp.lua")
+
+    (configureNix nvim-lspconfig "lsp.nix")
+    nvim-metals
+
     (configure nvim-cmp "cmp.lua")
     cmp-nvim-lsp
     vim-tmux-navigator
@@ -54,7 +63,6 @@ in {
     ghcid
     (configure haskell-tools-nvim "haskell-tools.lua")
     (configureInline telescope_hoogle /*lua*/''require'telescope'.load_extension'hoogle' '')
-    (configure nvim-metals "metals.lua")
 
     (configure langmapper-nvim "langmapper.lua")
   ];

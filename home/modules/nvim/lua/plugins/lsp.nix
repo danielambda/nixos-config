@@ -1,4 +1,9 @@
+{ pkgs, ... }:
+/*lua*/''
 local lspconfig = require'lspconfig'
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.tbl_deep_extend('force', capabilities, require'cmp_nvim_lsp'.default_capabilities())
 
 require'neodev'.setup()
 lspconfig.lua_ls.setup{}
@@ -44,7 +49,6 @@ require'lspconfig.configs'.omnisharp = {
 }
 
 -- lspconfig.hls.setup{} -- Done by ./haskell-tools.lua
--- lspconfig.metals.setup{} -- Done by ./metals.lua
 lspconfig.rust_analyzer.setup{}
 lspconfig.pyright.setup{}
 lspconfig.clangd.setup{}
@@ -94,5 +98,38 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end
 })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend('force', capabilities, require'cmp_nvim_lsp'.default_capabilities())
+-- Scala nvim-metals config
+metals_config = require'metals'.bare_config()
+metals_config.capabilities = capabilities
+metals_config.on_attach = default_on_attach
+
+metals_config.settings = {
+  metalsBinaryPath = "${pkgs.metals}/bin/metals",
+  autoImportBuild = "off",
+  defaultBspToBuildTool = true,
+  showImplicitArguments = true,
+  showImplicitConversionsAndClasses = true,
+  showInferredType = true,
+  superMethodLensesEnabled = true,
+  excludedPackages = {
+    "akka.actor.typed.javadsl",
+    "com.github.swagger.akka.javadsl"
+  },
+  serverProperties = {
+    "-Dmetals.enable-best-effort=true",
+    "-Xmx2G",
+    "-XX:+UseZGC",
+    "-XX:ZUncommitDelay=30",
+    "-XX:ZCollectionInterval=5",
+    "-XX:+IgnoreUnrecognizedVMOptions"
+  }
+}
+
+-- without doing this, autocommands that deal with filetypes prohibit messages from being shown
+vim.opt_global.shortmess:remove("F")
+
+vim.cmd([[augroup lsp]])
+vim.cmd([[autocmd!]])
+vim.cmd([[autocmd FileType java,scala,sbt lua require('metals').initialize_or_attach(metals_config)]])
+vim.cmd([[augroup end]])
+''
