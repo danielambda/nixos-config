@@ -19,6 +19,7 @@
       cat = "${lib.getExe pkgs.bat}";
       ":q" = "exit";
       v = "nvim";
+      cdtmp = "cd `mktemp -d`";
       rf = "rm -rf";
     };
   };
