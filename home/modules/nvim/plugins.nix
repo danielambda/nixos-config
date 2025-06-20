@@ -39,7 +39,7 @@ in {
     (configure ccc-nvim "ccc.lua")
     (configure luasnip "luasnip.lua")
     vim-sleuth
-    (configureInline gitsigns-nvim /*lua*/ ''require 'gitsigns'.setup {}'')
+    (configureInline gitsigns-nvim /*lua*/ ''require'gitsigns'.setup {}'')
     (configureInline mini-nvim /*lua*/''
       require'mini.ai'.setup { n_lines = 500 }
       require'mini.surround'.setup {}
@@ -60,10 +60,9 @@ in {
       vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
     '')
     vim-visual-multi
-    ghcid
-    (configure haskell-tools-nvim "haskell-tools.lua")
-    (configureInline telescope_hoogle /*lua*/''require'telescope'.load_extension'hoogle' '')
     (configureInline lean-nvim /*lua*/''require'lean'.setup{ mappings = true }'')
+    (configure otter-nvim "otter.lua")
+    (configureInline telescope_hoogle /*lua*/''require'telescope'.load_extension('hoogle')'')
 
     (configure langmapper-nvim "langmapper.lua")
   ];
