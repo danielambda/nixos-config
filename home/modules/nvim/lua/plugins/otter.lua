@@ -1,5 +1,8 @@
 local otter = require'otter'
-otter.setup()
+otter.setup {
+  lsp = {
+    diagnostic_update_events = { "TextChanged" }
+  }
+}
 
-vim.keymap.set('n', '<leader>oa', otter.activate)
-vim.keymap.set('n', '<leader>od', otter.disable)
+vim.keymap.set('n', '<leader>oa', otter.activate, { desc = 'Otter activate' })
