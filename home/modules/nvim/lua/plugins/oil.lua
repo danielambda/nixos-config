@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("User", {
 
         local winnr = vim.fn.win_findbuf(bufnr)[1]
         if not winnr then
-          vim.cmd("bw " .. bufnr)
+          vim.cmd("bw! " .. bufnr)
           return
         end
 
