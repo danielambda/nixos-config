@@ -44,7 +44,6 @@ in {
       require'mini.ai'.setup { n_lines = 500 }
       require'mini.surround'.setup {}
     '')
-    otter-nvim
     (configureInline vimtex /*lua*/''
       vim.g.vimtex_view_method = "zathura"
       vim.g.vimtex_compiler_method = "latexmk"
@@ -62,7 +61,6 @@ in {
     vim-visual-multi
     (configureInline lean-nvim /*lua*/''require'lean'.setup{ mappings = true }'')
     (configure otter-nvim "otter.lua")
-    (configureInline telescope_hoogle /*lua*/''require'telescope'.load_extension('hoogle')'')
 
     (configure langmapper-nvim "langmapper.lua")
   ];
