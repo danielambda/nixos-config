@@ -1,5 +1,5 @@
 { inputs, pkgs, ... }: {
-  imports = [inputs.stylix.homeManagerModules.stylix];
+  imports = [inputs.stylix.homeModules.stylix];
 
   stylix = {
     enable = true;
@@ -7,6 +7,7 @@
     targets.neovim.enable = false;
     targets.waybar.enable = false;
     targets.hyprland.enable = false;
+    targets.zen-browser.enable = false;
 
     polarity = "dark";
     base16Scheme = { # onedark
