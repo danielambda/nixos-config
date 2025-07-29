@@ -44,7 +44,12 @@ in {
       persistent_warps = true;
       warp_on_change_workspace = true;
 
-      enable_hyprcursor = false;
+      enable_hyprcursor = true;
+    };
+
+    ecosystem = {
+      no_update_news = true;
+      no_donation_nag = true;
     };
 
     general = {

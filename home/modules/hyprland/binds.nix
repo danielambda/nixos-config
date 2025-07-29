@@ -48,8 +48,8 @@ in with pkgs // lib; {
     bind = , v, submap, reset
     bind = , m, execr, ${getExe prismlauncher}
     bind = , m, submap, reset
-    bind = , n, execr, ${getExe nekoray}
-    bind = , n, submap, reset
+    bind = , a, execr, ${getExe amnezia-vpn}
+    bind = , a, submap, reset
     bind = , p, execr, ${getExe wl-color-picker}
     bind = , p, submap, reset
     bind = , catchall, submap, reset
