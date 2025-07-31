@@ -16,6 +16,7 @@ in {
 
   home.packages = [
     inputs.hyprland-qtutils.packages."${system}".default
+    pkgs.rose-pine-hyprcursor
   ];
 
   wayland.windowManager.hyprland.settings = {
@@ -46,6 +47,11 @@ in {
 
       enable_hyprcursor = true;
     };
+
+    env = [
+      "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+      "HYPRCURSOR_SIZE,20"
+    ];
 
     ecosystem = {
       no_update_news = true;
