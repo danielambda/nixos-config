@@ -50,7 +50,7 @@ in with pkgs // lib; {
     bind = , m, submap, reset
     bind = , a, execr, ${getExe amnezia-vpn}
     bind = , a, submap, reset
-    bind = , p, execr, ${getExe wl-color-picker}
+    bind = , p, execr, ${getExe hyprpicker} | tr -d '[:space:]\n' | ${wl-clipboard}/bin/wl-copy
     bind = , p, submap, reset
     bind = , catchall, submap, reset
     submap = reset
