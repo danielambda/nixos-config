@@ -76,7 +76,9 @@
     style =
       /*css*/''
         * {
+          font-family: 'JetBrainsMono Font Propo', sans-serif;
           font-size: 12px;
+          font-weight: bold;
           padding: 0px;
           margin: 0px;
         }
