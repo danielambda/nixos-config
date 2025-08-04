@@ -61,6 +61,7 @@ in {
     vim-visual-multi
     (configureInline lean-nvim /*lua*/''require'lean'.setup{ mappings = true }'')
     (configure otter-nvim "otter.lua")
+    (configureInline nvim-sops /*lua*/''require'nvim_sops'.setup{}'')
 
     (configure langmapper-nvim "langmapper.lua")
   ];
