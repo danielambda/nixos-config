@@ -92,7 +92,7 @@ in {
     };
 
     animations = {
-      enabled = true;
+      enabled = false;
     };
 
     dwindle = {
