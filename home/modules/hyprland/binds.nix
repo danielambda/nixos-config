@@ -38,7 +38,7 @@ in with pkgs // lib; {
 
     bind = $mainMod, r, submap, run
     submap = run
-    bind = , r, execr, ${getExe rofi-wayland} -show drun
+    bind = , r, execr, ${getExe rofi} -show drun
     bind = , r, submap, reset
     bind = , z, execr, ${getExe zen-browser}
     bind = , z, submap, reset

@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./plugins.nix
+    ./difftastic.nix
     ./languages
   ];
 

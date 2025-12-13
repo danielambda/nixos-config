@@ -3,5 +3,8 @@
     discord
     mattermost-desktop
     cmus
+    jq
+    postgresql
+    zoom-us
   ];
 }

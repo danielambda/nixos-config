@@ -7,6 +7,14 @@
 
     syntaxHighlighting.enable = true;
 
+    initContent = ''
+      # Prefix-based history search with up/down arrows
+      bindkey "^[OA" history-beginning-search-backward   # Up arrow
+      bindkey "^[OB" history-beginning-search-forward    # Down arrow
+
+      export MANPAGER='nvim +Man!'
+    '';
+
     shellAliases = {
       hms = "home-manager switch --flake ${flakeDir}";
       hmnews = "home-manager news --flake ${flakeDir}";

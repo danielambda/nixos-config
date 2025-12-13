@@ -1,14 +1,12 @@
 { pkgs, ... }:
 /*lua*/''
-local lspconfig = require'lspconfig'
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend('force', capabilities, require'cmp_nvim_lsp'.default_capabilities())
 
 require'neodev'.setup()
-lspconfig.lua_ls.setup{}
+vim.lsp.config('lua_ls', {})
 
-lspconfig.nixd.setup {
+vim.lsp.config('nixd', {
   cmd = { "nixd" };
   settings = {
     nixd = {
@@ -23,9 +21,9 @@ lspconfig.nixd.setup {
       };
     };
   };
-};
+})
 
-lspconfig.omnisharp.setup({
+vim.lsp.config('omnisharp', {
   cmd = { "OmniSharp", "--languageserver" };
   enable_roslyn_analyzers = true;
   organize_imports_on_format = true;
@@ -42,17 +40,12 @@ lspconfig.omnisharp.setup({
     end, opts)
   end
 })
-require'lspconfig.configs'.omnisharp = {
-  default_config = {
-    root_dir = lspconfig.util.root_pattern('*.sln', '*.csproj', '.git'),
-  }
-}
 
--- lspconfig.hls.setup{} -- Done by ./haskell-tools.lua
-lspconfig.rust_analyzer.setup{}
-lspconfig.pyright.setup{}
-lspconfig.clangd.setup{}
-lspconfig.ts_ls.setup{}
+-- vim.lsp.config('hls') -- Done by ./haskell-tools.lua
+vim.lsp.config('rust_analyzer', {})
+vim.lsp.config('pyright', {})
+vim.lsp.config('clangd', {})
+vim.lsp.config('ts_ls', {})
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),

@@ -26,3 +26,5 @@ vim.keymap.set('n', '<leader>q', function()
     local action = qf_winid > 0 and 'cclose' or 'copen'
     vim.cmd('botright '..action)
 end, { noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>gc', ':DifftConflict<CR>', { desc = 'Show difftastic for conflict' })

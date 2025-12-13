@@ -116,10 +116,9 @@ in {
       };
     };
 
-    gestures = {
-      workspace_swipe = true;
-      workspace_swipe_min_fingers = true;
-    };
+    gesture = [
+      "3, horizontal, workspace"
+    ];
 
     monitor = import ./monitor.nix;
   };

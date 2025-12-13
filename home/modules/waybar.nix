@@ -18,6 +18,7 @@
           "hyprland/workspaces"
         ];
         modules-right = [
+          "tray"
           "battery"
           "clock"
         ];
@@ -25,7 +26,7 @@
         "custom/startmenu" = {
           tooltip = false;
           format = "";
-          on-click = "sleep 0.1 && ${lib.getExe pkgs.rofi-wayland} -show drun";
+          on-click = "sleep 0.1 && ${lib.getExe pkgs.rofi} -show drun";
         };
 
         "pulseaudio" = {
