@@ -5,6 +5,7 @@ capabilities = vim.tbl_deep_extend('force', capabilities, require'cmp_nvim_lsp'.
 
 require'neodev'.setup()
 vim.lsp.config('lua_ls', {})
+vim.lsp.enable('lua_ls')
 
 vim.lsp.config('nixd', {
   cmd = { "nixd" };
@@ -22,6 +23,7 @@ vim.lsp.config('nixd', {
     };
   };
 })
+vim.lsp.enable('nixd')
 
 vim.lsp.config('omnisharp', {
   cmd = { "OmniSharp", "--languageserver" };
@@ -40,12 +42,18 @@ vim.lsp.config('omnisharp', {
     end, opts)
   end
 })
+vim.lsp.enable('omnisharp')
 
 -- vim.lsp.config('hls') -- Done by ./haskell-tools.lua
 vim.lsp.config('rust_analyzer', {})
 vim.lsp.config('pyright', {})
 vim.lsp.config('clangd', {})
 vim.lsp.config('ts_ls', {})
+
+vim.lsp.enable('rust_analyzer')
+vim.lsp.enable('pyright')
+vim.lsp.enable('clangd')
+vim.lsp.enable('ts_ls')
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
@@ -95,6 +103,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 metals_config = require'metals'.bare_config()
 metals_config.capabilities = capabilities
 metals_config.on_attach = default_on_attach
+metals_config.init_options.statusBarProvider = "on"
 
 metals_config.settings = {
   metalsBinaryPath = "${pkgs.metals}/bin/metals",
