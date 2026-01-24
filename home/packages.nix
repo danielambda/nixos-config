@@ -5,6 +5,5 @@
     jq
     postgresql
     zoom-us
-    yandex-music
   ];
 }
