@@ -12,7 +12,7 @@
     vimAlias = true;
     vimdiffAlias = true;
 
-    extraLuaConfig = /*lua*/''
+    initLua = /*lua*/''
       ${builtins.readFile ./lua/set.lua}
       ${builtins.readFile ./lua/remap.lua}
       ${builtins.readFile ./lua/autocommands.lua}

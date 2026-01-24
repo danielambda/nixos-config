@@ -1,5 +1,5 @@
 { lib, pkgs, ... }: {
-  programs.neovim.extraLuaConfig = /*lua*/ ''
+  programs.neovim.initLua = /*lua*/ ''
     vim.api.nvim_create_user_command('DifftConflict', function()
       local bufnr = vim.api.nvim_get_current_buf()
       local filepath = vim.api.nvim_buf_get_name(bufnr)
