@@ -1,6 +1,12 @@
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'haskell', 'nix', },
-  callback = function() vim.treesitter.start() end,
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    local ft = vim.bo[args.buf].filetype
+    local lang = vim.treesitter.language.get_lang(ft)
+
+    if lang then
+      pcall(vim.treesitter.start, args.buf, lang)
+    end
+  end,
 })
 
 vim.treesitter.query.set("haskell", "injections", [[
