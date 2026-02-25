@@ -119,7 +119,7 @@ metals_config.settings = {
   },
   serverProperties = {
     "-Dmetals.enable-best-effort=true",
-    "-Xmx2G",
+    "-Xmx3G",
     "-XX:+UseZGC",
     "-XX:ZUncommitDelay=30",
     "-XX:ZCollectionInterval=5",

@@ -11,8 +11,8 @@
 
     polarity = "dark";
     base16Scheme = { # onedark
-      base00 = "282c34"; #282c34
-      base01 = "353b45"; #353b45
+      base00 = "20242c"; #20242c
+      base01 = "333943"; #333943
       base02 = "3e4451"; #3e4451
       base03 = "545862"; #545862
       base04 = "565c64"; #666c74
@@ -28,7 +28,7 @@
       base0E = "c678dd"; #c678dd
       base0F = "be5046"; #be5046
     };
-    image = ./image.png;
+    image = ./grayscale-image.jpg;
 
     fonts = with pkgs; {
       monospace = {
@@ -50,7 +50,7 @@
     };
 
     opacity = {
-      terminal = 0.8;
+      terminal = 1.0;
     };
   };
 }

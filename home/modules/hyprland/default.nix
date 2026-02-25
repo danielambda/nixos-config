@@ -20,15 +20,8 @@ in {
   ];
 
   wayland.windowManager.hyprland.settings = {
-    animation = [
-      "specialWorkspace, 1, 6, default, slidefadevert -50%"
-    ];
-    workspace = [
-      # "special:obsidian, rounding:false, decorate:false, gapsin:0, gapsout:0, border:false"
-    ];
-    windowrulev2 = [
-      # "workspace special:obsidian, class:(obsidian)"
-      "bordersize 5, pinned:1"
+    windowrule = [
+      "match:pin true, border_color rgba(${colors.base07}ff)"
     ];
 
     exec-once = [
@@ -59,27 +52,27 @@ in {
     };
 
     general = {
-      gaps_in = 5;
-      gaps_out = 10;
-      border_size = 2;
+      gaps_in = 3;
+      gaps_out = 6;
+      border_size = 3;
 
-      "col.active_border" = "rgba(${colors.base08}ff)";
-      "col.inactive_border" = "rgba(${colors.base04}80)";
+      "col.active_border" = "rgba(${colors.base00}ff)";
+      "col.inactive_border" = "rgba(${colors.base03}80)";
 
       layout = "dwindle";
     };
 
     decoration = {
-      rounding = 12;
+      rounding = 8;
 
       blur = {
-        enabled = true;
+        enabled = false;
         xray = true;
       };
 
       shadow = {
         enabled = true;
-        range = 6;
+        range = 9;
         color_inactive = "rgba(00000000)";
       };
     };

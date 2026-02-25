@@ -8,6 +8,12 @@
       user = {
         name = "danielambda";
         email = "daniel.gevorgyan25@gmail.com";
+        signingkey = "~/.ssh/id_ed25519.pub";
+      };
+      commit.gpgSign = true;
+      gpg = {
+        format = "ssh";
+        ssh.allowedSignersFile = "~/.ssh/allowed_signers";
       };
 
       init.defaultBranch = "main";

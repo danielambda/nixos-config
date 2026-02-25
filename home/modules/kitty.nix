@@ -4,7 +4,7 @@
 
     settings = {
       enable_audio_bell = false;
-      dynamic_background_opacity = true;
+      dynamic_background_opacity = false;
       allow_remote_control = true;
       map = "ctrl+shift+m launch --type overlay kitten @ set-background-opacity --toggle 1";
       disable_ligatures = "cursor";

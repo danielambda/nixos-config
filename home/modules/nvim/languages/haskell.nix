@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ pkgs, ... }: {
   home.packages = [pkgs.haskellPackages.hoogle];
 
   programs.neovim.plugins = with pkgs.vimPlugins; [
@@ -91,7 +91,7 @@
           return url:match("^.*://(.*)$")
         end
 
-        if args.data.err then
+        if args.data.err or vim.fn.executable("hpack") == 0 then
           return
         end
 
@@ -101,7 +101,7 @@
           local path = parse_url(action.url)
           if not parse_url(action.url):match("%.hs$") then return end
 
-          vim.fn.system("${lib.getExe pkgs.hpack}")
+          vim.fn.system("hpack")
           if action.type == "create" then
             local module_name = get_haskell_module_name(path)
             if module_name and module_name ~= "" then

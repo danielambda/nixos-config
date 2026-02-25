@@ -29,6 +29,7 @@
   };
 
   programs.zen-browser = {
+    suppressXdgMigrationWarning = true;
     enable = true;
     policies = {
       AutofillAddressEnabled = true;

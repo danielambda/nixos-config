@@ -84,7 +84,7 @@
           margin: 0px;
         }
         window#waybar {
-          background: rgba(0,0,0,0.2);
+          background: rgba(0,0,0,0.4);
         }
 
         #workspaces {
@@ -100,7 +100,7 @@
           margin: 0px 2px 2px 2px;
           border-radius: 0px 0px 12px 12px;
           color: #${config.stylix.base16Scheme.base00};
-          background-color: #${config.stylix.base16Scheme.base04};
+          background-color: #${config.stylix.base16Scheme.base05};
           opacity: 0.5;
         }
         #workspaces button.active {
@@ -115,12 +115,12 @@
           border-radius: 8px;
         }
         tooltip label {
-          color: #${config.stylix.base16Scheme.base04};
+          color: #${config.stylix.base16Scheme.base05};
         }
 
         #pulseaudio {
           font-weight: bold;
-          background: #${config.stylix.base16Scheme.base04};
+          background: #${config.stylix.base16Scheme.base05};
           color: #${config.stylix.base16Scheme.base00};
           margin: 0px 4px 0px 0px;
           padding: 0px 12px;
@@ -129,7 +129,7 @@
 
         #battery {
           font-weight: bold;
-          background: #${config.stylix.base16Scheme.base04};
+          background: #${config.stylix.base16Scheme.base05};
           color: #${config.stylix.base16Scheme.base00};
           margin: 0px 4px;
           padding: 0px 12px;
@@ -138,7 +138,7 @@
 
         #clock {
           font-weight: bold;
-          color: #${config.stylix.base16Scheme.base04};
+          color: #${config.stylix.base16Scheme.base05};
           background: #${config.stylix.base16Scheme.base00};
           margin: 0px 0px 0px 4px;
           padding: 0px 12px;
