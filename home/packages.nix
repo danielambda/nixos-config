@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    # discord
+    smplayer
+    mpv-unwrapped
     cmus
     jq
     postgresql
