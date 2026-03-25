@@ -1,9 +1,6 @@
 { self, ... }: {
   flake.nixosModules.mainConfiguration = {
-    imports = [
-      self.nixosModules.mainHardware
-      self.nixosModules.niri
-    ];
+    imports = [self.nixosModules.mainHardware];
 
     networking.hostName = "nixos";
     networking.networkmanager.enable = true;

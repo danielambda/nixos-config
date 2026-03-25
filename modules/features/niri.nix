@@ -1,12 +1,8 @@
 { inputs, self, ... }: {
-  flake.wrapperModules.niri = { config, lib, pkgs, ... }: {
-    options.terminal = lib.mkOption {
-      type = lib.types.str;
-      default = lib.getExe pkgs.kitty;
-    };
-
-    config = {
-      settings = let noctaliaExe = lib.getExe pkgs.noctalia-shell; in {
+  perSystem = { pkgs, lib, self', ... }: {
+    packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
+      inherit pkgs;
+      settings = let noctaliaExe = lib.getExe self'.packages.noctalia; in {
         prefer-no-csd = {};
 
         input = {
@@ -26,7 +22,7 @@
         };
 
         binds = {
-          "Mod+Return".spawn = config.terminal;
+          "Mod+Return".spawn = lib.getExe pkgs.kitty;
 
           "Mod+Q".close-window = {};
           "Mod+F".fullscreen-window = {};
@@ -125,30 +121,19 @@
         };
 
         xwayland-satellite.path =
-          lib.getExe config.pkgs.xwayland-satellite;
+          lib.getExe pkgs.xwayland-satellite;
 
-        # spawn-at-startup = [
-        #   noctaliaExe
-        #   (lib.getExe (
-        #     pkgs.writeShellScriptBin "wallpaper"
-        #     "${lib.getExe pkgs.swaybg} -i ${./../nixos/features/wallpaper/gruvbox-mountain-village.png} -m fill"
-        #   ))
-        # ];
+        spawn-at-startup = [
+          noctaliaExe
+        ];
       };
     };
   };
 
-  perSystem = { pkgs, ... }: {
-    packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
-      inherit pkgs;
-      imports = [self.wrapperModules.niri];
-    };
-  };
-
-  flake.nixosModule.niri = { self', ... }: {
+  flake.nixosModules.niri = { ... }: {
     programs.niri = {
       enable = true;
-      package = self'.packages.niri;
+      package = self.packages."x86_64-linux".niri;
     };
   };
 }
