@@ -7,12 +7,9 @@ in {
     ./hypridle.nix
     ./binds.nix
     ./hyprpaper.nix
-    ./hiding-windows
   ];
 
   wayland.windowManager.hyprland.enable = true;
-
-  my.hyprland.hidingWindows.enable = true;
 
   home.packages = [
     inputs.hyprland-qtutils.packages."${system}".default
