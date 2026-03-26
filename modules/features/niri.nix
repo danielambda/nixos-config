@@ -1,5 +1,5 @@
 { inputs, self, ... }: {
-  perSystem = { pkgs, lib, self', ... }: {
+  perSystem = { pkgs, lib, self', system, ... }: {
     packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
       inherit pkgs;
       settings = let noctaliaExe = lib.getExe self'.packages.noctalia; in {
@@ -22,6 +22,39 @@
         };
 
         binds = {
+          "Mod+R".spawn = self.mkWhichKeyExe pkgs [
+            {
+              key = "b";
+              desc = "Bluetooth";
+              cmd = "${noctaliaExe} ipc call bluetooth togglePanel";
+            }
+            {
+              key = "w";
+              desc = "Wifi";
+              cmd = "${noctaliaExe} ipc call wifi togglePanel";
+            }
+            {
+              key = "z";
+              desc = "Zen Browser";
+              cmd = lib.getExe inputs.zen-browser.packages."${system}".twilight;
+            }
+            {
+              key = "t";
+              desc = "Telegram";
+              cmd = lib.getExe pkgs.telegram-desktop;
+            }
+            {
+              key = "a";
+              desc = "Amnezia VPN";
+              cmd = lib.getExe pkgs.amnezia-vpn;
+            }
+            {
+              key = "s";
+              desc = "Pavucontrol";
+              cmd = "${lib.getExe pkgs.pavucontrol}";
+            }
+          ];
+
           "Mod+Return".spawn = lib.getExe pkgs.kitty;
 
           "Mod+Q".close-window = {};
@@ -39,61 +72,23 @@
           "Mod+Up".focus-window-up = {};
           "Mod+Down".focus-window-down = {};
 
-          "Mod+Shift+H".move-column-left = {};
-          "Mod+Shift+L".move-column-right = {};
-          "Mod+Shift+K".move-window-up = {};
-          "Mod+Shift+J".move-window-down = {};
+          "Mod+Ctrl+H".move-column-left = {};
+          "Mod+Ctrl+L".move-column-right = {};
+          "Mod+Ctrl+K".move-window-up = {};
+          "Mod+Ctrl+J".move-window-down = {};
 
-          "XF86AudioRaiseVolume".spawn-sh = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+";
-          "XF86AudioLowerVolume".spawn-sh = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-";
+          "XF86AudioRaiseVolume".spawn-sh = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 1%+";
+          "XF86AudioLowerVolume".spawn-sh = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 1%-";
 
-          # "Mod+Ctrl+H".set-column-width = "-5%";
-          # "Mod+Ctrl+L".set-column-width = "+5%";
-          # "Mod+Ctrl+J".set-window-height = "-5%";
-          # "Mod+Ctrl+K".set-window-height = "+5%";
+          "Mod+Shift+H".set-column-width = "-5%";
+          "Mod+Shift+L".set-column-width = "+5%";
+          "Mod+Shift+J".set-window-height = "-5%";
+          "Mod+Shift+K".set-window-height = "+5%";
 
           "Mod+WheelScrollDown".focus-column-left = {};
           "Mod+WheelScrollUp".focus-column-right = {};
           "Mod+Ctrl+WheelScrollDown".focus-workspace-down = {};
           "Mod+Ctrl+WheelScrollUp".focus-workspace-up = {};
-
-        #   "Mod+d".spawn-sh = self.mkWhichKeyExe config.pkgs [
-        #     {
-        #       key = "b";
-        #       desc = "Bluetooth";
-        #       cmd = "${noctaliaExe} ipc call bluetooth togglePanel";
-        #     }
-        #     {
-        #       key = "w";
-        #       desc = "Wifi";
-        #       cmd = "${noctaliaExe} ipc call wifi togglePanel";
-        #     }
-        #     {
-        #       key = "f";
-        #       desc = "Firefox";
-        #       cmd = "firefox";
-        #     }
-        #     {
-        #       key = "t";
-        #       desc = "Telegram";
-        #       cmd = "Telegram";
-        #     }
-        #     {
-        #       key = "d";
-        #       desc = "Discord";
-        #       cmd = "vesktop";
-        #     }
-        #     {
-        #       key = "m";
-        #       desc = "Youtube Music";
-        #       cmd = "pear-desktop";
-        #     }
-        #     {
-        #       key = "s";
-        #       desc = "Pavucontrol";
-        #       cmd = "${lib.getExe pkgs.pavucontrol}";
-        #     }
-        #   ];
         };
 
         layout = {

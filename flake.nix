@@ -9,7 +9,6 @@
 
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
 
-
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
 

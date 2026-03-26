@@ -1,6 +1,6 @@
-{ self, ... }: {
+{ ... }: {
   flake.nixosModules.desktop = { pkgs, ... }:
-  let selfpkgs = self.packages."${pkgs.system}"; in
+  # let selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}"; in
   {
     fonts.packages = with pkgs; [
       jetbrains-mono

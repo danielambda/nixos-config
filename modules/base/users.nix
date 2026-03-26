@@ -1,6 +1,6 @@
 { self, ... }: {
   flake.nixosModules.users = { pkgs, lib, ... }:
-  let selfpkgs = self.packages.${pkgs.system}; in
+  let selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system}; in
   {
     programs.zsh.enable = true;
 
