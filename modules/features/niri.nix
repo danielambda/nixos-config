@@ -67,28 +67,53 @@
           "Mod+K".focus-window-up = {};
           "Mod+J".focus-window-down = {};
 
-          "Mod+Left".focus-column-left = {};
-          "Mod+Right".focus-column-right = {};
-          "Mod+Up".focus-window-up = {};
-          "Mod+Down".focus-window-down = {};
+          "Mod+Shift+H".focus-monitor-left = {};
+          "Mod+Shift+L".focus-monitor-right = {};
+          "Mod+Shift+K".focus-workspace-up = {};
+          "Mod+Shift+J".focus-workspace-down = {};
 
           "Mod+Ctrl+H".move-column-left = {};
           "Mod+Ctrl+L".move-column-right = {};
           "Mod+Ctrl+K".move-window-up = {};
           "Mod+Ctrl+J".move-window-down = {};
 
+          "Mod+Shift+Ctrl+H".move-workspace-to-monitor-left = {};
+          "Mod+Shift+Ctrl+L".move-workspace-to-monitor-right = {};
+
           "XF86AudioRaiseVolume".spawn-sh = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 1%+";
           "XF86AudioLowerVolume".spawn-sh = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 1%-";
 
-          "Mod+Shift+H".set-column-width = "-5%";
-          "Mod+Shift+L".set-column-width = "+5%";
-          "Mod+Shift+J".set-window-height = "-5%";
-          "Mod+Shift+K".set-window-height = "+5%";
+          # "Mod+Shift+H".set-column-width = "-5%";
+          # "Mod+Shift+L".set-column-width = "+5%";
+          # "Mod+Shift+J".set-window-height = "-5%";
+          # "Mod+Shift+K".set-window-height = "+5%";
 
           "Mod+WheelScrollDown".focus-column-left = {};
           "Mod+WheelScrollUp".focus-column-right = {};
           "Mod+Ctrl+WheelScrollDown".focus-workspace-down = {};
           "Mod+Ctrl+WheelScrollUp".focus-workspace-up = {};
+
+          "Mod+1".focus-workspace = 1;
+          "Mod+2".focus-workspace = 2;
+          "Mod+3".focus-workspace = 3;
+          "Mod+4".focus-workspace = 4;
+          "Mod+5".focus-workspace = 5;
+          "Mod+6".focus-workspace = 6;
+          "Mod+7".focus-workspace = 7;
+          "Mod+8".focus-workspace = 8;
+          "Mod+9".focus-workspace = 9;
+          "Mod+0".focus-workspace = 10;
+
+          "Mod+Shift+1".move-column-to-workspace = 1;
+          "Mod+Shift+2".move-column-to-workspace = 2;
+          "Mod+Shift+3".move-column-to-workspace = 3;
+          "Mod+Shift+4".move-column-to-workspace = 4;
+          "Mod+Shift+5".move-column-to-workspace = 5;
+          "Mod+Shift+6".move-column-to-workspace = 6;
+          "Mod+Shift+7".move-column-to-workspace = 7;
+          "Mod+Shift+8".move-column-to-workspace = 8;
+          "Mod+Shift+9".move-column-to-workspace = 9;
+          "Mod+Shift+0".move-column-to-workspace = 10;
         };
 
         layout = {
@@ -98,21 +123,6 @@
           #   width = 2;
           #   active-color = "#${self.themeNoHash.base09}";
           # };
-        };
-
-        workspaces = let
-          settings = { layout.gaps = 3; };
-        in {
-          "w0" = settings;
-          "w1" = settings;
-          "w2" = settings;
-          "w3" = settings;
-          "w4" = settings;
-          "w5" = settings;
-          "w6" = settings;
-          "w7" = settings;
-          "w8" = settings;
-          "w9" = settings;
         };
 
         xwayland-satellite.path =
