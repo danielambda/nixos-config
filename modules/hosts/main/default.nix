@@ -7,6 +7,7 @@
       self.nixosModules.desktop
 
       self.nixosModules.niri
+      self.nixosModules.amnezia
     ];
   };
 }
