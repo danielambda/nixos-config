@@ -1,16 +1,16 @@
 { inputs, self, lib, ... }: let
   mkWhichKey = pkgs: menu:
-    (self.wrapperModules.which-key.wrap {
+    (self.wrapperModules.which-key.apply {
       inherit pkgs;
       settings = {
         inherit menu;
 
         font = "JetBrainsMono Nerd Font 12";
-        # background = self.theme.base00;
-        # color = self.theme.base06;
-        # border = self.theme.base0F;
+        background = "#2b002a";
+        color = "#ab00ba";
+        border = "#ffffff";
         separator = " ➜ ";
-        border_width = 8;
+        border_width = 4;
         corner_r = 16;
         padding = 16;
         rows_per_column = 2;
@@ -22,21 +22,23 @@
         margin_left = 0;
         margin_top = 0;
       };
-    });
+    }).wrapper;
 in {
   flake.mkWhichKeyExe = pkgs: menu: lib.getExe (mkWhichKey pkgs menu);
 
-  flake.wrapperModules.which-key = inputs.wrapper-modules.lib.wrapModule (
-    { config, lib, pkgs, ... }:
-    let yamlFormat = pkgs.formats.yaml {}; in
-    {
+  flake.wrapperModules.which-key = inputs.wrappers.lib.wrapModule (
+    { config, ... }:
+    let
+      yamlFormat = config.pkgs.formats.yaml {};
+      configFile = yamlFormat.generate "config.yaml" config.settings;
+    in {
       options.settings = lib.mkOption {
         type = yamlFormat.type;
       };
 
       config = {
-        package = pkgs.wlr-which-key;
-        argv0 = toString (yamlFormat.generate "config.yaml" config.settings);
+        package = config.pkgs.wlr-which-key;
+        args = [(toString configFile)];
       };
     }
   );
