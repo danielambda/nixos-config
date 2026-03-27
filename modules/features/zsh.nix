@@ -1,4 +1,4 @@
-{ inputs, self, ... }: {
+{ inputs, ... }: {
   perSystem = { pkgs, lib, ... }: {
     packages.zsh = inputs.wrapper-modules.wrappers.zsh.wrap {
       inherit pkgs;

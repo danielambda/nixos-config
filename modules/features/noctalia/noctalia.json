@@ -116,7 +116,7 @@
     "screenOverrides": []
   },
   "general": {
-    "avatarImage": "/home/daniel/.face",
+    "avatarImage": "~/.face",
     "dimmerOpacity": 0.3,
     "showScreenCorners": false,
     "forceBlackScreenCorners": true,
@@ -229,7 +229,7 @@
   "wallpaper": {
     "enabled": true,
     "overviewEnabled": false,
-    "directory": "/home/daniel/Pictures/Wallpapers",
+    "directory": "~/Pictures/Wallpapers",
     "monitorDirectories": [],
     "enableMultiMonitorDirectories": false,
     "showHiddenFiles": true,

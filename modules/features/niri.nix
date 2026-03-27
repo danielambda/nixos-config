@@ -1,4 +1,6 @@
-{ inputs, self, ... }: {
+{ inputs, self, ... }:
+let colors = self.configs.noctalia.settings.colors; in
+{
   perSystem = { pkgs, lib, self', system, ... }: {
     packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
       inherit pkgs;
@@ -13,13 +15,13 @@
           focus-ring = {
             on = null;
             width = 3;
-            active-color = "#211f1c";
-            inactive-color = "#cac5bc";
-            urgent-color = "#BA5038";
+            active-color = colors.mSurface;
+            inactive-color = colors.mOutline;
+            urgent-color = colors.mError;
           };
 
           shadow.off = null;
-          insert-hint.color = "#30303080";
+          insert-hint.color = "${colors.mSurfaceVariant}80";
         };
 
         input = {

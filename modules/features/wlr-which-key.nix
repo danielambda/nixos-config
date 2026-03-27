@@ -1,4 +1,5 @@
 { inputs, self, lib, ... }: let
+  colors = self.configs.noctalia.settings.colors;
   mkWhichKey = pkgs: menu:
     (self.wrapperModules.which-key.apply {
       inherit pkgs;
@@ -6,15 +7,15 @@
         inherit menu;
 
         font = "JetBrainsMono Nerd Font 12";
-        background = "#2b002a";
-        color = "#ab00ba";
-        border = "#ffffff";
+        border = colors.mSurface;
+        background = colors.mPrimary;
+        color = colors.mOnPrimary;
         separator = " ➜ ";
-        border_width = 4;
-        corner_r = 16;
-        padding = 16;
+        border_width = 2;
+        corner_r = 0;
+        padding = 8;
         rows_per_column = 2;
-        column_padding = 24;
+        column_padding = 16;
 
         anchor = "bottom-right";
         margin_right = 8;
