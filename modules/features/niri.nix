@@ -1,5 +1,5 @@
 { inputs, self, ... }:
-let colors = self.configs.noctalia.settings.colors; in
+let colors = self.hashColors; in
 {
   perSystem = { pkgs, lib, self', system, ... }: {
     packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
@@ -15,13 +15,13 @@ let colors = self.configs.noctalia.settings.colors; in
           focus-ring = {
             on = null;
             width = 3;
-            active-color = colors.mSurface;
-            inactive-color = colors.mOutline;
-            urgent-color = colors.mError;
+            active-color = colors.base0D;
+            inactive-color = colors.base03;
+            urgent-color = colors.base08;
           };
 
           shadow.off = null;
-          insert-hint.color = "${colors.mSurfaceVariant}80";
+          insert-hint.color = "${colors.base03}80";
         };
 
         input = {
@@ -104,7 +104,7 @@ let colors = self.configs.noctalia.settings.colors; in
             }
           ];
 
-          "Mod+Return".spawn = lib.getExe pkgs.kitty;
+          "Mod+Return".spawn = lib.getExe self'.packages.kitty;
 
           "Mod+Q".close-window = null;
           "Mod+C".center-column = null;

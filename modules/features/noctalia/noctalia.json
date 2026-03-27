@@ -275,7 +275,7 @@
     "pinnedApps": [],
     "useApp2Unit": false,
     "sortByMostUsed": true,
-    "terminalCommand": "kitty -e",
+    "terminalCommand": "alacritty",
     "customLaunchPrefixEnabled": false,
     "customLaunchPrefix": "",
     "viewMode": "list",
@@ -520,7 +520,7 @@
   },
   "colorSchemes": {
     "useWallpaperColors": true,
-    "predefinedScheme": "Rose Pine",
+    "predefinedScheme": "one_dark_two",
     "darkMode": true,
     "schedulingMode": "off",
     "manualSunrise": "12:00",
@@ -529,36 +529,7 @@
     "monitorForColors": "eDP-1"
   },
   "templates": {
-    "activeTemplates": [
-      {
-        "enabled": true,
-        "id": "zenBrowser"
-      },
-      {
-        "enabled": true,
-        "id": "niri"
-      },
-      {
-        "enabled": true,
-        "id": "gtk"
-      },
-      {
-        "enabled": true,
-        "id": "qt"
-      },
-      {
-        "enabled": true,
-        "id": "telegram"
-      },
-      {
-        "enabled": true,
-        "id": "alacritty"
-      },
-      {
-        "enabled": true,
-        "id": "kitty"
-      }
-    ],
+    "activeTemplates": [],
     "enableUserTheming": false
   },
   "nightLight": {
