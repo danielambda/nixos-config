@@ -3,10 +3,28 @@
     packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
       inherit pkgs;
       settings = let noctaliaExe = lib.getExe self'.packages.noctalia; in {
-        prefer-no-csd = {};
+        prefer-no-csd = null;
+
+        layout = {
+          gaps = 8;
+          always-center-single-column = null;
+          empty-workspace-above-first = null;
+
+          focus-ring = {
+            on = null;
+            width = 3;
+            active-color = "#211f1c";
+            inactive-color = "#cac5bc";
+            urgent-color = "#BA5038";
+          };
+
+          shadow.off = null;
+          insert-hint.color = "#30303080";
+        };
 
         input = {
-          focus-follows-mouse = {};
+          "focus-follows-mouse max-scroll-amount=\"10%\"" = null;
+          "warp-mouse-to-focus mode=\"center-xy-always\"" = null;
 
           keyboard = {
             xkb = {
@@ -16,8 +34,27 @@
           };
 
           touchpad = {
-            natural-scroll = {};
-            tap = {};
+            natural-scroll = null;
+            tap = null;
+            dwt = null; # disable when typing
+            click-method = "clickfinger";
+          };
+          touch.map-to-output = "eDP-1";
+        };
+
+        outputs = {
+          eDP-1 = {
+            focus-at-startup = null;
+            mode = "3120x2080@60.000";
+            scale = 2.88888888;
+            "position x=0 y=0" = null;
+            hot-corners.top-right = null;
+          };
+          DP-2 = {
+            mode = "1920x1080@60.000";
+            scale = 1;
+            "position x=-1920 y=0" = null;
+            hot-corners.top-left = null;
           };
         };
 
@@ -51,47 +88,66 @@
             {
               key = "s";
               desc = "Pavucontrol";
-              cmd = "${lib.getExe pkgs.pavucontrol}";
+              cmd = lib.getExe pkgs.pavucontrol;
+            }
+            {
+              key = "v";
+              desc = "Vial";
+              cmd = lib.getExe pkgs.vial;
+            }
+            {
+              key = "r";
+              desc = "Run";
+              cmd = "${noctaliaExe} ipc call launcher toggle";
             }
           ];
 
           "Mod+Return".spawn = lib.getExe pkgs.kitty;
 
-          "Mod+Q".close-window = {};
-          "Mod+F".fullscreen-window = {};
-          "Mod+Shift+F".toggle-window-floating = {};
-          "Mod+C".center-column = {};
+          "Mod+Q".close-window = null;
+          "Mod+C".center-column = null;
+          "Mod+F".fullscreen-window = null;
+          "Mod+Ctrl+F".maximize-column = null;
+          "Mod+G".toggle-window-floating = null;
+          "Mod+Ctrl+G".focus-monitor-next = null;
 
-          "Mod+H".focus-column-left = {};
-          "Mod+L".focus-column-right = {};
-          "Mod+K".focus-window-up = {};
-          "Mod+J".focus-window-down = {};
+          "Mod+H".focus-column-left = null;
+          "Mod+L".focus-column-right = null;
+          "Mod+K".focus-window-or-workspace-up = null;
+          "Mod+J".focus-window-or-workspace-down = null;
 
-          "Mod+Shift+H".focus-monitor-left = {};
-          "Mod+Shift+L".focus-monitor-right = {};
-          "Mod+Shift+K".focus-workspace-up = {};
-          "Mod+Shift+J".focus-workspace-down = {};
+          "Mod+semicolon".focus-monitor-next = null;
+          "Mod+Ctrl+semicolon".move-window-to-monitor-next = null;
 
-          "Mod+Ctrl+H".move-column-left = {};
-          "Mod+Ctrl+L".move-column-right = {};
-          "Mod+Ctrl+K".move-window-up = {};
-          "Mod+Ctrl+J".move-window-down = {};
+          "Mod+Ctrl+H".move-column-left = null;
+          "Mod+Ctrl+L".move-column-right = null;
+          "Mod+Ctrl+K".move-window-up-or-to-workspace-up = null;
+          "Mod+Ctrl+J".move-window-down-or-to-workspace-down = null;
 
-          "Mod+Shift+Ctrl+H".move-workspace-to-monitor-left = {};
-          "Mod+Shift+Ctrl+L".move-workspace-to-monitor-right = {};
+          "Mod+Ctrl+Shift+H".move-workspace-to-monitor-left = null;
+          "Mod+Ctrl+Shift+L".move-workspace-to-monitor-right = null;
 
-          "XF86AudioRaiseVolume".spawn-sh = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 1%+";
-          "XF86AudioLowerVolume".spawn-sh = "wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 1%-";
+          "Mod+Shift+H".set-column-width = "-5%";
+          "Mod+Shift+L".set-column-width = "+5%";
+          "Mod+Shift+J".set-window-height = "+5%";
+          "Mod+Shift+K".set-window-height = "-5%";
 
-          # "Mod+Shift+H".set-column-width = "-5%";
-          # "Mod+Shift+L".set-column-width = "+5%";
-          # "Mod+Shift+J".set-window-height = "-5%";
-          # "Mod+Shift+K".set-window-height = "+5%";
+          "Mod+WheelScrollDown".focus-column-left = null;
+          "Mod+WheelScrollUp".focus-column-right = null;
+          "Mod+Ctrl+WheelScrollDown".focus-workspace-down = null;
+          "Mod+Ctrl+WheelScrollUp".focus-workspace-up = null;
 
-          "Mod+WheelScrollDown".focus-column-left = {};
-          "Mod+WheelScrollUp".focus-column-right = {};
-          "Mod+Ctrl+WheelScrollDown".focus-workspace-down = {};
-          "Mod+Ctrl+WheelScrollUp".focus-workspace-up = {};
+          "XF86AudioRaiseVolume".spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+";
+          "XF86AudioLowerVolume".spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-";
+          "XF86AudioMute".spawn-sh        = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+
+          "XF86AudioPlay".spawn-sh  = "${lib.getExe pkgs.playerctl} play";
+          "XF86AudioPause".spawn-sh = "${lib.getExe pkgs.playerctl} pause";
+          "XF86AudioNext".spawn-sh  = "${lib.getExe pkgs.playerctl} next";
+          "XF86AudioPrev".spawn-sh  = "${lib.getExe pkgs.playerctl} previous";
+
+          "XF86MonBrightnessUp".spawn-sh   = "${lib.getExe pkgs.brightnessctl} -q set +1%";
+          "XF86MonBrightnessDown".spawn-sh = "${lib.getExe pkgs.brightnessctl} -q set 1%-";
 
           "Mod+1".focus-workspace = 1;
           "Mod+2".focus-workspace = 2;
@@ -114,23 +170,22 @@
           "Mod+Shift+8".move-column-to-workspace = 8;
           "Mod+Shift+9".move-column-to-workspace = 9;
           "Mod+Shift+0".move-column-to-workspace = 10;
+
+          "Print".spawn-sh = /*bash*/''
+            ${lib.getExe pkgs.niri} msg action screenshot-screen
+          '';
+          "Shift+Print".spawn-sh = /*bash*/''
+            ${lib.getExe pkgs.niri} msg action screenshot-window
+          '';
+          "Mod+Print".spawn-sh = /*bash*/''
+            ${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp} -w 0)\" - \\
+            | ${pkgs.wl-clipboard}/bin/wl-copy
+          '';
         };
 
-        layout = {
-          gaps = 3;
+        xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
-          # focus-ring = {
-          #   width = 2;
-          #   active-color = "#${self.themeNoHash.base09}";
-          # };
-        };
-
-        xwayland-satellite.path =
-          lib.getExe pkgs.xwayland-satellite;
-
-        spawn-at-startup = [
-          noctaliaExe
-        ];
+        spawn-at-startup = [noctaliaExe];
       };
     };
   };

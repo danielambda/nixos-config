@@ -1,7 +1,8 @@
-{ ... }: {
-  flake.nixosModules.desktop = { pkgs, ... }:
-  # let selfpkgs = self.packages."${pkgs.stdenv.hostPlatform.system}"; in
-  {
+{ inputs, ... }: {
+  flake.nixosModules.desktop = { pkgs, ... }: {
+    services.udev.packages = [pkgs.vial];
+    nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+
     fonts.packages = with pkgs; [
       jetbrains-mono
       noto-fonts

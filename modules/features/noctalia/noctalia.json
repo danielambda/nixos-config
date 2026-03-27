@@ -6,12 +6,12 @@
     "monitors": [
       "eDP-1"
     ],
-    "density": "default",
+    "density": "compact",
     "showOutline": false,
     "showCapsule": false,
     "capsuleOpacity": 1,
     "capsuleColorKey": "none",
-    "backgroundOpacity": 0.93,
+    "backgroundOpacity": 1,
     "useSeparateOpacity": false,
     "floating": false,
     "marginVertical": 4,
@@ -81,7 +81,7 @@
         },
         {
           "deviceNativePath": "__default__",
-          "displayMode": "graphic",
+          "displayMode": "icon-hover",
           "hideIfIdle": false,
           "hideIfNotDetected": true,
           "id": "Battery",
@@ -132,7 +132,7 @@
     "lockOnSuspend": true,
     "showSessionButtonsOnLockScreen": true,
     "showHibernateOnLockScreen": true,
-    "enableShadows": true,
+    "enableShadows": false,
     "shadowDirection": "center",
     "shadowOffsetX": 0,
     "shadowOffsetY": 0,
@@ -467,8 +467,8 @@
     "backgroundOpacity": 1,
     "respectExpireTimeout": false,
     "lowUrgencyDuration": 1,
-    "normalUrgencyDuration": 4,
-    "criticalUrgencyDuration": 8,
+    "normalUrgencyDuration": 2,
+    "criticalUrgencyDuration": 4,
     "clearDismissed": true,
     "saveToHistory": {
       "low": false,
@@ -522,7 +522,7 @@
     "useWallpaperColors": true,
     "predefinedScheme": "Rose Pine",
     "darkMode": true,
-    "schedulingMode": "location",
+    "schedulingMode": "off",
     "manualSunrise": "12:00",
     "manualSunset": "19:00",
     "generationMethod": "muted",
@@ -587,6 +587,11 @@
   "desktopWidgets": {
     "enabled": false,
     "gridSnap": false,
-    "monitorWidgets": []
+    "monitorWidgets": [
+      {
+        "name": "DP-2",
+        "widgets": []
+      }
+    ]
   }
 }
