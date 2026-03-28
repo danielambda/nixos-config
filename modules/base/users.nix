@@ -3,6 +3,8 @@
   let selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system}; in
   {
     programs.zsh.enable = true;
+    environment.pathsToLink = ["/share/zsh"];
+    environment.systemPackages = [selfpkgs.zsh];
 
     users.defaultUserShell = selfpkgs.zsh;
     environment.variables.EDITOR = "nvim"; # TODO use wrapped nvim
