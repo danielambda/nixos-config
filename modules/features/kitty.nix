@@ -16,7 +16,7 @@
           shell_integration = "enabled";
 
           background = self.hashColors.base00;
-          foreground = self.hashColors.base07;
+          foreground = self.hashColors.base06;
 
           cursor = self.hashColors.base07;
 

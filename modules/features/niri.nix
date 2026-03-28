@@ -15,7 +15,7 @@ let colors = self.hashColors; in
           focus-ring = {
             on = null;
             width = 3;
-            active-color = colors.base0D;
+            active-color = colors.base00;
             inactive-color = colors.base03;
             urgent-color = colors.base08;
           };
