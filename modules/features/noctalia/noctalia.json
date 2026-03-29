@@ -3,9 +3,7 @@
   "bar": {
     "barType": "simple",
     "position": "top",
-    "monitors": [
-      "eDP-1"
-    ],
+    "monitors": [],
     "density": "compact",
     "showOutline": false,
     "showCapsule": false,
@@ -52,9 +50,9 @@
           "hideUnoccupied": false,
           "iconScale": 0.8,
           "id": "Workspace",
-          "labelMode": "index",
+          "labelMode": "none",
           "occupiedColor": "secondary",
-          "pillSize": 0.6,
+          "pillSize": 0.7,
           "showApplications": false,
           "showBadge": true,
           "showLabelsOnlyWhenOccupied": true,
@@ -113,7 +111,18 @@
         }
       ]
     },
-    "screenOverrides": []
+    "screenOverrides": [
+      {
+        "enabled": false,
+        "name": "eDP-1",
+        "position": "right"
+      },
+      {
+        "enabled": false,
+        "name": "DP-2",
+        "position": "left"
+      }
+    ]
   },
   "general": {
     "avatarImage": "~/.face",
@@ -186,10 +195,10 @@
     "fontFixed": "monospace",
     "fontDefaultScale": 1,
     "fontFixedScale": 1,
-    "tooltipsEnabled": true,
+    "tooltipsEnabled": false,
     "panelBackgroundOpacity": 1,
     "panelsAttachedToBar": true,
-    "settingsPanelMode": "window",
+    "settingsPanelMode": "attached",
     "wifiDetailsViewMode": "grid",
     "bluetoothDetailsViewMode": "grid",
     "networkPanelView": "wifi",
