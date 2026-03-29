@@ -4,7 +4,7 @@
       inherit pkgs;
 
       zshAliases = {
-        rb = "sudo nixos-rebuild switch --flake /home/daniel/projects/nix/nixos-config#main";
+        rb = "sudo nixos-rebuild switch --flake ${self.flake-dir}#main";
 
         ls   = "${lib.getExe pkgs.eza} --icons --group-directories-first";
         ll   = "${lib.getExe pkgs.eza} --icons --group-directories-first -l";

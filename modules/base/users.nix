@@ -1,4 +1,5 @@
 { self, ... }: {
+  flake.flake-dir = "/home/daniel/projects/nix/nixos-config";
   flake.nixosModules.users = { pkgs, lib, ... }:
   let selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system}; in
   {
