@@ -10,13 +10,6 @@
     wrappers.url = "github:Lassulus/wrappers";
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
 
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-qtutils.url = "github:hyprwm/hyprland-qtutils";
-
-    langmapper-nvim = {
-      url = "github:Wansmer/langmapper.nvim";
-      flake = false;
-    };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
