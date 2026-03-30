@@ -10,6 +10,8 @@
       testvim
       nvim
       git
+      tmux
+      t
     ]) ++ (with pkgs; [
       smplayer
       mpv-unwrapped

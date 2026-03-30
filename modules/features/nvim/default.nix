@@ -14,6 +14,7 @@
 
     config = {
       settings = {
+        dont_link = true;
         config_directory =
           if config.settings.test_mode
             then "${self.flake-dir}/modules/features/nvim"
