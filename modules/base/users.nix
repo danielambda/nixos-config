@@ -34,10 +34,21 @@
 
     users.users.daniel = {
       isNormalUser = true;
-      extraGroups = ["networkmanager" "wheel" "input"];
+      extraGroups = ["networkmanager" "wheel" "input" "docker"];
     };
+    virtualisation.docker.enable = true;
 
     security.sudo.wheelNeedsPassword = false;
+
+    security.rtkit.enable = true;
+
+    services.pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
 
     services.greetd = {
       enable = true;
