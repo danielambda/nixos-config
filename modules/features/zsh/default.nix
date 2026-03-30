@@ -1,4 +1,24 @@
 { self, inputs, ... }: {
+  flake.nixosModules.zsh = { lib, pkgs, config, ... }:
+  let cfg = config.programs.zsh; in
+  {
+    options.programs.zsh = {
+      direnv = {
+        enable = lib.mkEnableOption "direnv, the environment switcher";
+        nix-direnv.enable = lib.mkEnableOption ''
+          [nix-direnv](https://github.com/nix-community/nix-direnv),
+          a fast, persistent use_nix implementation for direnv
+        '';
+      };
+    };
+    config = {
+      environment.systemPackages
+        =  (if cfg.direnv.enable then [pkgs.direnv] else [])
+        ++ (if cfg.direnv.nix-direnv.enable then [pkgs.nix-direnv] else [])
+        ;
+    };
+  };
+
   perSystem = { pkgs, lib, ... }: {
     packages.zsh = inputs.wrapper-modules.wrappers.zsh.wrap {
       inherit pkgs;

@@ -3,7 +3,12 @@
   flake.nixosModules.users = { pkgs, lib, ... }:
   let selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system}; in
   {
+    imports = [self.nixosModules.zsh];
     programs.zsh.enable = true;
+    programs.zsh.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
     environment.pathsToLink = ["/share/zsh"];
     environment.systemPackages = (with selfpkgs; [
       zsh

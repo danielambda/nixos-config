@@ -192,7 +192,7 @@ let colors = self.hashColors; in
     };
   };
 
-  flake.nixosModules.niri = { ... }: {
+  flake.nixosModules.niri = {
     programs.niri = {
       enable = true;
       package = self.packages."x86_64-linux".niri;
