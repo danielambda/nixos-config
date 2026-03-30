@@ -5,28 +5,34 @@ let colors = self.hashColors; in
     packages.niri = inputs.wrapper-modules.wrappers.niri.wrap {
       inherit pkgs;
       settings = let noctaliaExe = lib.getExe self'.packages.noctalia; in {
-        prefer-no-csd = null;
+        prefer-no-csd = _: {};
 
         layout = {
           gaps = 8;
-          always-center-single-column = null;
-          empty-workspace-above-first = null;
+          always-center-single-column = _: {};
+          empty-workspace-above-first = _: {};
 
           focus-ring = {
-            on = null;
+            on = _: {};
             width = 3;
             active-color = colors.base00;
             inactive-color = colors.base03;
             urgent-color = colors.base08;
           };
 
-          shadow.off = null;
+          shadow.off = _: {};
           insert-hint.color = "${colors.base03}80";
         };
 
         input = {
-          "focus-follows-mouse max-scroll-amount=\"10%\"" = null;
-          "warp-mouse-to-focus mode=\"center-xy-always\"" = null;
+          focus-follows-mouse = _: {
+            props.max-scroll-amount = "10%";
+            content = {};
+          };
+          warp-mouse-to-focus = _: {
+            props.mode= "center-xy-always";
+            content = {};
+          };
 
           keyboard = {
             xkb = {
@@ -36,9 +42,9 @@ let colors = self.hashColors; in
           };
 
           touchpad = {
-            natural-scroll = null;
-            tap = null;
-            dwt = null; # disable when typing
+            natural-scroll = _: {};
+            tap = _: {};
+            dwt = _: {}; # disable when typing
             click-method = "clickfinger";
           };
           touch.map-to-output = "eDP-1";
@@ -46,17 +52,29 @@ let colors = self.hashColors; in
 
         outputs = {
           eDP-1 = {
-            focus-at-startup = null;
+            focus-at-startup = _: {};
             mode = "3120x2080@60.000";
             scale = 2.88888888;
-            "position x=0 y=0" = null;
-            hot-corners.top-right = null;
+            position = _: {
+              props = {
+                x = 0;
+                y = 0;
+              };
+              content = _: {};
+            };
+            hot-corners.top-right = _: {};
           };
           DP-2 = {
             mode = "1920x1080@60.000";
             scale = 1;
-            "position x=-1920 y=0" = null;
-            hot-corners.top-left = null;
+            position = _: {
+              props = {
+                x = -1920;
+                y = 0;
+              };
+              content = _: {};
+            };
+            hot-corners.top-left = _: {};
           };
         };
 
@@ -106,38 +124,38 @@ let colors = self.hashColors; in
 
           "Mod+Return".spawn = lib.getExe self'.packages.kitty;
 
-          "Mod+Q".close-window = null;
-          "Mod+C".center-column = null;
-          "Mod+F".fullscreen-window = null;
-          "Mod+Ctrl+F".maximize-column = null;
-          "Mod+G".toggle-window-floating = null;
-          "Mod+Ctrl+G".focus-monitor-next = null;
+          "Mod+Q".close-window = _: {};
+          "Mod+C".center-column = _: {};
+          "Mod+F".fullscreen-window = _: {};
+          "Mod+Ctrl+F".maximize-column = _: {};
+          "Mod+G".toggle-window-floating = _: {};
+          "Mod+Ctrl+G".focus-monitor-next = _: {};
 
-          "Mod+H".focus-column-left = null;
-          "Mod+L".focus-column-right = null;
-          "Mod+K".focus-window-or-workspace-up = null;
-          "Mod+J".focus-window-or-workspace-down = null;
+          "Mod+H".focus-column-left = _: {};
+          "Mod+L".focus-column-right = _: {};
+          "Mod+K".focus-window-or-workspace-up = _: {};
+          "Mod+J".focus-window-or-workspace-down = _: {};
 
-          "Mod+semicolon".focus-monitor-next = null;
-          "Mod+Ctrl+semicolon".move-window-to-monitor-next = null;
+          "Mod+semicolon".focus-monitor-next = _: {};
+          "Mod+Ctrl+semicolon".move-window-to-monitor-next = _: {};
 
-          "Mod+Ctrl+H".move-column-left = null;
-          "Mod+Ctrl+L".move-column-right = null;
-          "Mod+Ctrl+K".move-window-up-or-to-workspace-up = null;
-          "Mod+Ctrl+J".move-window-down-or-to-workspace-down = null;
+          "Mod+Ctrl+H".move-column-left = _: {};
+          "Mod+Ctrl+L".move-column-right = _: {};
+          "Mod+Ctrl+K".move-window-up-or-to-workspace-up = _: {};
+          "Mod+Ctrl+J".move-window-down-or-to-workspace-down = _: {};
 
-          "Mod+Ctrl+Shift+H".move-workspace-to-monitor-left = null;
-          "Mod+Ctrl+Shift+L".move-workspace-to-monitor-right = null;
+          "Mod+Ctrl+Shift+H".move-workspace-to-monitor-left = _: {};
+          "Mod+Ctrl+Shift+L".move-workspace-to-monitor-right = _: {};
 
           "Mod+Shift+H".set-column-width = "-5%";
           "Mod+Shift+L".set-column-width = "+5%";
           "Mod+Shift+J".set-window-height = "+5%";
           "Mod+Shift+K".set-window-height = "-5%";
 
-          "Mod+WheelScrollDown".focus-column-left = null;
-          "Mod+WheelScrollUp".focus-column-right = null;
-          "Mod+Ctrl+WheelScrollDown".focus-workspace-down = null;
-          "Mod+Ctrl+WheelScrollUp".focus-workspace-up = null;
+          "Mod+WheelScrollDown".focus-column-left = _: {};
+          "Mod+WheelScrollUp".focus-column-right = _: {};
+          "Mod+Ctrl+WheelScrollDown".focus-workspace-down = _: {};
+          "Mod+Ctrl+WheelScrollUp".focus-workspace-up = _: {};
 
           "XF86AudioRaiseVolume".spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+";
           "XF86AudioLowerVolume".spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-";
