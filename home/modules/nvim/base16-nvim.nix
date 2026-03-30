@@ -5,7 +5,7 @@ let
       config.stylix.base16Scheme
   );
   coloring = builtins.foldl' (x: y: "${x}, ${y}")
-    (builtins.head coloringLines) #seed
+    (builtins.head coloringLines)
     (builtins.tail coloringLines);
 in {
   programs.neovim.plugins = [{

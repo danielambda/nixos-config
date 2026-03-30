@@ -1,7 +1,5 @@
 { inputs, self, ... }: {
-  flake.nvimWrapper = { config, wlib, lib, pkgs, ... }:
-  # let selfpkgs = self.packages."${pkgs.system}"; in
-  {
+  flake.nvimWrapper = { config, wlib, lib, pkgs, ... }: {
     imports = [wlib.wrapperModules.neovim];
 
     options.settings.test_mode = lib.mkOption {
@@ -46,6 +44,7 @@
       in with pkgs.vimPlugins; [
         lz-n
 
+        base16-nvim
         ccc-nvim
         cmp-nvim-lsp
         cmp-path
@@ -78,6 +77,7 @@
       info = {
         difftastic.path = lib.getExe pkgs.difftastic;
         metals.path = lib.getExe pkgs.metals;
+        colors = self.hashColors;
       };
 
       extraPackages = [

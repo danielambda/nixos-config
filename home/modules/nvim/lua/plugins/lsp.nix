@@ -30,17 +30,6 @@ vim.lsp.config('omnisharp', {
   enable_roslyn_analyzers = true;
   organize_imports_on_format = true;
   enable_import_completion = true;
-  on_attach = function(_, buffer)
-    local opts = { buffer = buffer }
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<leader>rr', vim.lsp.buf.rename, opts)
-    vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', '<leader>fm', function()
-      vim.lsp.buf.format { async = true }
-    end, opts)
-  end
 })
 vim.lsp.enable('omnisharp')
 
@@ -102,7 +91,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Scala nvim-metals config
 metals_config = require'metals'.bare_config()
 metals_config.capabilities = capabilities
-metals_config.on_attach = default_on_attach
 metals_config.init_options.statusBarProvider = "on"
 
 metals_config.settings = {

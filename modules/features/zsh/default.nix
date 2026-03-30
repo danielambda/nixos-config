@@ -12,7 +12,7 @@
         lla  = "${lib.getExe pkgs.eza} --icons --group-directories-first -la";
         tree = "${lib.getExe pkgs.eza} --icons --color=auto --tree";
         grep = "grep --color=auto";
-        cat  = "${lib.getExe pkgs.bat}";
+        cat  = lib.getExe pkgs.bat;
         ":q" = "exit";
         v = "nvim";
         cdtmp = "cd `mktemp -d`";
