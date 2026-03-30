@@ -68,6 +68,7 @@
         oil-nvim
         otter-nvim
         telescope-nvim
+        undotree
         vim-nix
         vim-sleuth
         vim-tmux-navigator
