@@ -9,6 +9,7 @@
       zsh
       testvim
       nvim
+      git
     ]) ++ (with pkgs; [
       smplayer
       mpv-unwrapped
