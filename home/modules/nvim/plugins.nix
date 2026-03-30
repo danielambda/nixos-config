@@ -1,4 +1,4 @@
-args@{ pkgs, inputs, ... }:
+args@{ pkgs, ... }:
 let
   configure = plugin: config: {
     inherit plugin;
@@ -67,16 +67,5 @@ in {
       (configure langmapper-nvim "langmapper.lua")
     ];
   };
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      vimPlugins = prev.vimPlugins // {
-        langmapper-nvim = prev.vimUtils.buildVimPlugin {
-          name = "langmapper-nvim";
-          src = inputs.langmapper-nvim;
-        };
-      };
-    })
-  ];
 }
 
