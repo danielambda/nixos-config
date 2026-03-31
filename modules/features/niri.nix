@@ -215,5 +215,6 @@ let colors = self.hashColors; in
       enable = true;
       package = self.packages."x86_64-linux".niri;
     };
+    programs.xwayland.enable = true;
   };
 }

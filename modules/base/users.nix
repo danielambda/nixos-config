@@ -4,11 +4,15 @@
   let selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system}; in
   {
     imports = [self.nixosModules.zsh];
-    programs.zsh.enable = true;
-    programs.zsh.direnv = {
+
+    programs.zsh = {
       enable = true;
-      nix-direnv.enable = true;
+      direnv = {
+        enable = true;
+        nix-direnv.enable = true;
+      };
     };
+
     environment.pathsToLink = ["/share/zsh"];
     environment.systemPackages = (with selfpkgs; [
       zsh
