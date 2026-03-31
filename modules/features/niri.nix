@@ -198,8 +198,7 @@ let colors = self.hashColors; in
             ${lib.getExe pkgs.niri} msg action screenshot-window
           '';
           "Mod+Print".spawn-sh = /*bash*/''
-            ${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp} -w 0)\" - \\
-            | ${pkgs.wl-clipboard}/bin/wl-copy
+            ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp} -w 0)" - | ${pkgs.wl-clipboard}/bin/wl-copy
           '';
         };
 
@@ -210,11 +209,36 @@ let colors = self.hashColors; in
     };
   };
 
-  flake.nixosModules.niri = {
+  flake.nixosModules.niri = { pkgs, ... }: {
     programs.niri = {
       enable = true;
-      package = self.packages."x86_64-linux".niri;
+      package = self.packages.${pkgs.stdenv.hostPlatform.system}.niri;
     };
     programs.xwayland.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      wl-clipboard
+
+      xdg-desktop-portal
+      xdg-desktop-portal-gtk
+    ];
+
+    systemd.user.services = {
+      "xdg-desktop-portal" = {
+        enable = true;
+        serviceConfig.Environment = [
+          "XDG_SESSION_TYPE=wayland"
+          "WAYLAND_DISPLAY=wayland-1"
+        ];
+      };
+
+      "xdg-desktop-portal-gtk" = {
+        enable = true;
+        serviceConfig.Environment = [
+          "XDG_SESSION_TYPE=wayland"
+          "WAYLAND_DISPLAY=wayland-1"
+        ];
+      };
+    };
   };
 }

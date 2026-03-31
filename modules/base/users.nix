@@ -63,11 +63,9 @@
 
     services.greetd = {
       enable = true;
-      settings = {
-        default_session = {
-          command = lib.getExe selfpkgs.niri;
-          user = "daniel";
-        };
+      settings.default_session = {
+        command = "${selfpkgs.niri}/bin/niri-session";
+        user = "daniel";
       };
     };
   };
