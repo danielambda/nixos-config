@@ -14,3 +14,10 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
       vim.fn.setpos(".", save_cursor)
     end,
 })
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+  pattern = "*",
+  callback = function()
+    vim.cmd("silent! update")
+  end,
+})
