@@ -52,6 +52,7 @@
         cmp_luasnip
         comment-nvim
         gitsigns-nvim
+        haskell-tools-nvim
         langmapper-nvim
         lean-nvim
         lsp_lines-nvim
@@ -69,6 +70,7 @@
         oil-nvim
         otter-nvim
         telescope-nvim
+        telescope_hoogle
         undotree
         vim-nix
         vim-sleuth

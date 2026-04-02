@@ -1,6 +1,7 @@
 return {
   'haskell-tools';
   lazy = true;
+  ft = { 'haskell', 'cabal' };
   after = function()
     require'telescope'.load_extension'hoogle'
 
