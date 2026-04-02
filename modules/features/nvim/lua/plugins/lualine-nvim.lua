@@ -21,9 +21,9 @@ return {
           },
           { 'filetype', icon_only = true }
         };
-        lualine_c = { 'lsp_status' };
+        lualine_c = { 'diagnostics' };
 
-        lualine_x = { 'diagnostics' };
+        lualine_x = { 'lsp_status' };
         lualine_y = { 'progress' };
         lualine_z = { { 'location',
           separator = { right = '' };
