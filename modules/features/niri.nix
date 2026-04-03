@@ -50,7 +50,20 @@ let colors = self.hashColors; in
           touch.map-to-output = "eDP-1";
         };
 
-        outputs = {
+        outputs = let
+          secondMonitorSettings = {
+            mode = "1920x1080@60.000";
+            scale = 1;
+            position = _: {
+              props = {
+                x = -1920;
+                y = 0;
+              };
+              content = _: {};
+            };
+            hot-corners.top-left = _: {};
+          };
+        in {
           eDP-1 = {
             focus-at-startup = _: {};
             mode = "3120x2080@60.000";
@@ -64,18 +77,8 @@ let colors = self.hashColors; in
             };
             hot-corners.top-right = _: {};
           };
-          DP-2 = {
-            mode = "1920x1080@60.000";
-            scale = 1;
-            position = _: {
-              props = {
-                x = -1920;
-                y = 0;
-              };
-              content = _: {};
-            };
-            hot-corners.top-left = _: {};
-          };
+          DP-2 = secondMonitorSettings;
+          DP-4 = secondMonitorSettings;
         };
 
         binds = {
