@@ -1,8 +1,10 @@
-{ self, ... }: {
+{ inputs, self, ... }: {
   flake.flake-dir = "/home/daniel/projects/nix/nixos-config";
   flake.nixosModules.users = { pkgs, lib, ... }:
-  let selfpkgs = self.packages.${pkgs.stdenv.hostPlatform.system}; in
-  {
+  let
+    system = pkgs.stdenv.hostPlatform.system;
+    selfpkgs = self.packages.${system};
+  in {
     imports = [self.nixosModules.zsh];
 
     programs.zsh = {
@@ -28,6 +30,8 @@
       jq
       postgresql
       zoom-us
+      unzip
+      zip
     ]) ++ [(pkgs.writeShellApplication {
       name = "flakify";
       text = ''
@@ -42,6 +46,7 @@
 
     users.defaultUserShell = selfpkgs.zsh;
     environment.variables.EDITOR = lib.getExe selfpkgs.nvim;
+    environment.variables.BROWSER = lib.getExe inputs.zen-browser.packages."${system}".twilight;
 
     users.users.daniel = {
       isNormalUser = true;
