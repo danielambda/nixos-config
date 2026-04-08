@@ -35,14 +35,7 @@
         '';
       };
 
-      specs.start = let
-        # TODO
-        # stella-grammar = pkgs.tree-sitter.buildGrammar {
-        #   language = "stella";
-        #   version = "0.0.1";
-        #   src = ./stella-ts;
-        # };
-      in with pkgs.vimPlugins; [
+      specs.start = with pkgs.vimPlugins; [
         lz-n
 
         base16-nvim
@@ -65,7 +58,7 @@
         nvim-lspconfig
         nvim-metals
         nvim-sops
-        nvim-treesitter.withAllGrammars #(nvim-treesitter.grammarToPlugin stella-grammar)
+        nvim-treesitter.withAllGrammars
         nvim-ts-autotag
         oil-nvim
         otter-nvim
