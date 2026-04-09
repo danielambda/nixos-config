@@ -1,5 +1,5 @@
 {
-  "settingsVersion": 53,
+  "settingsVersion": 59,
   "bar": {
     "barType": "simple",
     "position": "top",
@@ -9,9 +9,12 @@
     "showCapsule": false,
     "capsuleOpacity": 1,
     "capsuleColorKey": "none",
+    "widgetSpacing": 6,
+    "contentPadding": 2,
+    "fontScale": 1,
+    "enableExclusionZoneInset": true,
     "backgroundOpacity": 1,
     "useSeparateOpacity": false,
-    "floating": false,
     "marginVertical": 4,
     "marginHorizontal": 4,
     "frameThickness": 8,
@@ -21,12 +24,17 @@
     "displayMode": "always_visible",
     "autoHideDelay": 500,
     "autoShowDelay": 150,
+    "showOnWorkspaceSwitch": true,
     "widgets": {
       "left": [
         {
+          "colorizeSystemIcon": "none",
+          "customIconPath": "",
+          "enableColorization": false,
           "icon": "rocket",
           "iconColor": "none",
-          "id": "Launcher"
+          "id": "Launcher",
+          "useDistroLogo": false
         },
         {
           "clockColor": "none",
@@ -46,6 +54,7 @@
           "enableScrollWheel": true,
           "focusedColor": "primary",
           "followFocusedScreen": false,
+          "fontWeight": "bold",
           "groupedBorderOpacity": 1,
           "hideUnoccupied": false,
           "iconScale": 0.8,
@@ -54,12 +63,20 @@
           "occupiedColor": "secondary",
           "pillSize": 0.7,
           "showApplications": false,
+          "showApplicationsHover": false,
           "showBadge": true,
           "showLabelsOnlyWhenOccupied": true,
           "unfocusedIconsOpacity": 1
         }
       ],
       "right": [
+        {
+          "displayMode": "forceOpen",
+          "iconColor": "none",
+          "id": "KeyboardLayout",
+          "showIcon": false,
+          "textColor": "none"
+        },
         {
           "blacklist": [],
           "chevronColor": "none",
@@ -111,6 +128,15 @@
         }
       ]
     },
+    "mouseWheelAction": "none",
+    "reverseScroll": false,
+    "mouseWheelWrap": true,
+    "middleClickAction": "none",
+    "middleClickFollowMouse": false,
+    "middleClickCommand": "",
+    "rightClickAction": "controlCenter",
+    "rightClickFollowMouse": true,
+    "rightClickCommand": "",
     "screenOverrides": [
       {
         "enabled": false,
@@ -141,7 +167,9 @@
     "lockOnSuspend": true,
     "showSessionButtonsOnLockScreen": true,
     "showHibernateOnLockScreen": true,
+    "enableLockScreenMediaControls": false,
     "enableShadows": false,
+    "enableBlurBehind": true,
     "shadowDirection": "center",
     "shadowOffsetX": 0,
     "shadowOffsetY": 0,
@@ -155,6 +183,7 @@
     "allowPasswordWithFprintd": true,
     "clockStyle": "digital",
     "clockFormat": "hh\\nmm",
+    "passwordChars": false,
     "lockScreenMonitors": [
       "eDP-1"
     ],
@@ -196,14 +225,13 @@
     "fontDefaultScale": 1,
     "fontFixedScale": 1,
     "tooltipsEnabled": false,
+    "scrollbarAlwaysVisible": true,
+    "boxBorderEnabled": false,
     "panelBackgroundOpacity": 1,
+    "translucentWidgets": false,
     "panelsAttachedToBar": true,
     "settingsPanelMode": "attached",
-    "wifiDetailsViewMode": "grid",
-    "bluetoothDetailsViewMode": "grid",
-    "networkPanelView": "wifi",
-    "bluetoothHideUnnamedDevices": false,
-    "boxBorderEnabled": false
+    "settingsPanelSideBarCardStyle": false
   },
   "location": {
     "name": "Innopolis",
@@ -239,7 +267,18 @@
     "enabled": true,
     "overviewEnabled": false,
     "directory": "~/Pictures/Wallpapers",
-    "monitorDirectories": [],
+    "monitorDirectories": [
+      {
+        "directory": "/home/daniel/Pictures/Wallpapers",
+        "name": "DP-4",
+        "wallpaper": ""
+      },
+      {
+        "directory": "/home/daniel/Pictures/Wallpapers",
+        "name": "eDP-1",
+        "wallpaper": ""
+      }
+    ],
     "enableMultiMonitorDirectories": false,
     "showHiddenFiles": true,
     "viewMode": "recursive",
@@ -252,11 +291,14 @@
     "wallpaperChangeMode": "random",
     "randomIntervalSec": 300,
     "transitionDuration": 500,
-    "transitionType": "fade",
+    "transitionType": [
+      "fade"
+    ],
     "skipStartupTransition": true,
     "transitionEdgeSmoothness": 0.05,
     "panelPosition": "follow_bar",
     "hideWallpaperFilenames": true,
+    "useOriginalImages": false,
     "overviewBlur": 0.4,
     "overviewTint": 0.6,
     "useWallhaven": false,
@@ -274,15 +316,16 @@
     "favorites": []
   },
   "appLauncher": {
-    "enableClipboardHistory": true,
+    "enableClipboardHistory": false,
     "autoPasteClipboard": false,
     "enableClipPreview": true,
     "clipboardWrapText": true,
+    "enableClipboardSmartIcons": true,
+    "enableClipboardChips": true,
     "clipboardWatchTextCommand": "wl-paste --type text --watch cliphist store",
     "clipboardWatchImageCommand": "wl-paste --type image --watch cliphist store",
     "position": "center",
     "pinnedApps": [],
-    "useApp2Unit": false,
     "sortByMostUsed": true,
     "terminalCommand": "alacritty",
     "customLaunchPrefixEnabled": false,
@@ -294,7 +337,7 @@
     "enableSettingsSearch": true,
     "enableWindowsSearch": true,
     "enableSessionSearch": true,
-    "ignoreMouseInput": true,
+    "ignoreMouseInput": false,
     "screenshotAnnotationTool": "",
     "overviewLayer": false,
     "density": "default"
@@ -375,6 +418,10 @@
     "criticalColor": "#ffb4ab",
     "externalMonitor": "resources || missioncenter || jdsystemmonitor || corestats || system-monitoring-center || gnome-system-monitor || plasma-systemmonitor || mate-system-monitor || ukui-system-monitor || deepin-system-monitor || pantheon-system-monitor"
   },
+  "noctaliaPerformance": {
+    "disableWallpaper": true,
+    "disableDesktopWidgets": true
+  },
   "dock": {
     "enabled": false,
     "position": "bottom",
@@ -387,22 +434,35 @@
     "monitors": [],
     "pinnedApps": [],
     "colorizeIcons": false,
+    "showLauncherIcon": false,
+    "launcherPosition": "end",
+    "launcherUseDistroLogo": false,
+    "launcherIcon": "",
+    "launcherIconColor": "none",
     "pinnedStatic": false,
     "inactiveIndicators": false,
+    "groupApps": false,
+    "groupContextMenuMode": "extended",
+    "groupClickAction": "cycle",
+    "groupIndicatorStyle": "dots",
     "deadOpacity": 0.6,
     "animationSpeed": 1,
     "sitOnFrame": false,
-    "showFrameIndicator": true
+    "showDockIndicator": false,
+    "indicatorThickness": 3,
+    "indicatorColor": "primary",
+    "indicatorOpacity": 0.6
   },
   "network": {
-    "wifiEnabled": true,
     "airplaneModeEnabled": false,
     "bluetoothRssiPollingEnabled": false,
     "bluetoothRssiPollIntervalMs": 60000,
+    "networkPanelView": "wifi",
     "wifiDetailsViewMode": "grid",
     "bluetoothDetailsViewMode": "grid",
     "bluetoothHideUnnamedDevices": false,
-    "disableDiscoverability": false
+    "disableDiscoverability": false,
+    "bluetoothAutoConnect": true
   },
   "sessionMenu": {
     "enableCountdown": true,
@@ -516,16 +576,19 @@
   "audio": {
     "volumeStep": 1,
     "volumeOverdrive": true,
-    "cavaFrameRate": 30,
+    "spectrumFrameRate": 30,
     "visualizerType": "none",
+    "spectrumMirrored": true,
     "mprisBlacklist": [],
     "preferredPlayer": "smplayer",
-    "volumeFeedback": true
+    "volumeFeedback": true,
+    "volumeFeedbackSoundFile": ""
   },
   "brightness": {
     "brightnessStep": 2,
     "enforceMinimum": false,
-    "enableDdcSupport": false
+    "enableDdcSupport": false,
+    "backlightDeviceMappings": []
   },
   "colorSchemes": {
     "useWallpaperColors": true,
@@ -559,14 +622,32 @@
     "performanceModeEnabled": "",
     "performanceModeDisabled": "",
     "startup": "",
-    "session": ""
+    "session": "",
+    "colorGeneration": ""
   },
   "plugins": {
-    "autoUpdate": false
+    "autoUpdate": false,
+    "notifyUpdates": false
+  },
+  "idle": {
+    "enabled": false,
+    "screenOffTimeout": 600,
+    "lockTimeout": 660,
+    "suspendTimeout": 1800,
+    "fadeDuration": 5,
+    "screenOffCommand": "",
+    "lockCommand": "",
+    "suspendCommand": "",
+    "resumeScreenOffCommand": "",
+    "resumeLockCommand": "",
+    "resumeSuspendCommand": "",
+    "customCommands": "[]"
   },
   "desktopWidgets": {
     "enabled": false,
+    "overviewEnabled": true,
     "gridSnap": false,
+    "gridSnapScale": false,
     "monitorWidgets": [
       {
         "name": "DP-2",
