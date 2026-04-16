@@ -61,7 +61,7 @@ let colors = self.hashColors; in
               };
               content = _: {};
             };
-            hot-corners.top-left = _: {};
+            hot-corners.bottom-left = _: {};
           };
         in {
           eDP-1 = {
@@ -75,7 +75,7 @@ let colors = self.hashColors; in
               };
               content = _: {};
             };
-            hot-corners.top-right = _: {};
+            hot-corners.bottom-right = _: {};
           };
           DP-2 = secondMonitorSettings;
           DP-4 = secondMonitorSettings;
