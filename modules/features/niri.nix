@@ -131,8 +131,8 @@ let colors = self.hashColors; in
           "Mod+C".center-column = _: {};
           "Mod+F".fullscreen-window = _: {};
           "Mod+Ctrl+F".maximize-column = _: {};
-          "Mod+G".toggle-window-floating = _: {};
-          "Mod+Ctrl+G".focus-monitor-next = _: {};
+          "Mod+G".switch-focus-between-floating-and-tiling = _: {};
+          "Mod+Ctrl+G".toggle-window-floating = _: {};
 
           "Mod+H".focus-column-left = _: {};
           "Mod+L".focus-column-right = _: {};
