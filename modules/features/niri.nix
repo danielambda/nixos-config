@@ -84,6 +84,11 @@ let colors = self.hashColors; in
         binds = {
           "Mod+R".spawn = self.mkWhichKeyExe pkgs [
             {
+              key = "l";
+              desc = "Logout & Suspend";
+              cmd = "${noctaliaExe} ipc call lockScreen lock && systemctl suspend";
+            }
+            {
               key = "b";
               desc = "Bluetooth";
               cmd = "${noctaliaExe} ipc call bluetooth togglePanel";

@@ -32,6 +32,7 @@
       zoom-us
       unzip
       zip
+      code-cursor
     ]) ++ [(pkgs.writeShellApplication {
       name = "flakify";
       text = ''
