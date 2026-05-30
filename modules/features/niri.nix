@@ -37,7 +37,7 @@ let colors = self.hashColors; in
           keyboard = {
             xkb = {
               layout = "us,ru";
-              options = "grp:alt_shift_toggle";
+              options = "grp:alt_space_toggle";
             };
           };
 
