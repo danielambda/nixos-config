@@ -12,6 +12,7 @@
           disable_ligatures = "cursor";
 
           font_family = "JetBrainsMono Nerd Font";
+          font_size = 14;
 
           shell_integration = "enabled";
 

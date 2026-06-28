@@ -5,6 +5,16 @@
     system = pkgs.stdenv.hostPlatform.system;
     selfpkgs = self.packages.${system};
   in {
+
+    programs.steam.enable = true;
+    programs.gamemode.enable = true;
+
+    environment.sessionVariables = {
+      STEAM_EXTRA_COMPACT_TOOLS_PATHS =
+        "/home/daniel/.steam/root/compatibilitytools.d";
+    };
+
+
     imports = [self.nixosModules.zsh];
 
     programs.zsh = {
@@ -24,6 +34,9 @@
       tmux
       t
     ]) ++ (with pkgs; [
+
+      protonup-ng
+
       smplayer
       mpv-unwrapped
       cmus

@@ -77,7 +77,7 @@
         colors = self.hashColors;
       };
 
-      extraPackages = [
+      runtimePkgs = [
         pkgs.ripgrep
         pkgs.wl-clipboard
       ];
