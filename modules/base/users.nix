@@ -34,18 +34,15 @@
       tmux
       t
     ]) ++ (with pkgs; [
-
-      protonup-ng
-
-      smplayer
-      mpv-unwrapped
       cmus
       jq
+      mpv-unwrapped
       postgresql
-      zoom-us
+      protonup-ng
+      smplayer
       unzip
       zip
-      code-cursor
+      zoom-us
     ]) ++ [(pkgs.writeShellApplication {
       name = "flakify";
       text = ''
@@ -56,7 +53,11 @@
           direnv allow
         fi
       '';
-    })];
+    })] ++ [
+      (pkgs.callPackage ./happ.nix { inherit pkgs; })
+      pkgs.net-tools
+      pkgs.lsb-release
+    ];
 
     users.defaultUserShell = selfpkgs.zsh;
     environment.variables.EDITOR = lib.getExe selfpkgs.nvim;
