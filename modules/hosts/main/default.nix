@@ -8,6 +8,14 @@
 
       self.nixosModules.niri
       self.nixosModules.amnezia
+
+      inputs.happ-nix.nixosModules.default
+      {
+        programs.happ = {
+          enable = true;
+          tunMode.enable = true;
+        };
+      }
     ];
   };
 }

@@ -69,6 +69,7 @@
         vim-sleuth
         vim-tmux-navigator
         vim-visual-multi
+        vimtex
       ];
 
       info = {
@@ -80,6 +81,9 @@
       runtimePkgs = [
         pkgs.ripgrep
         pkgs.wl-clipboard
+
+        pkgs.zathura
+        pkgs.texliveFull
       ];
     };
   };
